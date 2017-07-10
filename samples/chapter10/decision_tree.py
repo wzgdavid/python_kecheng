@@ -5,7 +5,7 @@ from sklearn.tree import DecisionTreeClassifier as DTC
 from sklearn import tree
 from sklearn.externals.six import StringIO
 import os
-import pydot
+
 '''
 数值  武器类型    子弹  血量  身边是否有队友  行为类别
 0     手枪        少   少       没              逃跑 
