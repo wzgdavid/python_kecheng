@@ -125,10 +125,20 @@ np.random.shuffle(arr)
 
 page16 Numpy基础操作
 示例: 随机漫步
-一次性产生1000次“掷硬币”的结果，一面为1，一面为-1，计算累计和
-draws = np.random.randint(0,2,1000)
+一次性产生500次“掷硬币”的结果，一面为1，一面为-1，计算累计和
+import numpy as np
+import matplotlib.pyplot as plt
+
+draws = np.random.randint(0,2,500)
 steps = np.where(draws>0, 1, -1)
 walk = steps.cumsum()
+print(walk)
+
+plt.plot(range(500), walk, color='red', linewidth=1)
+#plt.plot(df['height'], a*df['height']+b, color='red', linewidth=4)
+plt.xlabel("walk")
+plt.ylabel('steps')
+plt.show()
 
 
 page17 Numpy基础操作

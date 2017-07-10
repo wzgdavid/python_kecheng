@@ -166,12 +166,12 @@ page17 统计
 累计统计
 cumsum()    # 累计和
 cumprod()   # 累计积
-df.rolling(window=n, ).max()
-df.rolling(window=n, ).mean()
-df.rolling(window=n, ).var()
-df.rolling(window=n, ).std()
-df.rolling(window=n, ).corr()
-df.rolling(window=n, ).cov()
+df.rolling(window=n).max()
+df.rolling(window=n).mean()
+df.rolling(window=n).var()
+df.rolling(window=n).std()
+df.rolling(window=n).corr()
+df.rolling(window=n).cov()
 df.xx.shift(n)   # 偏移
 
 page18 算术运算
@@ -194,8 +194,18 @@ df - s   # 沿着行逐一向下计算
 s2 = df[0]     # 选取一列
 df.sub(s2, axis=0)
 
+page20 分组
+df = pd.DataFrame({'A' : ['foo', 'bar', 'foo', 'bar',
+                        'foo', 'bar', 'foo', 'foo'],
+                    'B' : ['one', 'one', 'two', 'three',
+                        'two', 'two', 'one', 'three'],
+                    'C' : np.random.randint(8,size=8),
+                    'D' : np.random.randint(8,size=8)})
+df.groupby('A').sum()
+df.groupby(['A','B']).sum()
 
-page20  读写文件
+
+page21  读写文件
 csv
 df.to_csv('foo.csv')
 pd.read_csv('foo.csv')
