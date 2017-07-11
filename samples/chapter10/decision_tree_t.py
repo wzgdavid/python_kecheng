@@ -37,22 +37,23 @@ x = df[['武器','子弹','血量','身边队友']]#.astype(int)
 #print(x)
 y = df['行为']#.astype(int)
 #print(y)
-x_train, x_test, y_train, y_test = train_test_split(x, y, train_size=0.6, test_size=0.4)
+x_train, x_test, y_train, y_test = train_test_split(x, y, train_size=0.5, test_size=0.5)
 model = DTC().fit(x_train, y_train)
 
 # 预测
 # 预测一组特征
 predicted = model.predict([(1,1,0,1)])
-print(predicted)
+#print(predicted)
+
+
 # 预测n组特征
 predicted = model.predict(x_test)  # 预测出的结果
 expected = y_test  # 期望的结果
 
-
 # 预测结果，
 #print(expected.shape, predicted.shape) #出错时打印看看两者是否一致
-print(metrics.classification_report(expected, predicted))
-print(metrics.confusion_matrix(expected, predicted))
+#print(metrics.classification_report(expected, predicted))
+#print(metrics.confusion_matrix(expected, predicted))
 #             precision    recall  f1-score   support
 #
 #          0       0.73      0.89      0.80         9
