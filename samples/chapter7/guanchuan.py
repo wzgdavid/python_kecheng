@@ -16,7 +16,7 @@ class Student():
     1,可以统计某一门课的平均分
     2,可以统计某一期考试的总分(各科的总分)
     3,可以得到某门课的等级，>=90 A,80到89 B,70到79 C, 60到69 D, 剩下E
-    4,打印某一期所有课的等级,做成一个字典，
+    4,打印某一期所有课的分数,做成一个字典，
       比如第一期的所有等级如下
 
     5,print一个Student实例，能显示这个实例的name和所有分数等级,打印成表格形式
@@ -26,9 +26,9 @@ class Student():
       会显示类似如下内容
          grades of tom is
              math  english  sport
-         1     A       A       B
-         2     C       D       C 
-         3     A       B       B
+         1     99      88       99
+         2     99      88       77
+         3     66      44       65
          。。。。。
     '''
     _subject = ('math', 'english', 'sport')
@@ -118,8 +118,35 @@ class Student():
             grades[subject] = self._scores.get(subject_name)
         print(grades)
 
-    def __str__(self):
-        return str(self._scores)
+    def _get_termgrades_list(self, term):
+        '''某一期所有课的分数,做成一个list, 为print成绩等级表格做准备'''
+        grades = []
+        for subject in self._subject:
+            subject_name = self._get_subject_name(subject, term)
+            score = self._scores.get(subject_name)
+            grades.append(score)
+        #print(grades)
+        return grades
+
+    def print_score_tables(self):
+        grades_tables = ['tom']
+        grades_tables.extend(self._subject)
+        grades_tables.append('\n')
+        for n in range(1,99):
+            lst = [str(n)]
+            termgrades_list = self._get_termgrades_list(n)
+            if not any(termgrades_list):
+                break
+            termgrades_list = [str(n) for n in termgrades_list]
+            lst.extend(termgrades_list)
+            lst.append('\n')
+            #print(lst)
+            grades_tables.extend(lst)
+
+        #print(grades_tables)
+        for n in grades_tables:
+            print(n.center(10), end='')
+        return 'str(lst)'
 
 def _test():
     s = Student('tom')
@@ -131,13 +158,15 @@ def _test():
     s.add_score('english', 3, 74)
     s.add_score('sport', 1, 85)
     s.add_score('sport', 2, 74)
-    s.add_score('sport', 2, 83)
+    s.add_score('sport', 3, 83)
     #print(s)
     
     s.subject_avg('english')
     s.term_sum(2)
     s.get_grade('math', 1)
     s.get_termgrades(1)
+    s._get_termgrades_list(1)
+    s.print_score_tables()
 
 if __name__ == '__main__':
     _test()
