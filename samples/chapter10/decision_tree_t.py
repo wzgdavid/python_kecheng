@@ -8,7 +8,6 @@ import pandas as pd
 from sklearn.tree import DecisionTreeClassifier as DTC
 from sklearn import tree
 from sklearn.externals.six import StringIO
-import os
 from sklearn import metrics
 from sklearn.model_selection import GridSearchCV, RandomizedSearchCV
 from scipy.stats import uniform as sp_rand
@@ -22,8 +21,8 @@ from scipy.stats import uniform as sp_rand
 
 #df = pd.read_csv('fightrun.csv',encoding='utf-8',names=names) # 指定列名
 df = pd.read_csv('fightrun.csv')
-df = df.ix[1:,['武器','子弹','血量','身边队友','行为']]
-print(df)
+df = df.ix[:,['子弹','武器','血量','身边队友','行为']]
+#print(df)
 df[df=='手枪'] = 0
 df[df=='少'] = 0
 df[df=='没'] = 0
@@ -31,7 +30,7 @@ df[df=='逃跑'] = 0
 df[df!=0] = 1
 # 此时df中数据类型是object，要转换一下astype(int)
 df = df.astype(int)
-#print(df)
+print(df)
 model = DTC()
 
 x = df[['武器','子弹','血量','身边队友']]#.astype(int) 
