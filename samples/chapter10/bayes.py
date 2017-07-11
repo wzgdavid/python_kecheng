@@ -11,6 +11,7 @@ from sklearn.externals.six import StringIO
 from sklearn import metrics
 from sklearn.model_selection import GridSearchCV, RandomizedSearchCV, train_test_split
 from scipy.stats import uniform as sp_rand
+
 '''
 数值  武器类型    子弹  血量  身边队友  行为类别
 0     手枪        少   少       没         逃跑
@@ -33,14 +34,14 @@ df[(df=='多')|(df=='躲藏')] = 2
 #df['武器'] = sq
 
 df = df.astype(int)
-print(df)
+#print(df)
 x = df[['武器','子弹','血量','身边队友']]
 #print(x)
 y = df['行为']#.astype(int)
 #print(y)
 x_train, x_test, y_train, y_test = train_test_split(x, y, train_size=0.6, test_size=0.4)
 model = GaussianNB()
-model.fit(x_train, y_train)
+m = model.fit(x_train, y_train)
 
 # 预测
 predicted = model.predict(x_test)  # 预测出的结果
@@ -48,7 +49,5 @@ expected = y_test  # 期望的结果
 # 打印预测结果，
 print(metrics.classification_report(expected, predicted))
 print(metrics.confusion_matrix(expected, predicted))
-
-
 
 

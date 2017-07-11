@@ -9,7 +9,7 @@ from sklearn.tree import DecisionTreeClassifier as DTC
 from sklearn import tree
 from sklearn.externals.six import StringIO
 from sklearn import metrics
-from sklearn.model_selection import GridSearchCV, RandomizedSearchCV
+from sklearn.model_selection import GridSearchCV, RandomizedSearchCV, train_test_split
 from scipy.stats import uniform as sp_rand
 '''
 数值  武器类型    子弹  血量  身边是否有队友  行为类别
@@ -30,23 +30,26 @@ df[df=='逃跑'] = 0
 df[df!=0] = 1
 # 此时df中数据类型是object，要转换一下astype(int)
 df = df.astype(int)
-print(df)
-model = DTC()
+#print(df)
+#model = DTC()
 
 x = df[['武器','子弹','血量','身边队友']]#.astype(int) 
 #print(x)
 y = df['行为']#.astype(int)
 #print(y)
-model.fit(x, y)
+x_train, x_test, y_train, y_test = train_test_split(x, y, train_size=0.6, test_size=0.4)
+model = DTC().fit(x_train, y_train)
 
 # 预测
 # 预测一组特征
 predicted = model.predict([(1,1,0,1)])
 print(predicted)
 # 预测n组特征
-predicted = model.predict(x)  # 预测出的结果
-expected = y  # 期望的结果
-# 打印预测结果，
+predicted = model.predict(x_test)  # 预测出的结果
+expected = y_test  # 期望的结果
+
+
+# 预测结果，
 #print(expected.shape, predicted.shape) #出错时打印看看两者是否一致
 print(metrics.classification_report(expected, predicted))
 print(metrics.confusion_matrix(expected, predicted))
@@ -68,3 +71,14 @@ print(metrics.confusion_matrix(expected, predicted))
 
 
 
+
+# ROC曲线
+probas_ = model.predict_proba(x_test)
+fpr, tpr, thresholds = metrics.roc_curve(y_test, probas_[:, 1], pos_label=1)
+plt.plot(fpr, tpr, linewidth=2, label = 'ROC', color = 'green') #作出ROC曲线
+plt.xlabel('False Positive Rate') #坐标轴标签
+plt.ylabel('True Positive Rate') #坐标轴标签
+plt.ylim(0, 1.05) #边界范围
+plt.xlim(0, 1.05) #边界范围
+plt.legend(loc=4) #图例
+plt.show()
