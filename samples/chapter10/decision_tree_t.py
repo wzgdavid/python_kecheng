@@ -9,7 +9,7 @@ from sklearn.tree import DecisionTreeClassifier as DTC
 from sklearn import tree
 from sklearn.externals.six import StringIO
 from sklearn import metrics
-from sklearn.model_selection import GridSearchCV, RandomizedSearchCV, train_test_split
+from sklearn.model_selection import train_test_split
 from scipy.stats import uniform as sp_rand
 '''
 数值  武器类型    子弹  血量  身边是否有队友  行为类别
@@ -54,6 +54,8 @@ expected = y_test  # 期望的结果
 #print(expected.shape, predicted.shape) #出错时打印看看两者是否一致
 #print(metrics.classification_report(expected, predicted))
 #print(metrics.confusion_matrix(expected, predicted))
+
+# 说明
 #             precision    recall  f1-score   support
 #
 #          0       0.73      0.89      0.80         9

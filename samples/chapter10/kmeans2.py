@@ -1,17 +1,18 @@
 #使用K-Means算法聚类消费行为特征数据
+# 选两个特征， 以便画图
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 from sklearn.cluster import KMeans
-from mpl_toolkits.mplot3d import Axes3D #画3D散点图
-
-
 df = pd.read_csv('consumption_data.csv')
-df = df.ix[:,['R','F','M']]
+df = df.ix[:,['F','M']]
 # 数据标准化
 df = (df - df.mean())/df.std()
+
+
+
 #分为n_clusters类，聚类最大循环次数500
-model = KMeans(n_clusters = 3, max_iter = 500) 
+model = KMeans(n_clusters = 3, max_iter = 500)
 model.fit(df) #开始聚类
 #print(model.labels_)
 #print(model.cluster_centers_)
@@ -25,13 +26,10 @@ r = pd.concat([r2, r1], axis = 1)
 r.columns = list(df.columns) + ['类别数目'] 
 print(r)
 
-print(model.predict([[34, 26, 6666]]))
+print(model.predict([[1, 2535]]))
 
-# 3D散点图
+# 散点图
 y_pred = model.fit_predict(df)
-sd = plt.figure().add_subplot(111, projection = '3d')  
-sd.scatter(df.R, df.F, df.M, c=y_pred) 
-sd.set_xlabel('R')  
-sd.set_ylabel('F')  
-sd.set_zlabel('M')  
-plt.show() 
+#plt.scatter(df.F, df.M)  # 未分类散点图
+plt.scatter(df.F, df.M, c=y_pred) # 分类
+plt.show()
