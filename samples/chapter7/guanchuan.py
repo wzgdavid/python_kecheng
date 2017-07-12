@@ -14,21 +14,22 @@ class Student():
     '''
 
     1,可以统计某一门课的平均分
+       def subject_avg
     2,可以统计某一期考试的总分(各科的总分)
+       def term_sum
     3,可以得到某门课的等级，>=90 A,80到89 B,70到79 C, 60到69 D, 剩下E
+       def get_subject_grade
     4,打印某一期所有课的分数,做成一个字典，
+       def get_term_grades
       比如第一期的所有等级如下
-
-    5,print一个Student实例，能显示这个实例的name和所有分数等级,打印成表格形式
+        {'math': 95, 'english': 66, 'sport': 85}
+    5,能显示这个实例的name和所有分数等级,打印成表格形式
+       def print_grade_tables
       比如
-          s = Student('tom')
-          print(s)
-      会显示类似如下内容
-         grades of tom is
-             math  english  sport
-         1     99      88       99
-         2     99      88       77
-         3     66      44       65
+         tom   math  english  sport
+          1     99      88       99
+          2     99      88       77
+          3     66      44       65
          。。。。。
     '''
     _subject = ('math', 'english', 'sport')
@@ -114,15 +115,16 @@ class Student():
             grade = 'E'
         return grade
 
-    def get_termgrades(self, term):
+    def get_term_grades(self, term):
         '''某一期所有课的等级,做成一个字典'''
         grades = {}
         for subject in self._subject:
             subject_name = self._get_subject_name(subject, term)
             grades[subject] = self._scores.get(subject_name)
         print(grades)
+        return grades
 
-    def _get_termgrades_list(self, term):
+    def _get_termgscores_list(self, term):
         '''某一期所有课的分数,做成一个list, 为print成绩等级表格做准备'''
         grades = []
         for subject in self._subject:
@@ -132,25 +134,27 @@ class Student():
         #print(grades)
         return grades
 
-    def print_score_tables(self):
+    def print_grade_tables(self):
+        '''把整个表看成一个每行最后一个元素是'\n'的列表'''
         grades_tables = ['tom']
         grades_tables.extend(self._subject)
         grades_tables.append('\n')
-        for n in range(1,99):
-            lst = [str(n)]
-            termgrades_list = self._get_termgrades_list(n)
-            if not any(termgrades_list):
-                break
-            termgrades_list = [str(n) for n in termgrades_list]
-            lst.extend(termgrades_list)
-            lst.append('\n')
-            #print(lst)
-            grades_tables.extend(lst)
+        for n in range(1,9): # 按期数循环
+            row = [str(n)] # 每一行的标号
+            termgrades_list = self._get_termgscores_list(n)
+            if not any(termgrades_list): # 如果某一期全部为None，则认为没有这一期成绩
+                continue
+            #termgrades_list = [str(n) for n in termgrades_list]  # 分数
+            termgrades_list = [self._get_score_grade(n) for n in termgrades_list] # 如果要全打印等级
+            row.extend(termgrades_list)  # 每一行的等级
+            row.append('\n')             # 每一行最后一个元素，换行符
+            #print(row)
+            grades_tables.extend(row)
 
         #print(grades_tables)
         for n in grades_tables:
-            print(n.center(10), end='')
-        return 'str(lst)'
+            print(n.center(8), end='')
+
 
 def _test():
     s = Student('tom')
@@ -168,9 +172,9 @@ def _test():
     s.subject_avg('english')
     s.term_sum(2)
     s.get_subject_grade('math', 1)
-    s.get_termgrades(1)
-    s._get_termgrades_list(1)
-    s.print_score_tables()
+    s.get_term_grades(1)
+    s._get_termgscores_list(1)
+    s.print_grade_tables()
 
 if __name__ == '__main__':
     _test()

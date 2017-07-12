@@ -11,8 +11,6 @@ X2, y2 = datasets.make_blobs(n_samples=1000, n_features=2, centers=[[1.2,1.2]], 
                random_state=9)
 X = np.concatenate((X1, X2))
 
-
-
 y_pred = DBSCAN(eps = 0.1).fit_predict(X)
 plt.scatter(X[:, 0], X[:, 1], c=y_pred)
 plt.show()
