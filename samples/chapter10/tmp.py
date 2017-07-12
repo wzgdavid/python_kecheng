@@ -1,40 +1,14 @@
-'''
-手动转换数据
-3种结果行为，战斗，逃跑，躲藏， 
-有空值
-'''
+           R          F            M  类别数目
+0  15.911672   6.927445   374.730726   317
+1  17.353896  11.165584  1039.894805   308
+2  16.776699  10.728155  1685.837411   309
+3  28.333333  14.833333  6330.238333     6
+[Finished in 2.6s]
 
-import matplotlib.pyplot as plt
-import numpy as np
-import pandas as pd
-from sklearn.tree import DecisionTreeClassifier as DTC
-from sklearn import tree
-from sklearn.externals.six import StringIO
-import os
-from sklearn import metrics
-from sklearn.model_selection import GridSearchCV, RandomizedSearchCV, train_test_split
-from scipy.stats import uniform as sp_rand
-'''
-数值  武器类型    子弹  血量  身边队友  行为类别
-0     手枪        少   少       没         逃跑
-1     机枪        中   中       有         战斗
-2                 多   多                  躲藏
-'''
-
-df = pd.read_csv('fightrun3.csv')
-df = df.ix[:,['子弹','武器','血量','身边队友','行为']] 
-#df[df=='少'] = 0
-#df[df=='手枪'] = 0
-#df[df=='逃跑'] = 0
-df = df.dropna()
-sq = df['武器'].copy()
-sq[sq=='手枪'] = 0
-sq[sq=='机枪'] = 1
-df['武器'] = sq
-print(df)
-
-#df[(df=='手枪')|(df=='少')|(df=='没')|(df=='逃跑')] = 0
-#df[(df=='机枪')|(df=='中')|(df=='有')|(df=='战斗')] = 1
-#df[(df=='多')|(df=='躲藏')] = 2
-#df = df.astype(int)
+           R          F            M  类别数目
+0  15.911672   6.927445   374.730726   317
+1  17.353896  11.165584  1039.894805   308
+2  28.333333  14.833333  6330.238333     6
+3  16.776699  10.728155  1685.837411   309
+[Finished in 2.6s]
 

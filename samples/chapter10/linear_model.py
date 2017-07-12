@@ -47,7 +47,10 @@ plt.plot(df['height'], linreg.predict(x), color='red', linewidth=4)
 #plt.plot(df['height'], a*df['height']+b, color='red', linewidth=4)
 plt.xlabel("height")
 plt.ylabel('weight')
+# 显示画图，保存画图
+plt.savefig('lm.png') 
 plt.show()
+
 
 
 

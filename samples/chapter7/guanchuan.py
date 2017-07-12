@@ -89,7 +89,7 @@ class Student():
     def _get_subject_name(self, subject, term):
         return ''.join((subject, '_', str(term)))
 
-    def get_grade(self, subject, term):
+    def get_subject_grade(self, subject, term):
         '''得到某门课的等级'''
         if subject not in self._subject:
             raise StudentError('not a subject')
@@ -97,6 +97,11 @@ class Student():
         # subject_name = ''.join((subject, '_', str(term)))
         subject_name = self._get_subject_name(subject, term)
         score = self._scores.get(subject_name, 0)
+        grade = self._get_score_grade(score)
+        return grade
+
+    def _get_score_grade(self, score):
+        '''提取出来作为一个私有方法，'''
         if score >= 90:
             grade = 'A'
         elif score >= 80:
@@ -107,7 +112,6 @@ class Student():
             grade = 'D'
         else:
             grade = 'E'
-        print(grade)
         return grade
 
     def get_termgrades(self, term):
@@ -163,7 +167,7 @@ def _test():
     
     s.subject_avg('english')
     s.term_sum(2)
-    s.get_grade('math', 1)
+    s.get_subject_grade('math', 1)
     s.get_termgrades(1)
     s._get_termgrades_list(1)
     s.print_score_tables()
