@@ -15,7 +15,7 @@
 <link href="http://js.51jobcdn.com/in/css/jobs/reset.css?20170619" rel="stylesheet" type="text/css" />
 <link href="http://js.51jobcdn.com/in/css/jobs/tForm.css?20161130?20170619" rel="stylesheet" type="text/css" />
 <link href="http://js.51jobcdn.com/in/css/jobs/tSearch-layout.css?20170619" rel="stylesheet" type="text/css" />
-<link href="http://js.51jobcdn.com/in/css/jobs/dw_joblist.css?20161209?20170619" rel="stylesheet" type="text/css" />
+<link href="http://js.51jobcdn.com/in/css/jobs/dw_joblist.css?20170630?20170619" rel="stylesheet" type="text/css" />
 <link href="http://js.51jobcdn.com/in/css/jobs/tpad.css?20170619" rel="stylesheet" type="text/css" />
 <link href="http://js.51jobcdn.com/in/css/2017/public/base.css?20170117?20170619" rel="stylesheet" type="text/css" />
 <link href="http://js.51jobcdn.com/in/css/2017/public/panel-pop.css?20170619" rel="stylesheet" type="text/css" />
@@ -25,7 +25,7 @@
     var lang = [];
     var supporthttps = 1; //浏览器是否支持https
     var currenthttps = (window.location.protocol === 'https:') ? '1' : '0'; //当前是否为https
-    var systemtime = 1499070101409;
+    var systemtime = 1499916741364;
     var d_system_client_time = systemtime - new Date().getTime();
     var trackConfig = {
         'guid': '',
@@ -48,8 +48,8 @@ window.cfg.lang = 'c';
 window.cfg.fullLang = 'Chinese';
 window.cfg.url = {
 root : 'http://search.51job.com/jobsearch',
-image : 'http://img03.51jobcdn.com/im/2009',
-image_search : 'http://img01.51jobcdn.com/im/2009/search',
+image : 'http://img02.51jobcdn.com/im/2009',
+image_search : 'http://img02.51jobcdn.com/im/2009/search',
 i : 'http://i.51job.com'
 }
 window.cfg.fileName = 'search_result.php';
@@ -99,7 +99,7 @@ window.cfg.isJobview = '1';
 <script language="javascript" src="http://js.51jobcdn.com/in/js/2009/search/Base.Search_Transition.js?20170504?20170619"></script>
 <script language="javascript" src="http://js.51jobcdn.com/in/js/2016/search/search_data_c.js?20170504?20170619"></script>
 <script language="javascript" src="http://js.51jobcdn.com/in/js/2009/search/search_box.js?20161121?20170619"></script>
-<script language="javascript" src="http://js.51jobcdn.com/in/js/2009/search/search_result.js?20170504?20170619"></script>
+<script language="javascript" src="http://js.51jobcdn.com/in/js/2009/search/search_result.js?20170706?20170619"></script>
 <script language="javascript" src="http://js.51jobcdn.com/in/js/2009/component/mobile.js?20170619"></script>
 <script language="javascript" src="http://js.51jobcdn.com/in/js/2016/delivery/delivery.js?20170504?20170619"></script>
 <script language="javascript" src="http://js.51jobcdn.com/in/js/2016/search/search.js?20170504?20170619"></script>
@@ -117,6 +117,7 @@ window.cfg.isJobview = '1';
 <script language="javascript" src="http://js.51jobcdn.com/in/js/2016/layer/layer_c.js?20170619"></script>
 <script language="javascript" src="http://js.51jobcdn.com/in/js/2016/layer/indtype_array_c.js?20170619"></script>
 <script language="javascript" src="http://js.51jobcdn.com/in/js/2016/layer/funtype_array_c.js?20170619"></script>
+<script language="javascript" src="http://js.51jobcdn.com/in/js/2016/pointtrack.js?20170619"></script>
 </head>
 <body>
 <div class="header">
@@ -369,7 +370,7 @@ window.cfg.isJobview = '1';
     });
 </script>    <div class="nag">
         <div class="in">
-            <a href="http://www.51job.com"><img class="logo" width="90" height="40" src="http://img06.51jobcdn.com/im/2016/logo/logo_90x40.png" alt="前程无忧"></a>
+            <a href="http://www.51job.com"><img class="logo" width="90" height="40" src="http://images.51job.com/im/2016/logo/logo_90x40.png" alt="前程无忧"></a>
                 <img class="slogen" width="162" height="17" src="http://img05.51jobcdn.com/im/2016/header/slogen.png">
             
 <p class="nlink">
@@ -432,8 +433,8 @@ window.cfg.isJobview = '1';
         </div>
         <!--搜索条件 END-->
     </form>
-
-    <!--过滤条件-->
+    <!--根据关键字和城市展示的广告-->
+        <!--过滤条件-->
                     
     <div class="dw_filter">
         
@@ -872,7 +873,7 @@ window.cfg.isJobview = '1';
                 全选
             </div>
             <div class="op">
-                <span onclick="delivery('delivery_jobid', '2', 'http://my.51job.com', 'c', 'http://search.51job.com', '01', '01', 'http://img03.51jobcdn.com');" class="but_sq uck"><i class="dicon Dm"></i>申请职位</span><span onclick="saveCollection('');" class="but_sc uck"><i class="dicon Dm"></i>收藏职位</span>
+                <span onclick="delivery('delivery_jobid', '2', 'http://my.51job.com', 'c', 'http://search.51job.com', '01', '01', 'http://img01.51jobcdn.com');" class="but_sq uck"><i class="dicon Dm"></i>申请职位</span><span onclick="saveCollection('');" class="but_sc uck"><i class="dicon Dm"></i>收藏职位</span>
             </div>
 
                             
@@ -909,702 +910,702 @@ window.cfg.isJobview = '1';
                                                                                                                 <div class="el">
                         <p class="t1 ">
                             <em class="check" name="delivery_em" onclick="checkboxClick(this)"></em>
-                            <input class="checkbox" type="checkbox" name="delivery_jobid" value="90146159" jt="0" style="display:none" />
+                            <input class="checkbox" type="checkbox" name="delivery_jobid" value="91627539" jt="0" style="display:none" />
                             <span>
-                                <a target="_blank" title="电话销售 / 市场助理" href="http://jobs.51job.com/shanghai/90146159.html?s=01&t=0" onmousedown="">
-                                    电话销售 / 市场助理                                </a>
+                                <a target="_blank" title="销售代表" href="http://jobs.51job.com/shanghai-xhq/91627539.html?s=01&t=0" onmousedown="">
+                                    销售代表                                </a>
                                                             </span>
                         </p>
-                        <span class="t2"><a target="_blank" title="上海央邦计算机科技有限公司" href="http://jobs.51job.com/all/co804905.html">上海央邦计算机科技有限公司</a></span>
-                        <span class="t3">上海</span>
-                        <span class="t4">1-1.5万/月</span>
-                        <span class="t5">07-03</span>
+                        <span class="t2"><a target="_blank" title="上海丸菱贸易有限公司" href="http://jobs.51job.com/all/co3047933.html">上海丸菱贸易有限公司</a></span>
+                        <span class="t3">上海-徐汇区</span>
+                        <span class="t4">4.5-6千/月</span>
+                        <span class="t5">07-13</span>
                     </div>
                                                                                                     <div class="el">
                         <p class="t1 ">
                             <em class="check" name="delivery_em" onclick="checkboxClick(this)"></em>
-                            <input class="checkbox" type="checkbox" name="delivery_jobid" value="90621211" jt="0" style="display:none" />
+                            <input class="checkbox" type="checkbox" name="delivery_jobid" value="91101596" jt="0" style="display:none" />
                             <span>
-                                <a target="_blank" title="销售实习生（试用期4500+包住+带薪培训）" href="http://jobs.51job.com/shanghai-xhq/90621211.html?s=01&t=0" onmousedown="">
-                                    销售实习生（试用期4500+包住+带薪培训）                                </a>
+                                <a target="_blank" title="工程助理" href="http://jobs.51job.com/shanghai/91101596.html?s=01&t=0" onmousedown="">
+                                    工程助理                                </a>
+                                                            </span>
+                        </p>
+                        <span class="t2"><a target="_blank" title="上海志道实业有限公司" href="http://jobs.51job.com/all/co3107247.html">上海志道实业有限公司</a></span>
+                        <span class="t3">上海</span>
+                        <span class="t4">5-7千/月</span>
+                        <span class="t5">07-13</span>
+                    </div>
+                                                                                                    <div class="el">
+                        <p class="t1 ">
+                            <em class="check" name="delivery_em" onclick="checkboxClick(this)"></em>
+                            <input class="checkbox" type="checkbox" name="delivery_jobid" value="91628791" jt="0" style="display:none" />
+                            <span>
+                                <a target="_blank" title="400客服人员" href="http://jobs.51job.com/shanghai/91628791.html?s=01&t=0" onmousedown="">
+                                    400客服人员                                </a>
+                                                            </span>
+                        </p>
+                        <span class="t2"><a target="_blank" title="行悦信息科技股份有限公司" href="http://jobs.51job.com/all/co1323822.html">行悦信息科技股份有限公司</a></span>
+                        <span class="t3">上海</span>
+                        <span class="t4">4.5-6千/月</span>
+                        <span class="t5">07-13</span>
+                    </div>
+                                                                                                    <div class="el">
+                        <p class="t1 ">
+                            <em class="check" name="delivery_em" onclick="checkboxClick(this)"></em>
+                            <input class="checkbox" type="checkbox" name="delivery_jobid" value="91628793" jt="0" style="display:none" />
+                            <span>
+                                <a target="_blank" title="市场经理" href="http://jobs.51job.com/shanghai-mhq/91628793.html?s=01&t=0" onmousedown="">
+                                    市场经理                                </a>
+                                                            </span>
+                        </p>
+                        <span class="t2"><a target="_blank" title="常州华清科盛信息系统集成有限公司" href="http://jobs.51job.com/all/co3698417.html">常州华清科盛信息系统集成有限公司</a></span>
+                        <span class="t3">上海-闵行区</span>
+                        <span class="t4">1-1.5万/月</span>
+                        <span class="t5">07-13</span>
+                    </div>
+                                                                                                    <div class="el">
+                        <p class="t1 ">
+                            <em class="check" name="delivery_em" onclick="checkboxClick(this)"></em>
+                            <input class="checkbox" type="checkbox" name="delivery_jobid" value="90420844" jt="0" style="display:none" />
+                            <span>
+                                <a target="_blank" title="资深原画师" href="http://jobs.51job.com/shanghai-pdxq/90420844.html?s=01&t=0" onmousedown="">
+                                    资深原画师                                </a>
+                                                            </span>
+                        </p>
+                        <span class="t2"><a target="_blank" title="上海雷度网络科技有限公司" href="http://jobs.51job.com/all/co3531813.html">上海雷度网络科技有限公司</a></span>
+                        <span class="t3">上海-浦东新区</span>
+                        <span class="t4">1-1.5万/月</span>
+                        <span class="t5">07-13</span>
+                    </div>
+                                                                                                    <div class="el">
+                        <p class="t1 ">
+                            <em class="check" name="delivery_em" onclick="checkboxClick(this)"></em>
+                            <input class="checkbox" type="checkbox" name="delivery_jobid" value="91628816" jt="0" style="display:none" />
+                            <span>
+                                <a target="_blank" title="餐饮店长" href="http://jobs.51job.com/shanghai-bsq/91628816.html?s=01&t=0" onmousedown="">
+                                    餐饮店长                                </a>
+                                                            </span>
+                        </p>
+                        <span class="t2"><a target="_blank" title="上海凯瑟薇庭实业有限公司" href="http://jobs.51job.com/all/co4502433.html">上海凯瑟薇庭实业有限公司</a></span>
+                        <span class="t3">上海-宝山区</span>
+                        <span class="t4">5-6千/月</span>
+                        <span class="t5">07-13</span>
+                    </div>
+                                                                                                    <div class="el">
+                        <p class="t1 ">
+                            <em class="check" name="delivery_em" onclick="checkboxClick(this)"></em>
+                            <input class="checkbox" type="checkbox" name="delivery_jobid" value="77927864" jt="0" style="display:none" />
+                            <span>
+                                <a target="_blank" title="实习生" href="http://jobs.51job.com/shanghai-jaq/77927864.html?s=01&t=0" onmousedown="">
+                                    实习生                                </a>
+                                                            </span>
+                        </p>
+                        <span class="t2"><a target="_blank" title="上海台骅货运代理有限公司" href="http://jobs.51job.com/all/co831725.html">上海台骅货运代理有限公司</a></span>
+                        <span class="t3">上海-静安区</span>
+                        <span class="t4">2.2-2.3千/月</span>
+                        <span class="t5">07-13</span>
+                    </div>
+                                                                                                    <div class="el">
+                        <p class="t1 ">
+                            <em class="check" name="delivery_em" onclick="checkboxClick(this)"></em>
+                            <input class="checkbox" type="checkbox" name="delivery_jobid" value="91628798" jt="0" style="display:none" />
+                            <span>
+                                <a target="_blank" title="资深文案策划" href="http://jobs.51job.com/shanghai/91628798.html?s=01&t=0" onmousedown="">
+                                    资深文案策划                                </a>
+                                                            </span>
+                        </p>
+                        <span class="t2"><a target="_blank" title="上海鸿宇广告有限公司" href="http://jobs.51job.com/all/co2914015.html">上海鸿宇广告有限公司</a></span>
+                        <span class="t3">上海</span>
+                        <span class="t4">0.8-1.2万/月</span>
+                        <span class="t5">07-13</span>
+                    </div>
+                                                                                                    <div class="el">
+                        <p class="t1 ">
+                            <em class="check" name="delivery_em" onclick="checkboxClick(this)"></em>
+                            <input class="checkbox" type="checkbox" name="delivery_jobid" value="89801037" jt="0" style="display:none" />
+                            <span>
+                                <a target="_blank" title="4500底薪还包住诚聘销售有志之士" href="http://jobs.51job.com/shanghai-qpq/89801037.html?s=01&t=0" onmousedown="">
+                                    4500底薪还包住诚聘销售有志之士                                </a>
                                                             </span>
                         </p>
                         <span class="t2"><a target="_blank" title="上海太平洋房屋（总部）" href="http://jobs.51job.com/all/co3796716.html">上海太平洋房屋（总部）</a></span>
-                        <span class="t3">上海-徐汇区</span>
-                        <span class="t4">6-8千/月</span>
-                        <span class="t5">07-03</span>
+                        <span class="t3">上海-青浦区</span>
+                        <span class="t4">0.8-1万/月</span>
+                        <span class="t5">07-13</span>
                     </div>
                                                                                                     <div class="el">
                         <p class="t1 ">
                             <em class="check" name="delivery_em" onclick="checkboxClick(this)"></em>
-                            <input class="checkbox" type="checkbox" name="delivery_jobid" value="91240621" jt="0" style="display:none" />
+                            <input class="checkbox" type="checkbox" name="delivery_jobid" value="91627499" jt="0" style="display:none" />
                             <span>
-                                <a target="_blank" title="行政助理/前台（翰敏院古美路校区）" href="http://jobs.51job.com/shanghai-mhq/91240621.html?s=01&t=0" onmousedown="">
-                                    行政助理/前台（翰敏院古美路校区）                                </a>
+                                <a target="_blank" title="商务专员/销售专员" href="http://jobs.51job.com/shanghai-sjq/91627499.html?s=01&t=0" onmousedown="">
+                                    商务专员/销售专员                                </a>
                                                             </span>
                         </p>
-                        <span class="t2"><a target="_blank" title="精锐教育" href="http://jobs.51job.com/all/co2108291.html">精锐教育</a></span>
-                        <span class="t3">上海-闵行区</span>
+                        <span class="t2"><a target="_blank" title="上海艾夫一眼镜股份有限公司" href="http://jobs.51job.com/all/co2311455.html">上海艾夫一眼镜股份有限公司</a></span>
+                        <span class="t3">上海-松江区</span>
+                        <span class="t4">5-8千/月</span>
+                        <span class="t5">07-13</span>
+                    </div>
+                                                                                                    <div class="el">
+                        <p class="t1 ">
+                            <em class="check" name="delivery_em" onclick="checkboxClick(this)"></em>
+                            <input class="checkbox" type="checkbox" name="delivery_jobid" value="91628810" jt="0" style="display:none" />
+                            <span>
+                                <a target="_blank" title="高级风控经理" href="http://jobs.51job.com/shanghai-pdxq/91628810.html?s=01&t=0" onmousedown="">
+                                    高级风控经理                                </a>
+                                                            </span>
+                        </p>
+                        <span class="t2"><a target="_blank" title="好买财富管理股份有限公司" href="http://jobs.51job.com/all/co2001938.html">好买财富管理股份有限公司</a></span>
+                        <span class="t3">上海-浦东新区</span>
+                        <span class="t4">2-3万/月</span>
+                        <span class="t5">07-13</span>
+                    </div>
+                                                                                                    <div class="el">
+                        <p class="t1 ">
+                            <em class="check" name="delivery_em" onclick="checkboxClick(this)"></em>
+                            <input class="checkbox" type="checkbox" name="delivery_jobid" value="67442085" jt="0" style="display:none" />
+                            <span>
+                                <a target="_blank" title="服装QC（外贸）" href="http://jobs.51job.com/shanghai-ptq/67442085.html?s=01&t=0" onmousedown="">
+                                    服装QC（外贸）                                </a>
+                                                            </span>
+                        </p>
+                        <span class="t2"><a target="_blank" title="上海善嫒司服饰有限公司" href="http://jobs.51job.com/all/co612809.html">上海善嫒司服饰有限公司</a></span>
+                        <span class="t3">上海-普陀区</span>
                         <span class="t4">3-4.5千/月</span>
-                        <span class="t5">07-03</span>
+                        <span class="t5">07-13</span>
                     </div>
                                                                                                     <div class="el">
                         <p class="t1 ">
                             <em class="check" name="delivery_em" onclick="checkboxClick(this)"></em>
-                            <input class="checkbox" type="checkbox" name="delivery_jobid" value="91240231" jt="0" style="display:none" />
+                            <input class="checkbox" type="checkbox" name="delivery_jobid" value="91309416" jt="0" style="display:none" />
                             <span>
-                                <a target="_blank" title="新媒体运营助理/文案编辑/策划" href="http://jobs.51job.com/shanghai-xhq/91240231.html?s=01&t=0" onmousedown="">
-                                    新媒体运营助理/文案编辑/策划                                </a>
-                                                            </span>
-                        </p>
-                        <span class="t2"><a target="_blank" title="上海施益支付技术有限公司" href="http://jobs.51job.com/all/co4397507.html">上海施益支付技术有限公司</a></span>
-                        <span class="t3">上海-徐汇区</span>
-                        <span class="t4">6-8千/月</span>
-                        <span class="t5">07-03</span>
-                    </div>
-                                                                                                    <div class="el">
-                        <p class="t1 ">
-                            <em class="check" name="delivery_em" onclick="checkboxClick(this)"></em>
-                            <input class="checkbox" type="checkbox" name="delivery_jobid" value="91144214" jt="0" style="display:none" />
-                            <span>
-                                <a target="_blank" title="行政助理/分行秘书（就近分配+五险一金)" href="http://jobs.51job.com/shanghai-xhq/91144214.html?s=01&t=0" onmousedown="">
-                                    行政助理/分行秘书（就近分配+五险一金)                                </a>
+                                <a target="_blank" title="房屋销售（无责底薪4000-4500+包住+前期月均8000）" href="http://jobs.51job.com/shanghai-xhq/91309416.html?s=01&t=0" onmousedown="">
+                                    房屋销售（无责底薪4000-4500+包住+前期月均8000）                                </a>
                                                             </span>
                         </p>
                         <span class="t2"><a target="_blank" title="太平洋房屋（中国总部）" href="http://jobs.51job.com/all/co126107.html">太平洋房屋（中国总部）</a></span>
                         <span class="t3">上海-徐汇区</span>
-                        <span class="t4">3-4.5千/月</span>
-                        <span class="t5">07-03</span>
+                        <span class="t4">0.8-1万/月</span>
+                        <span class="t5">07-13</span>
                     </div>
                                                                                                     <div class="el">
                         <p class="t1 ">
                             <em class="check" name="delivery_em" onclick="checkboxClick(this)"></em>
-                            <input class="checkbox" type="checkbox" name="delivery_jobid" value="89539722" jt="0" style="display:none" />
+                            <input class="checkbox" type="checkbox" name="delivery_jobid" value="91628804" jt="0" style="display:none" />
                             <span>
-                                <a target="_blank" title="市场营销运营专员/电商专员" href="http://jobs.51job.com/shanghai/89539722.html?s=01&t=0" onmousedown="">
-                                    市场营销运营专员/电商专员                                </a>
+                                <a target="_blank" title="工程助理" href="http://jobs.51job.com/shanghai-jaq/91628804.html?s=01&t=0" onmousedown="">
+                                    工程助理                                </a>
                                                             </span>
                         </p>
-                        <span class="t2"><a target="_blank" title="上海惠希国际贸易有限公司" href="http://jobs.51job.com/all/co2592771.html">上海惠希国际贸易有限公司</a></span>
-                        <span class="t3">上海</span>
-                        <span class="t4">4.5-6千/月</span>
-                        <span class="t5">07-03</span>
-                    </div>
-                                                                                                    <div class="el">
-                        <p class="t1 ">
-                            <em class="check" name="delivery_em" onclick="checkboxClick(this)"></em>
-                            <input class="checkbox" type="checkbox" name="delivery_jobid" value="91240330" jt="0" style="display:none" />
-                            <span>
-                                <a target="_blank" title="分布式数据库开发工程师" href="http://jobs.51job.com/shanghai-cnq/91240330.html?s=01&t=0" onmousedown="">
-                                    分布式数据库开发工程师                                </a>
-                                                            </span>
-                        </p>
-                        <span class="t2"><a target="_blank" title="上海优浪信息科技有限公司" href="http://jobs.51job.com/all/co3654514.html">上海优浪信息科技有限公司</a></span>
-                        <span class="t3">上海-长宁区</span>
-                        <span class="t4">1.5-3万/月</span>
-                        <span class="t5">07-03</span>
-                    </div>
-                                                                                                    <div class="el">
-                        <p class="t1 ">
-                            <em class="check" name="delivery_em" onclick="checkboxClick(this)"></em>
-                            <input class="checkbox" type="checkbox" name="delivery_jobid" value="91240337" jt="0" style="display:none" />
-                            <span>
-                                <a target="_blank" title="产品总监" href="http://jobs.51job.com/shanghai-hpq/91240337.html?s=01&t=0" onmousedown="">
-                                    产品总监                                </a>
-                                                            </span>
-                        </p>
-                        <span class="t2"><a target="_blank" title="储信资产管理（上海）有限公司" href="http://jobs.51job.com/all/co2989337.html">储信资产管理（上海）有限公司</a></span>
-                        <span class="t3">上海-黄浦区</span>
-                        <span class="t4">2.5-3万/月</span>
-                        <span class="t5">07-03</span>
-                    </div>
-                                                                                                    <div class="el">
-                        <p class="t1 ">
-                            <em class="check" name="delivery_em" onclick="checkboxClick(this)"></em>
-                            <input class="checkbox" type="checkbox" name="delivery_jobid" value="90893876" jt="0" style="display:none" />
-                            <span>
-                                <a target="_blank" title="销售/业务员" href="http://jobs.51job.com/shanghai-cnq/90893876.html?s=01&t=0" onmousedown="">
-                                    销售/业务员                                </a>
-                                                            </span>
-                        </p>
-                        <span class="t2"><a target="_blank" title="上海商翼商务咨询有限公司" href="http://jobs.51job.com/all/co268671.html">上海商翼商务咨询有限公司</a></span>
-                        <span class="t3">上海-长宁区</span>
-                        <span class="t4">15-20万/年</span>
-                        <span class="t5">07-03</span>
-                    </div>
-                                                                                                    <div class="el">
-                        <p class="t1 ">
-                            <em class="check" name="delivery_em" onclick="checkboxClick(this)"></em>
-                            <input class="checkbox" type="checkbox" name="delivery_jobid" value="91231121" jt="0" style="display:none" />
-                            <span>
-                                <a target="_blank" title="会计" href="http://jobs.51job.com/jining/91231121.html?s=01&t=0" onmousedown="">
-                                    会计                                </a>
-                                                            </span>
-                        </p>
-                        <span class="t2"><a target="_blank" title="上海岳凤服饰贸易有限公司" href="http://jobs.51job.com/all/co2296958.html">上海岳凤服饰贸易有限公司</a></span>
-                        <span class="t3">异地招聘</span>
-                        <span class="t4">3-4.5千/月</span>
-                        <span class="t5">07-03</span>
-                    </div>
-                                                                                                    <div class="el">
-                        <p class="t1 ">
-                            <em class="check" name="delivery_em" onclick="checkboxClick(this)"></em>
-                            <input class="checkbox" type="checkbox" name="delivery_jobid" value="70107498" jt="0" style="display:none" />
-                            <span>
-                                <a target="_blank" title="出纳员" href="http://jobs.51job.com/shanghai-hpq/70107498.html?s=01&t=0" onmousedown="">
-                                    出纳员                                </a>
-                                                            </span>
-                        </p>
-                        <span class="t2"><a target="_blank" title="上海经纬集团图腾企业咨询有限公司" href="http://jobs.51job.com/all/co3432847.html">上海经纬集团图腾企业咨询有限公司</a></span>
-                        <span class="t3">上海-黄浦区</span>
-                        <span class="t4">3-4千/月</span>
-                        <span class="t5">07-03</span>
-                    </div>
-                                                                                                    <div class="el">
-                        <p class="t1 ">
-                            <em class="check" name="delivery_em" onclick="checkboxClick(this)"></em>
-                            <input class="checkbox" type="checkbox" name="delivery_jobid" value="91240134" jt="0" style="display:none" />
-                            <span>
-                                <a target="_blank" title="Coordinator - Project Cargo (项目物流专员)" href="http://jobs.51job.com/shanghai-cnq/91240134.html?s=01&t=0" onmousedown="">
-                                    Coordinator - Project Cargo (项目物流专员)                                </a>
-                                                            </span>
-                        </p>
-                        <span class="t2"><a target="_blank" title="北京康捷空国际货运代理有限公司上海分公司" href="http://jobs.51job.com/all/co142284.html">北京康捷空国际货运代理有限公司上...</a></span>
-                        <span class="t3">上海-长宁区</span>
+                        <span class="t2"><a target="_blank" title="深圳金瀚设计股份有限公司" href="http://jobs.51job.com/all/co4514034.html">深圳金瀚设计股份有限公司</a></span>
+                        <span class="t3">上海-静安区</span>
                         <span class="t4">6-8千/月</span>
-                        <span class="t5">07-03</span>
+                        <span class="t5">07-13</span>
                     </div>
                                                                                                     <div class="el">
                         <p class="t1 ">
                             <em class="check" name="delivery_em" onclick="checkboxClick(this)"></em>
-                            <input class="checkbox" type="checkbox" name="delivery_jobid" value="91240706" jt="0" style="display:none" />
+                            <input class="checkbox" type="checkbox" name="delivery_jobid" value="91627472" jt="0" style="display:none" />
                             <span>
-                                <a target="_blank" title="1号店运营助理/实习生" href="http://jobs.51job.com/shanghai/91240706.html?s=01&t=0" onmousedown="">
-                                    1号店运营助理/实习生                                </a>
+                                <a target="_blank" title="土地资源管理" href="http://jobs.51job.com/shanghai-pdxq/91627472.html?s=01&t=0" onmousedown="">
+                                    土地资源管理                                </a>
                                                             </span>
                         </p>
-                        <span class="t2"><a target="_blank" title="上海挚品互联网科技有限公司" href="http://jobs.51job.com/all/co4045744.html">上海挚品互联网科技有限公司</a></span>
-                        <span class="t3">上海</span>
-                        <span class="t4">5-6千/月</span>
-                        <span class="t5">07-03</span>
-                    </div>
-                                                                                                    <div class="el">
-                        <p class="t1 ">
-                            <em class="check" name="delivery_em" onclick="checkboxClick(this)"></em>
-                            <input class="checkbox" type="checkbox" name="delivery_jobid" value="91113968" jt="0" style="display:none" />
-                            <span>
-                                <a target="_blank" title="管理培训生 / Management Trainee" href="http://jobs.51job.com/shanghai-xhq/91113968.html?s=01&t=0" onmousedown="">
-                                    管理培训生 / Management Trainee                                </a>
-                                                            </span>
-                        </p>
-                        <span class="t2"><a target="_blank" title="上海贝塔斯曼商业服务有限公司" href="http://jobs.51job.com/all/co2034042.html">上海贝塔斯曼商业服务有限公司</a></span>
-                        <span class="t3">上海-徐汇区</span>
-                        <span class="t4">5-7千/月</span>
-                        <span class="t5">07-03</span>
-                    </div>
-                                                                                                    <div class="el">
-                        <p class="t1 ">
-                            <em class="check" name="delivery_em" onclick="checkboxClick(this)"></em>
-                            <input class="checkbox" type="checkbox" name="delivery_jobid" value="91239258" jt="0" style="display:none" />
-                            <span>
-                                <a target="_blank" title="电梯机械辅助设计（应届毕业生）" href="http://jobs.51job.com/shanghai-sjq/91239258.html?s=01&t=0" onmousedown="">
-                                    电梯机械辅助设计（应届毕业生）                                </a>
-                                                            </span>
-                        </p>
-                        <span class="t2"><a target="_blank" title="宁波申菱集团上海江菱机电有限公司" href="http://jobs.51job.com/all/co2673863.html">宁波申菱集团上海江菱机电有限公司</a></span>
-                        <span class="t3">上海-松江区</span>
-                        <span class="t4">4-5千/月</span>
-                        <span class="t5">07-03</span>
-                    </div>
-                                                                                                    <div class="el">
-                        <p class="t1 ">
-                            <em class="check" name="delivery_em" onclick="checkboxClick(this)"></em>
-                            <input class="checkbox" type="checkbox" name="delivery_jobid" value="66800481" jt="0" style="display:none" />
-                            <span>
-                                <a target="_blank" title="淘宝美工" href="http://jobs.51job.com/shanghai-hpq/66800481.html?s=01&t=0" onmousedown="">
-                                    淘宝美工                                </a>
-                                                            </span>
-                        </p>
-                        <span class="t2"><a target="_blank" title="上海金乾盛五金机电有限公司" href="http://jobs.51job.com/all/co3035619.html">上海金乾盛五金机电有限公司</a></span>
-                        <span class="t3">上海-黄浦区</span>
-                        <span class="t4">4-6千/月</span>
-                        <span class="t5">07-03</span>
-                    </div>
-                                                                                                    <div class="el">
-                        <p class="t1 ">
-                            <em class="check" name="delivery_em" onclick="checkboxClick(this)"></em>
-                            <input class="checkbox" type="checkbox" name="delivery_jobid" value="91240016" jt="0" style="display:none" />
-                            <span>
-                                <a target="_blank" title="人事专员" href="http://jobs.51job.com/shanghai-pdxq/91240016.html?s=01&t=0" onmousedown="">
-                                    人事专员                                </a>
-                                                            </span>
-                        </p>
-                        <span class="t2"><a target="_blank" title="上海店宝宝电子商务有限公司" href="http://jobs.51job.com/all/co2509660.html">上海店宝宝电子商务有限公司</a></span>
+                        <span class="t2"><a target="_blank" title="陆家嘴地产（全名：上海陆家嘴金融贸易区开发股份有限公司）" href="http://jobs.51job.com/all/co1158040.html">陆家嘴地产（全名：上海陆家嘴金融...</a></span>
                         <span class="t3">上海-浦东新区</span>
-                        <span class="t4">6-8千/月</span>
-                        <span class="t5">07-03</span>
+                        <span class="t4">1-2万/月</span>
+                        <span class="t5">07-13</span>
                     </div>
                                                                                                     <div class="el">
                         <p class="t1 ">
                             <em class="check" name="delivery_em" onclick="checkboxClick(this)"></em>
-                            <input class="checkbox" type="checkbox" name="delivery_jobid" value="90347683" jt="0" style="display:none" />
+                            <input class="checkbox" type="checkbox" name="delivery_jobid" value="91628744" jt="0" style="display:none" />
                             <span>
-                                <a target="_blank" title="出纳" href="http://jobs.51job.com/shanghai/90347683.html?s=01&t=0" onmousedown="">
-                                    出纳                                </a>
+                                <a target="_blank" title="豪宅销售，主营千万级豪宅，月薪轻松20K" href="http://jobs.51job.com/shanghai/91628744.html?s=01&t=0" onmousedown="">
+                                    豪宅销售，主营千万级豪宅，月薪轻松20K                                </a>
                                                             </span>
                         </p>
-                        <span class="t2"><a target="_blank" title="上海瑞冠服饰有限公司" href="http://jobs.51job.com/all/co2010983.html">上海瑞冠服饰有限公司</a></span>
+                        <span class="t2"><a target="_blank" title="中原地产（上海总部）" href="http://jobs.51job.com/all/co2651799.html">中原地产（上海总部）</a></span>
                         <span class="t3">上海</span>
-                        <span class="t4">4.5-5.5千/月</span>
-                        <span class="t5">07-03</span>
+                        <span class="t4">1-1.5万/月</span>
+                        <span class="t5">07-13</span>
                     </div>
                                                                                                     <div class="el">
                         <p class="t1 ">
                             <em class="check" name="delivery_em" onclick="checkboxClick(this)"></em>
-                            <input class="checkbox" type="checkbox" name="delivery_jobid" value="91240329" jt="0" style="display:none" />
+                            <input class="checkbox" type="checkbox" name="delivery_jobid" value="91628745" jt="0" style="display:none" />
                             <span>
-                                <a target="_blank" title="急招零售便利店 店员（工资5000）普陀" href="http://jobs.51job.com/shanghai-ptq/91240329.html?s=01&t=0" onmousedown="">
-                                    急招零售便利店 店员（工资5000）普陀                                </a>
+                                <a target="_blank" title="证券投资顾问" href="http://jobs.51job.com/shanghai-jaq/91628745.html?s=01&t=0" onmousedown="">
+                                    证券投资顾问                                </a>
                                                             </span>
                         </p>
-                        <span class="t2"><a target="_blank" title="上海满大信息技术有限公司" href="http://jobs.51job.com/all/co4180553.html">上海满大信息技术有限公司</a></span>
-                        <span class="t3">上海-普陀区</span>
-                        <span class="t4">4.2-5千/月</span>
-                        <span class="t5">07-03</span>
-                    </div>
-                                                                                                    <div class="el">
-                        <p class="t1 ">
-                            <em class="check" name="delivery_em" onclick="checkboxClick(this)"></em>
-                            <input class="checkbox" type="checkbox" name="delivery_jobid" value="87686189" jt="0" style="display:none" />
-                            <span>
-                                <a target="_blank" title="业务员" href="http://jobs.51job.com/shanghai-jdq/87686189.html?s=01&t=0" onmousedown="">
-                                    业务员                                </a>
-                                                            </span>
-                        </p>
-                        <span class="t2"><a target="_blank" title="上海实创金属制品有限公司" href="http://jobs.51job.com/all/co3099120.html">上海实创金属制品有限公司</a></span>
-                        <span class="t3">上海-嘉定区</span>
-                        <span class="t4">6-8千/月</span>
-                        <span class="t5">07-03</span>
-                    </div>
-                                                                                                    <div class="el">
-                        <p class="t1 ">
-                            <em class="check" name="delivery_em" onclick="checkboxClick(this)"></em>
-                            <input class="checkbox" type="checkbox" name="delivery_jobid" value="91238057" jt="0" style="display:none" />
-                            <span>
-                                <a target="_blank" title="人力运营总监（珠海）" href="http://jobs.51job.com/zhuhai/91238057.html?s=01&t=0" onmousedown="">
-                                    人力运营总监（珠海）                                </a>
-                                                            </span>
-                        </p>
-                        <span class="t2"><a target="_blank" title="远光软件股份有限公司上海分公司" href="http://jobs.51job.com/all/co3300811.html">远光软件股份有限公司上海分公司</a></span>
-                        <span class="t3">异地招聘</span>
-                        <span class="t4">0.8-1.5万/月</span>
-                        <span class="t5">07-03</span>
-                    </div>
-                                                                                                    <div class="el">
-                        <p class="t1 ">
-                            <em class="check" name="delivery_em" onclick="checkboxClick(this)"></em>
-                            <input class="checkbox" type="checkbox" name="delivery_jobid" value="73625937" jt="0" style="display:none" />
-                            <span>
-                                <a target="_blank" title="销售工程师，区域销售" href="http://jobs.51job.com/shanghai/73625937.html?s=01&t=0" onmousedown="">
-                                    销售工程师，区域销售                                </a>
-                                                            </span>
-                        </p>
-                        <span class="t2"><a target="_blank" title="上海动纳动力科技有限公司" href="http://jobs.51job.com/all/co2624837.html">上海动纳动力科技有限公司</a></span>
-                        <span class="t3">上海</span>
-                        <span class="t4">4.5-6千/月</span>
-                        <span class="t5">07-03</span>
-                    </div>
-                                                                                                    <div class="el">
-                        <p class="t1 ">
-                            <em class="check" name="delivery_em" onclick="checkboxClick(this)"></em>
-                            <input class="checkbox" type="checkbox" name="delivery_jobid" value="91239027" jt="0" style="display:none" />
-                            <span>
-                                <a target="_blank" title="市场调研专员\助理" href="http://jobs.51job.com/shanghai/91239027.html?s=01&t=0" onmousedown="">
-                                    市场调研专员\助理                                </a>
-                                                            </span>
-                        </p>
-                        <span class="t2"><a target="_blank" title="崇盈(上海)信息技术有限公司" href="http://jobs.51job.com/all/co4045803.html">崇盈(上海)信息技术有限公司</a></span>
-                        <span class="t3">上海</span>
-                        <span class="t4">5-6千/月</span>
-                        <span class="t5">07-03</span>
-                    </div>
-                                                                                                    <div class="el">
-                        <p class="t1 ">
-                            <em class="check" name="delivery_em" onclick="checkboxClick(this)"></em>
-                            <input class="checkbox" type="checkbox" name="delivery_jobid" value="90365973" jt="0" style="display:none" />
-                            <span>
-                                <a target="_blank" title="淘宝运营店长" href="http://jobs.51job.com/shanghai/90365973.html?s=01&t=0" onmousedown="">
-                                    淘宝运营店长                                </a>
-                                                            </span>
-                        </p>
-                        <span class="t2"><a target="_blank" title="上海优享家居有限公司" href="http://jobs.51job.com/all/co3606719.html">上海优享家居有限公司</a></span>
-                        <span class="t3">上海</span>
+                        <span class="t2"><a target="_blank" title="湘财证券股份有限公司上海共和新路证券营业部" href="http://jobs.51job.com/all/co3995622.html">湘财证券股份有限公司上海共和新路...</a></span>
+                        <span class="t3">上海-静安区</span>
                         <span class="t4">8-10万/年</span>
-                        <span class="t5">07-03</span>
+                        <span class="t5">07-13</span>
                     </div>
                                                                                                     <div class="el">
                         <p class="t1 ">
                             <em class="check" name="delivery_em" onclick="checkboxClick(this)"></em>
-                            <input class="checkbox" type="checkbox" name="delivery_jobid" value="54628892" jt="0" style="display:none" />
+                            <input class="checkbox" type="checkbox" name="delivery_jobid" value="91629232" jt="0" style="display:none" />
                             <span>
-                                <a target="_blank" title="QC（服装质检员）" href="http://jobs.51job.com/shanghai-ypq/54628892.html?s=01&t=0" onmousedown="">
-                                    QC（服装质检员）                                </a>
+                                <a target="_blank" title="Java资深开发工程师" href="http://jobs.51job.com/shanghai/91629232.html?s=01&t=0" onmousedown="">
+                                    Java资深开发工程师                                </a>
                                                             </span>
                         </p>
-                        <span class="t2"><a target="_blank" title="上海威妮达服饰贸易有限公司" href="http://jobs.51job.com/all/co2717029.html">上海威妮达服饰贸易有限公司</a></span>
-                        <span class="t3">上海-杨浦区</span>
-                        <span class="t4">4.5-6千/月</span>
-                        <span class="t5">07-03</span>
+                        <span class="t2"><a target="_blank" title="上海泛微网络科技股份有限公司" href="http://jobs.51job.com/all/co2733395.html">上海泛微网络科技股份有限公司</a></span>
+                        <span class="t3">上海</span>
+                        <span class="t4">1.5-2万/月</span>
+                        <span class="t5">07-13</span>
                     </div>
                                                                                                     <div class="el">
                         <p class="t1 ">
                             <em class="check" name="delivery_em" onclick="checkboxClick(this)"></em>
-                            <input class="checkbox" type="checkbox" name="delivery_jobid" value="91240705" jt="0" style="display:none" />
+                            <input class="checkbox" type="checkbox" name="delivery_jobid" value="91629168" jt="0" style="display:none" />
                             <span>
-                                <a target="_blank" title="美工" href="http://jobs.51job.com/shanghai-jdq/91240705.html?s=01&t=0" onmousedown="">
-                                    美工                                </a>
+                                <a target="_blank" title="新媒体运营专员" href="http://jobs.51job.com/shanghai-mhq/91629168.html?s=01&t=0" onmousedown="">
+                                    新媒体运营专员                                </a>
                                                             </span>
                         </p>
-                        <span class="t2"><a target="_blank" title="上海爱运体育咨询有限公司" href="http://jobs.51job.com/all/co3897954.html">上海爱运体育咨询有限公司</a></span>
-                        <span class="t3">上海-嘉定区</span>
-                        <span class="t4">4.5-6千/月</span>
-                        <span class="t5">07-03</span>
+                        <span class="t2"><a target="_blank" title="艺星生物科技有限公司" href="http://jobs.51job.com/all/co4530981.html">艺星生物科技有限公司</a></span>
+                        <span class="t3">上海-闵行区</span>
+                        <span class="t4">6-8千/月</span>
+                        <span class="t5">07-13</span>
                     </div>
                                                                                                     <div class="el">
                         <p class="t1 ">
                             <em class="check" name="delivery_em" onclick="checkboxClick(this)"></em>
-                            <input class="checkbox" type="checkbox" name="delivery_jobid" value="91240020" jt="0" style="display:none" />
+                            <input class="checkbox" type="checkbox" name="delivery_jobid" value="91628827" jt="0" style="display:none" />
                             <span>
-                                <a target="_blank" title="PPP投资总监" href="http://jobs.51job.com/shanghai-pdxq/91240020.html?s=01&t=0" onmousedown="">
-                                    PPP投资总监                                </a>
+                                <a target="_blank" title="软件销售顾问" href="http://jobs.51job.com/shanghai/91628827.html?s=01&t=0" onmousedown="">
+                                    软件销售顾问                                </a>
                                                             </span>
                         </p>
-                        <span class="t2"><a target="_blank" title="上海世方建筑工程有限公司" href="http://jobs.51job.com/all/co952753.html">上海世方建筑工程有限公司</a></span>
-                        <span class="t3">上海-浦东新区</span>
-                        <span class="t4">1.5-5万/月</span>
-                        <span class="t5">07-03</span>
+                        <span class="t2"><a target="_blank" title="上海致拓软件有限公司" href="http://jobs.51job.com/all/co731649.html">上海致拓软件有限公司</a></span>
+                        <span class="t3">上海</span>
+                        <span class="t4">6-8千/月</span>
+                        <span class="t5">07-13</span>
                     </div>
                                                                                                     <div class="el">
                         <p class="t1 ">
                             <em class="check" name="delivery_em" onclick="checkboxClick(this)"></em>
-                            <input class="checkbox" type="checkbox" name="delivery_jobid" value="89807843" jt="0" style="display:none" />
+                            <input class="checkbox" type="checkbox" name="delivery_jobid" value="91623150" jt="0" style="display:none" />
                             <span>
-                                <a target="_blank" title="营运专员" href="http://jobs.51job.com/shanghai/89807843.html?s=01&t=0" onmousedown="">
-                                    营运专员                                </a>
+                                <a target="_blank" title="财务经理" href="http://jobs.51job.com/shanghai/91623150.html?s=01&t=0" onmousedown="">
+                                    财务经理                                </a>
                                                             </span>
                         </p>
-                        <span class="t2"><a target="_blank" title="上海羿诚信息技术有限公司" href="http://jobs.51job.com/all/co3019919.html">上海羿诚信息技术有限公司</a></span>
+                        <span class="t2"><a target="_blank" title="上海景行建材有限公司" href="http://jobs.51job.com/all/co2826623.html">上海景行建材有限公司</a></span>
                         <span class="t3">上海</span>
                         <span class="t4">4.5-6千/月</span>
-                        <span class="t5">07-03</span>
+                        <span class="t5">07-13</span>
                     </div>
                                                                                                     <div class="el">
                         <p class="t1 ">
                             <em class="check" name="delivery_em" onclick="checkboxClick(this)"></em>
-                            <input class="checkbox" type="checkbox" name="delivery_jobid" value="64384635" jt="0" style="display:none" />
+                            <input class="checkbox" type="checkbox" name="delivery_jobid" value="55491344" jt="0" style="display:none" />
                             <span>
-                                <a target="_blank" title="销售" href="http://jobs.51job.com/shanghai-hpq/64384635.html?s=01&t=0" onmousedown="">
-                                    销售                                </a>
+                                <a target="_blank" title="电商资深专员（潮牌男装）" href="http://jobs.51job.com/shanghai/55491344.html?s=01&t=0" onmousedown="">
+                                    电商资深专员（潮牌男装）                                </a>
                                                             </span>
                         </p>
-                        <span class="t2"><a target="_blank" title="迈辉国际物流（上海）有限公司" href="http://jobs.51job.com/all/co2679167.html">迈辉国际物流（上海）有限公司</a></span>
-                        <span class="t3">上海-黄浦区</span>
-                        <span class="t4">0.8-1万/月</span>
-                        <span class="t5">07-03</span>
+                        <span class="t2"><a target="_blank" title="上海态趣服装有限公司" href="http://jobs.51job.com/all/co2295323.html">上海态趣服装有限公司</a></span>
+                        <span class="t3">上海</span>
+                        <span class="t4">6-8千/月</span>
+                        <span class="t5">07-13</span>
                     </div>
                                                                                                     <div class="el">
                         <p class="t1 ">
                             <em class="check" name="delivery_em" onclick="checkboxClick(this)"></em>
-                            <input class="checkbox" type="checkbox" name="delivery_jobid" value="88535386" jt="0" style="display:none" />
+                            <input class="checkbox" type="checkbox" name="delivery_jobid" value="90133051" jt="0" style="display:none" />
                             <span>
-                                <a target="_blank" title="兆瑞资本产品经理" href="http://jobs.51job.com/shanghai-hpq/88535386.html?s=01&t=0" onmousedown="">
-                                    兆瑞资本产品经理                                </a>
+                                <a target="_blank" title="财税顾问/财务销售（月均6.5K以上+五险+双休）" href="http://jobs.51job.com/shanghai-xhq/90133051.html?s=01&t=0" onmousedown="">
+                                    财税顾问/财务销售（月均6.5K以上+五险+双休）                                </a>
                                                             </span>
                         </p>
-                        <span class="t2"><a target="_blank" title="亨瑞国际咨询集团" href="http://jobs.51job.com/all/co744242.html">亨瑞国际咨询集团</a></span>
-                        <span class="t3">上海-黄浦区</span>
-                        <span class="t4">1.5-2万/月</span>
-                        <span class="t5">07-03</span>
-                    </div>
-                                                                                                    <div class="el">
-                        <p class="t1 ">
-                            <em class="check" name="delivery_em" onclick="checkboxClick(this)"></em>
-                            <input class="checkbox" type="checkbox" name="delivery_jobid" value="91239973" jt="0" style="display:none" />
-                            <span>
-                                <a target="_blank" title="流程专员" href="http://jobs.51job.com/shanghai-xhq/91239973.html?s=01&t=0" onmousedown="">
-                                    流程专员                                </a>
-                                                            </span>
-                        </p>
-                        <span class="t2"><a target="_blank" title="上海乾锦创意策划咨询管理有限公司" href="http://jobs.51job.com/all/co3835673.html">上海乾锦创意策划咨询管理有限公司</a></span>
+                        <span class="t2"><a target="_blank" title="合新信息科技有限公司" href="http://jobs.51job.com/all/co4468024.html">合新信息科技有限公司</a></span>
                         <span class="t3">上海-徐汇区</span>
                         <span class="t4">6-8千/月</span>
-                        <span class="t5">07-03</span>
+                        <span class="t5">07-13</span>
                     </div>
                                                                                                     <div class="el">
                         <p class="t1 ">
                             <em class="check" name="delivery_em" onclick="checkboxClick(this)"></em>
-                            <input class="checkbox" type="checkbox" name="delivery_jobid" value="90303989" jt="0" style="display:none" />
+                            <input class="checkbox" type="checkbox" name="delivery_jobid" value="90764937" jt="0" style="display:none" />
                             <span>
-                                <a target="_blank" title="天猫/淘宝平面视觉总监" href="http://jobs.51job.com/shanghai-mhq/90303989.html?s=01&t=0" onmousedown="">
-                                    天猫/淘宝平面视觉总监                                </a>
+                                <a target="_blank" title="前厅接待主管（体验馆旗舰店）" href="http://jobs.51job.com/shanghai-hkq/90764937.html?s=01&t=0" onmousedown="">
+                                    前厅接待主管（体验馆旗舰店）                                </a>
                                                             </span>
                         </p>
-                        <span class="t2"><a target="_blank" title="上海鹏军贸易有限公司" href="http://jobs.51job.com/all/co3177347.html">上海鹏军贸易有限公司</a></span>
-                        <span class="t3">上海-闵行区</span>
-                        <span class="t4">0.9-1.2万/月</span>
-                        <span class="t5">07-03</span>
+                        <span class="t2"><a target="_blank" title="上海幸福九号网络科技有限公司" href="http://jobs.51job.com/all/co3276412.html">上海幸福九号网络科技有限公司</a></span>
+                        <span class="t3">上海-虹口区</span>
+                        <span class="t4">4-8千/月</span>
+                        <span class="t5">07-13</span>
                     </div>
                                                                                                     <div class="el">
                         <p class="t1 ">
                             <em class="check" name="delivery_em" onclick="checkboxClick(this)"></em>
-                            <input class="checkbox" type="checkbox" name="delivery_jobid" value="85989811" jt="0" style="display:none" />
+                            <input class="checkbox" type="checkbox" name="delivery_jobid" value="91627452" jt="0" style="display:none" />
                             <span>
-                                <a target="_blank" title="销售代表" href="http://jobs.51job.com/shanghai-mhq/85989811.html?s=01&t=0" onmousedown="">
-                                    销售代表                                </a>
+                                <a target="_blank" title="公司直招（远洋，近海）船员电焊工普工厨师" href="http://jobs.51job.com/shanghai/91627452.html?s=01&t=0" onmousedown="">
+                                    公司直招（远洋，近海）船员电焊工普工厨师                                </a>
                                                             </span>
                         </p>
-                        <span class="t2"><a target="_blank" title="上海圣界电子科技有限公司" href="http://jobs.51job.com/all/co3660268.html">上海圣界电子科技有限公司</a></span>
-                        <span class="t3">上海-闵行区</span>
-                        <span class="t4">4.5-6千/月</span>
-                        <span class="t5">07-03</span>
+                        <span class="t2"><a target="_blank" title="大西洋船务工程有限公司" href="http://jobs.51job.com/all/co4517643.html">大西洋船务工程有限公司</a></span>
+                        <span class="t3">上海</span>
+                        <span class="t4">1-1.5万/月</span>
+                        <span class="t5">07-13</span>
                     </div>
                                                                                                     <div class="el">
                         <p class="t1 ">
                             <em class="check" name="delivery_em" onclick="checkboxClick(this)"></em>
-                            <input class="checkbox" type="checkbox" name="delivery_jobid" value="83180951" jt="0" style="display:none" />
+                            <input class="checkbox" type="checkbox" name="delivery_jobid" value="91629250" jt="0" style="display:none" />
                             <span>
-                                <a target="_blank" title="外贸跟单员" href="http://jobs.51job.com/shanghai-jdq/83180951.html?s=01&t=0" onmousedown="">
-                                    外贸跟单员                                </a>
+                                <a target="_blank" title="财务会计专员" href="http://jobs.51job.com/shanghai-ypq/91629250.html?s=01&t=0" onmousedown="">
+                                    财务会计专员                                </a>
                                                             </span>
                         </p>
-                        <span class="t2"><a target="_blank" title="上海美匡供应链管理有限公司" href="http://jobs.51job.com/all/co3978651.html">上海美匡供应链管理有限公司</a></span>
-                        <span class="t3">上海-嘉定区</span>
-                        <span class="t4">0.8-1万/月</span>
-                        <span class="t5">07-03</span>
-                    </div>
-                                                                                                    <div class="el">
-                        <p class="t1 ">
-                            <em class="check" name="delivery_em" onclick="checkboxClick(this)"></em>
-                            <input class="checkbox" type="checkbox" name="delivery_jobid" value="91239007" jt="0" style="display:none" />
-                            <span>
-                                <a target="_blank" title="Assistant C&B Manager" href="http://jobs.51job.com/shanghai-cnq/91239007.html?s=01&t=0" onmousedown="">
-                                    Assistant C&amp;B Manager                                </a>
-                                                            </span>
-                        </p>
-                        <span class="t2"><a target="_blank" title="博马努瓦服饰商贸（上海）有限公司" href="http://jobs.51job.com/all/co1505557.html">博马努瓦服饰商贸（上海）有限公司</a></span>
-                        <span class="t3">上海-长宁区</span>
-                        <span class="t4">1.5-2万/月</span>
-                        <span class="t5">07-03</span>
-                    </div>
-                                                                                                    <div class="el">
-                        <p class="t1 ">
-                            <em class="check" name="delivery_em" onclick="checkboxClick(this)"></em>
-                            <input class="checkbox" type="checkbox" name="delivery_jobid" value="91239005" jt="0" style="display:none" />
-                            <span>
-                                <a target="_blank" title="展览/展示/展厅--三维设计" href="http://jobs.51job.com/shanghai-jdq/91239005.html?s=01&t=0" onmousedown="">
-                                    展览/展示/展厅--三维设计                                </a>
-                                                            </span>
-                        </p>
-                        <span class="t2"><a target="_blank" title="上海芮德会展服务有限公司" href="http://jobs.51job.com/all/co2458863.html">上海芮德会展服务有限公司</a></span>
-                        <span class="t3">上海-嘉定区</span>
+                        <span class="t2"><a target="_blank" title="上海聚到网络科技有限公司" href="http://jobs.51job.com/all/co3924598.html">上海聚到网络科技有限公司</a></span>
+                        <span class="t3">上海-杨浦区</span>
                         <span class="t4">6-8千/月</span>
-                        <span class="t5">07-03</span>
+                        <span class="t5">07-13</span>
                     </div>
                                                                                                     <div class="el">
                         <p class="t1 ">
                             <em class="check" name="delivery_em" onclick="checkboxClick(this)"></em>
-                            <input class="checkbox" type="checkbox" name="delivery_jobid" value="79787284" jt="0" style="display:none" />
+                            <input class="checkbox" type="checkbox" name="delivery_jobid" value="91627454" jt="0" style="display:none" />
                             <span>
-                                <a target="_blank" title="销售代表" href="http://jobs.51job.com/shanghai-pdxq/79787284.html?s=01&t=0" onmousedown="">
-                                    销售代表                                </a>
+                                <a target="_blank" title="服务运作代表" href="http://jobs.51job.com/shanghai-pdxq/91627454.html?s=01&t=0" onmousedown="">
+                                    服务运作代表                                </a>
                                                             </span>
                         </p>
-                        <span class="t2"><a target="_blank" title="上海有色网信息科技股份有限公司" href="http://jobs.51job.com/all/co2469197.html">上海有色网信息科技股份有限公司</a></span>
+                        <span class="t2"><a target="_blank" title="虹霓贸易（上海）有限公司" href="http://jobs.51job.com/all/co2426067.html">虹霓贸易（上海）有限公司</a></span>
                         <span class="t3">上海-浦东新区</span>
-                        <span class="t4">0.5-1.5万/月</span>
-                        <span class="t5">07-03</span>
+                        <span class="t4">6-8千/月</span>
+                        <span class="t5">07-13</span>
                     </div>
                                                                                                     <div class="el">
                         <p class="t1 ">
                             <em class="check" name="delivery_em" onclick="checkboxClick(this)"></em>
-                            <input class="checkbox" type="checkbox" name="delivery_jobid" value="91240353" jt="0" style="display:none" />
+                            <input class="checkbox" type="checkbox" name="delivery_jobid" value="62839018" jt="0" style="display:none" />
                             <span>
-                                <a target="_blank" title="6K 游戏测试/软件测试专员(可收应届生+稳定福利好）" href="http://jobs.51job.com/shanghai-bsq/91240353.html?s=01&t=0" onmousedown="">
-                                    6K 游戏测试/软件测试专员(可收应届生+稳定福利好）                                </a>
+                                <a target="_blank" title="淘宝商城运营" href="http://jobs.51job.com/shanghai-sjq/62839018.html?s=01&t=0" onmousedown="">
+                                    淘宝商城运营                                </a>
                                                             </span>
                         </p>
-                        <span class="t2"><a target="_blank" title="北京优才创智科技有限公司" href="http://jobs.51job.com/all/co4253788.html">北京优才创智科技有限公司</a></span>
-                        <span class="t3">上海-宝山区</span>
-                        <span class="t4">4.5-6千/月</span>
-                        <span class="t5">07-03</span>
+                        <span class="t2"><a target="_blank" title="上海虹桥空港储运有限公司" href="http://jobs.51job.com/all/co3369392.html">上海虹桥空港储运有限公司</a></span>
+                        <span class="t3">上海-松江区</span>
+                        <span class="t4">0.8-1万/月</span>
+                        <span class="t5">07-13</span>
                     </div>
                                                                                                     <div class="el">
-                        <p class="t1 tg">
+                        <p class="t1 ">
                             <em class="check" name="delivery_em" onclick="checkboxClick(this)"></em>
-                            <input class="checkbox" type="checkbox" name="delivery_jobid" value="89836389" jt="0" style="display:none" />
+                            <input class="checkbox" type="checkbox" name="delivery_jobid" value="91629180" jt="0" style="display:none" />
                             <span>
-                                <a target="_blank" title="平面设计实习生" href="http://jobs.51job.com/shanghai-ptq/89836389.html?s=01&t=0" onmousedown="">
-                                    平面设计实习生                                </a>
-                                <img class="tag1" width="27" height="14" src="http://img05.51jobcdn.com/im/jobs/tag_shixi.jpg" alt="实习">                            </span>
+                                <a target="_blank" title="渠道/市场/BD经理" href="http://jobs.51job.com/shanghai-jaq/91629180.html?s=01&t=0" onmousedown="">
+                                    渠道/市场/BD经理                                </a>
+                                                            </span>
                         </p>
-                        <span class="t2"><a target="_blank" title="上海星冰智商务信息咨询有限公司" href="http://jobs.51job.com/all/co2670896.html">上海星冰智商务信息咨询有限公司</a></span>
+                        <span class="t2"><a target="_blank" title="上海浅枫计算机网络科技有限公司" href="http://jobs.51job.com/all/co4547969.html">上海浅枫计算机网络科技有限公司</a></span>
+                        <span class="t3">上海-静安区</span>
+                        <span class="t4">1-1.5万/月</span>
+                        <span class="t5">07-13</span>
+                    </div>
+                                                                                                    <div class="el">
+                        <p class="t1 ">
+                            <em class="check" name="delivery_em" onclick="checkboxClick(this)"></em>
+                            <input class="checkbox" type="checkbox" name="delivery_jobid" value="84847696" jt="0" style="display:none" />
+                            <span>
+                                <a target="_blank" title="采购员" href="http://jobs.51job.com/shanghai-pdxq/84847696.html?s=01&t=0" onmousedown="">
+                                    采购员                                </a>
+                                                            </span>
+                        </p>
+                        <span class="t2"><a target="_blank" title="明绍（上海）贸易有限公司" href="http://jobs.51job.com/all/co4163987.html">明绍（上海）贸易有限公司</a></span>
+                        <span class="t3">上海-浦东新区</span>
+                        <span class="t4">4-5千/月</span>
+                        <span class="t5">07-13</span>
+                    </div>
+                                                                                                    <div class="el">
+                        <p class="t1 ">
+                            <em class="check" name="delivery_em" onclick="checkboxClick(this)"></em>
+                            <input class="checkbox" type="checkbox" name="delivery_jobid" value="91627425" jt="0" style="display:none" />
+                            <span>
+                                <a target="_blank" title="(现在工资不够用，试试来我爱我家）不怕吃苦" href="http://5i5j.51job.com/sc/show_job_detail.php?jobid=91627425" onmousedown="zzSearch.jobview('91627425');">
+                                    (现在工资不够用，试试来我爱我家）不怕吃苦                                </a>
+                                                            </span>
+                        </p>
+                        <span class="t2"><a target="_blank" title="上海我爱我家房地产经纪有限公司" href="http://5i5j.51job.com">上海我爱我家房地产经纪有限公司</a></span>
+                        <span class="t3">上海-徐汇区</span>
+                        <span class="t4">1.5-2万/月</span>
+                        <span class="t5">07-13</span>
+                    </div>
+                                                                                                    <div class="el">
+                        <p class="t1 ">
+                            <em class="check" name="delivery_em" onclick="checkboxClick(this)"></em>
+                            <input class="checkbox" type="checkbox" name="delivery_jobid" value="88804202" jt="0" style="display:none" />
+                            <span>
+                                <a target="_blank" title="财务" href="http://jobs.51job.com/shanghai-hkq/88804202.html?s=01&t=0" onmousedown="">
+                                    财务                                </a>
+                                                            </span>
+                        </p>
+                        <span class="t2"><a target="_blank" title="新西兰航运有限公司" href="http://jobs.51job.com/all/co2306403.html">新西兰航运有限公司</a></span>
+                        <span class="t3">上海-虹口区</span>
+                        <span class="t4">5-7千/月</span>
+                        <span class="t5">07-13</span>
+                    </div>
+                                                                                                    <div class="el">
+                        <p class="t1 ">
+                            <em class="check" name="delivery_em" onclick="checkboxClick(this)"></em>
+                            <input class="checkbox" type="checkbox" name="delivery_jobid" value="91628759" jt="0" style="display:none" />
+                            <span>
+                                <a target="_blank" title="软件开发工程师" href="http://jobs.51job.com/shanghai-ypq/91628759.html?s=01&t=0" onmousedown="">
+                                    软件开发工程师                                </a>
+                                                            </span>
+                        </p>
+                        <span class="t2"><a target="_blank" title="上海泰信源节能技术有限公司" href="http://jobs.51job.com/all/co4547924.html">上海泰信源节能技术有限公司</a></span>
+                        <span class="t3">上海-杨浦区</span>
+                        <span class="t4">3-4.5千/月</span>
+                        <span class="t5">07-13</span>
+                    </div>
+                                                                                                    <div class="el">
+                        <p class="t1 ">
+                            <em class="check" name="delivery_em" onclick="checkboxClick(this)"></em>
+                            <input class="checkbox" type="checkbox" name="delivery_jobid" value="91629119" jt="0" style="display:none" />
+                            <span>
+                                <a target="_blank" title="宝利通销售" href="http://jobs.51job.com/shanghai-jaq/91629119.html?s=01&t=0" onmousedown="">
+                                    宝利通销售                                </a>
+                                                            </span>
+                        </p>
+                        <span class="t2"><a target="_blank" title="四川长虹佳华信息产品有限责任公司" href="http://jobs.51job.com/all/co2733169.html">四川长虹佳华信息产品有限责任公司</a></span>
+                        <span class="t3">上海-静安区</span>
+                        <span class="t4">0.7-1万/月</span>
+                        <span class="t5">07-13</span>
+                    </div>
+                                                                                                    <div class="el">
+                        <p class="t1 ">
+                            <em class="check" name="delivery_em" onclick="checkboxClick(this)"></em>
+                            <input class="checkbox" type="checkbox" name="delivery_jobid" value="90654275" jt="0" style="display:none" />
+                            <span>
+                                <a target="_blank" title="采购助理 日企 1-2年工作经验" href="http://jobs.51job.com/shanghai/90654275.html?s=01&t=0" onmousedown="">
+                                    采购助理 日企 1-2年工作经验                                </a>
+                                                            </span>
+                        </p>
+                        <span class="t2"><a target="_blank" title="上海守谷电梯有限公司" href="http://jobs.51job.com/all/co2723643.html">上海守谷电梯有限公司</a></span>
+                        <span class="t3">上海</span>
+                        <span class="t4">4.5-6千/月</span>
+                        <span class="t5">07-13</span>
+                    </div>
+                                                                                                    <div class="el">
+                        <p class="t1 ">
+                            <em class="check" name="delivery_em" onclick="checkboxClick(this)"></em>
+                            <input class="checkbox" type="checkbox" name="delivery_jobid" value="91627432" jt="0" style="display:none" />
+                            <span>
+                                <a target="_blank" title="销售工程师（徐家汇，周末双休，化工）" href="http://jobs.51job.com/shanghai-xhq/91627432.html?s=01&t=0" onmousedown="">
+                                    销售工程师（徐家汇，周末双休，化工）                                </a>
+                                                            </span>
+                        </p>
+                        <span class="t2"><a target="_blank" title="上海外电国际贸易有限公司" href="http://jobs.51job.com/all/co2383709.html">上海外电国际贸易有限公司</a></span>
+                        <span class="t3">上海-徐汇区</span>
+                        <span class="t4">6-8千/月</span>
+                        <span class="t5">07-13</span>
+                    </div>
+                                                                                                    <div class="el">
+                        <p class="t1 ">
+                            <em class="check" name="delivery_em" onclick="checkboxClick(this)"></em>
+                            <input class="checkbox" type="checkbox" name="delivery_jobid" value="83737368" jt="0" style="display:none" />
+                            <span>
+                                <a target="_blank" title="销售/销售/电话销售" href="http://jobs.51job.com/shanghai-ptq/83737368.html?s=01&t=0" onmousedown="">
+                                    销售/销售/电话销售                                </a>
+                                                            </span>
+                        </p>
+                        <span class="t2"><a target="_blank" title="上海茂阁企业管理咨询有限公司" href="http://jobs.51job.com/all/co4138880.html">上海茂阁企业管理咨询有限公司</a></span>
                         <span class="t3">上海-普陀区</span>
                         <span class="t4">4.5-6千/月</span>
-                        <span class="t5">07-03</span>
+                        <span class="t5">07-13</span>
                     </div>
                                                                                                     <div class="el">
                         <p class="t1 ">
                             <em class="check" name="delivery_em" onclick="checkboxClick(this)"></em>
-                            <input class="checkbox" type="checkbox" name="delivery_jobid" value="91239710" jt="0" style="display:none" />
+                            <input class="checkbox" type="checkbox" name="delivery_jobid" value="91629201" jt="0" style="display:none" />
                             <span>
-                                <a target="_blank" title="软件测试工程师0703" href="http://jobs.51job.com/shanghai-hpq/91239710.html?s=01&t=0" onmousedown="">
-                                    软件测试工程师0703                                </a>
+                                <a target="_blank" title="前台客服" href="http://jobs.51job.com/shanghai-mhq/91629201.html?s=01&t=0" onmousedown="">
+                                    前台客服                                </a>
                                                             </span>
                         </p>
-                        <span class="t2"><a target="_blank" title="上海大易云计算股份有限公司" href="http://jobs.51job.com/all/co2153847.html">上海大易云计算股份有限公司</a></span>
-                        <span class="t3">上海-黄浦区</span>
+                        <span class="t2"><a target="_blank" title="上海伽晟贸易有限公司" href="http://jobs.51job.com/all/co2345596.html">上海伽晟贸易有限公司</a></span>
+                        <span class="t3">上海-闵行区</span>
+                        <span class="t4">3-4.5千/月</span>
+                        <span class="t5">07-13</span>
+                    </div>
+                                                                                                    <div class="el">
+                        <p class="t1 ">
+                            <em class="check" name="delivery_em" onclick="checkboxClick(this)"></em>
+                            <input class="checkbox" type="checkbox" name="delivery_jobid" value="91629130" jt="0" style="display:none" />
+                            <span>
+                                <a target="_blank" title="财务经理" href="http://jobs.51job.com/shanghai-hkq/91629130.html?s=01&t=0" onmousedown="">
+                                    财务经理                                </a>
+                                                            </span>
+                        </p>
+                        <span class="t2"><a target="_blank" title="甘肃艺博教育文化传播股份有限公司" href="http://jobs.51job.com/all/co4065105.html">甘肃艺博教育文化传播股份有限公司</a></span>
+                        <span class="t3">上海-虹口区</span>
+                        <span class="t4">1-1.2万/月</span>
+                        <span class="t5">07-13</span>
+                    </div>
+                                                                                                    <div class="el">
+                        <p class="t1 ">
+                            <em class="check" name="delivery_em" onclick="checkboxClick(this)"></em>
+                            <input class="checkbox" type="checkbox" name="delivery_jobid" value="91628864" jt="0" style="display:none" />
+                            <span>
+                                <a target="_blank" title="仿真工程师" href="http://jobs.51job.com/suzhou/91628864.html?s=01&t=0" onmousedown="">
+                                    仿真工程师                                </a>
+                                                            </span>
+                        </p>
+                        <span class="t2"><a target="_blank" title="上海朗骥电子科技有限公司" href="http://jobs.51job.com/all/co2662528.html">上海朗骥电子科技有限公司</a></span>
+                        <span class="t3">异地招聘</span>
                         <span class="t4">6-8千/月</span>
-                        <span class="t5">07-03</span>
+                        <span class="t5">07-13</span>
                     </div>
                                                                                                     <div class="el">
                         <p class="t1 ">
                             <em class="check" name="delivery_em" onclick="checkboxClick(this)"></em>
-                            <input class="checkbox" type="checkbox" name="delivery_jobid" value="89968037" jt="0" style="display:none" />
+                            <input class="checkbox" type="checkbox" name="delivery_jobid" value="91629132" jt="0" style="display:none" />
                             <span>
-                                <a target="_blank" title="(梦想季) 链家管培生、实习生、房地产销售 5k+住宿" href="http://jobs.51job.com/shanghai-bsq/89968037.html?s=01&t=0" onmousedown="">
-                                    (梦想季) 链家管培生、实习生、房地产销售 5k+住宿                                </a>
+                                <a target="_blank" title="铝合金全景天窗工艺工程师" href="http://jobs.51job.com/shanghai-jdq/91629132.html?s=01&t=0" onmousedown="">
+                                    铝合金全景天窗工艺工程师                                </a>
                                                             </span>
                         </p>
-                        <span class="t2"><a target="_blank" title="上海链家" href="http://jobs.51job.com/all/co3570292.html">上海链家</a></span>
-                        <span class="t3">上海-宝山区</span>
-                        <span class="t4">6-8千/月</span>
-                        <span class="t5">07-03</span>
-                    </div>
-                                                                                                    <div class="el">
-                        <p class="t1 ">
-                            <em class="check" name="delivery_em" onclick="checkboxClick(this)"></em>
-                            <input class="checkbox" type="checkbox" name="delivery_jobid" value="91238988" jt="0" style="display:none" />
-                            <span>
-                                <a target="_blank" title="出纳担当 (编号90279) 日语必须" href="http://jobs.51job.com/shanghai/91238988.html?s=01&t=0" onmousedown="">
-                                    出纳担当 (编号90279) 日语必须                                </a>
-                                                            </span>
-                        </p>
-                        <span class="t2"><a target="_blank" title="上海艾杰飞人力资源有限公司" href="http://jobs.51job.com/all/co1987073.html">上海艾杰飞人力资源有限公司</a></span>
-                        <span class="t3">上海</span>
-                        <span class="t4">4.5-6千/月</span>
-                        <span class="t5">07-03</span>
-                    </div>
-                                                                                                    <div class="el">
-                        <p class="t1 ">
-                            <em class="check" name="delivery_em" onclick="checkboxClick(this)"></em>
-                            <input class="checkbox" type="checkbox" name="delivery_jobid" value="91207423" jt="0" style="display:none" />
-                            <span>
-                                <a target="_blank" title="客户代表/销售代表/投资顾问" href="http://jobs.51job.com/shanghai-jdq/91207423.html?s=01&t=0" onmousedown="">
-                                    客户代表/销售代表/投资顾问                                </a>
-                                                            </span>
-                        </p>
-                        <span class="t2"><a target="_blank" title="上海仝赢商贸有限公司" href="http://jobs.51job.com/all/co4516508.html">上海仝赢商贸有限公司</a></span>
+                        <span class="t2"><a target="_blank" title="上海奥林汽车配件有限公司" href="http://jobs.51job.com/all/co2408437.html">上海奥林汽车配件有限公司</a></span>
                         <span class="t3">上海-嘉定区</span>
                         <span class="t4">6-8千/月</span>
-                        <span class="t5">07-03</span>
+                        <span class="t5">07-13</span>
                     </div>
                                                                                                     <div class="el">
                         <p class="t1 ">
                             <em class="check" name="delivery_em" onclick="checkboxClick(this)"></em>
-                            <input class="checkbox" type="checkbox" name="delivery_jobid" value="91240005" jt="0" style="display:none" />
+                            <input class="checkbox" type="checkbox" name="delivery_jobid" value="91627369" jt="0" style="display:none" />
                             <span>
-                                <a target="_blank" title="资深客户专员SAE" href="http://jobs.51job.com/shanghai-hpq/91240005.html?s=01&t=0" onmousedown="">
-                                    资深客户专员SAE                                </a>
+                                <a target="_blank" title="微信销售专业培训+月薪5K+师傅带教+提供住宿" href="http://jobs.51job.com/shanghai-mhq/91627369.html?s=01&t=0" onmousedown="">
+                                    微信销售专业培训+月薪5K+师傅带教+提供住宿                                </a>
                                                             </span>
                         </p>
-                        <span class="t2"><a target="_blank" title="上海众引文化传播股份有限公司" href="http://jobs.51job.com/all/co4149351.html">上海众引文化传播股份有限公司</a></span>
-                        <span class="t3">上海-黄浦区</span>
-                        <span class="t4">6-8千/月</span>
-                        <span class="t5">07-03</span>
+                        <span class="t2"><a target="_blank" title="上海沂禾商贸有限公司" href="http://jobs.51job.com/all/co4367404.html">上海沂禾商贸有限公司</a></span>
+                        <span class="t3">上海-闵行区</span>
+                        <span class="t4">0.5-1万/月</span>
+                        <span class="t5">07-13</span>
                     </div>
                                                                                                     <div class="el">
                         <p class="t1 ">
                             <em class="check" name="delivery_em" onclick="checkboxClick(this)"></em>
-                            <input class="checkbox" type="checkbox" name="delivery_jobid" value="77962252" jt="0" style="display:none" />
+                            <input class="checkbox" type="checkbox" name="delivery_jobid" value="67006864" jt="0" style="display:none" />
                             <span>
-                                <a target="_blank" title="HR Specialist-Communications & Recruitment" href="http://jobs.51job.com/shanghai-pdxq/77962252.html?s=01&t=0" onmousedown="">
-                                    HR Specialist-Communications &amp; Recruitment                                </a>
+                                <a target="_blank" title="住户服务助理" href="http://jobs.51job.com/shanghai-jaq/67006864.html?s=01&t=0" onmousedown="">
+                                    住户服务助理                                </a>
                                                             </span>
                         </p>
-                        <span class="t2"><a target="_blank" title="UPS" href="http://jobs.51job.com/all/co3667486.html">UPS</a></span>
-                        <span class="t3">上海-浦东新区</span>
-                        <span class="t4">0.6-1万/月</span>
-                        <span class="t5">07-03</span>
+                        <span class="t2"><a target="_blank" title="嘉里建设管理（上海）有限公司" href="http://jobs.51job.com/all/co109621.html">嘉里建设管理（上海）有限公司</a></span>
+                        <span class="t3">上海-静安区</span>
+                        <span class="t4"></span>
+                        <span class="t5">07-13</span>
                     </div>
                                                                                                     <div class="el">
                         <p class="t1 ">
                             <em class="check" name="delivery_em" onclick="checkboxClick(this)"></em>
-                            <input class="checkbox" type="checkbox" name="delivery_jobid" value="91238979" jt="0" style="display:none" />
+                            <input class="checkbox" type="checkbox" name="delivery_jobid" value="91627427" jt="0" style="display:none" />
                             <span>
-                                <a target="_blank" title="Software Senior Engineer" href="http://jobs.51job.com/shanghai/91238979.html?s=01&t=0" onmousedown="">
-                                    Software Senior Engineer                                </a>
+                                <a target="_blank" title="空间设计师" href="http://jobs.51job.com/shanghai-hkq/91627427.html?s=01&t=0" onmousedown="">
+                                    空间设计师                                </a>
                                                             </span>
                         </p>
-                        <span class="t2"><a target="_blank" title="EMC-易安信信息技术研发（上海）有限公司" href="http://jobs.51job.com/all/co1344756.html">EMC-易安信信息技术研发（上海）有...</a></span>
-                        <span class="t3">上海</span>
-                        <span class="t4">2-2.5万/月</span>
-                        <span class="t5">07-03</span>
+                        <span class="t2"><a target="_blank" title="上海如渔广告有限公司" href="http://jobs.51job.com/all/co4507857.html">上海如渔广告有限公司</a></span>
+                        <span class="t3">上海-虹口区</span>
+                        <span class="t4">0.8-1.2万/月</span>
+                        <span class="t5">07-13</span>
                     </div>
                                                                                                     <div class="el">
-                        <p class="t1 tg">
+                        <p class="t1 ">
                             <em class="check" name="delivery_em" onclick="checkboxClick(this)"></em>
-                            <input class="checkbox" type="checkbox" name="delivery_jobid" value="91240358" jt="0" style="display:none" />
+                            <input class="checkbox" type="checkbox" name="delivery_jobid" value="84029786" jt="0" style="display:none" />
                             <span>
-                                <a target="_blank" title="生产工程师" href="http://jobs.51job.com/shanghai-pdxq/91240358.html?s=01&t=0" onmousedown="">
-                                    生产工程师                                </a>
-                                <img class="tag1" width="27" height="14" src="http://img06.51jobcdn.com/im/jobs/tag_shixi.jpg" alt="实习">                            </span>
+                                <a target="_blank" title="海运操作" href="http://jobs.51job.com/shanghai-hkq/84029786.html?s=01&t=0" onmousedown="">
+                                    海运操作                                </a>
+                                                            </span>
                         </p>
-                        <span class="t2"><a target="_blank" title="磐研电子科技" href="http://jobs.51job.com/all/co1248405.html">磐研电子科技</a></span>
+                        <span class="t2"><a target="_blank" title="青岛中丝集运国际物流有限公司" href="http://jobs.51job.com/all/co3768988.html">青岛中丝集运国际物流有限公司</a></span>
+                        <span class="t3">上海-虹口区</span>
+                        <span class="t4">4.5-6千/月</span>
+                        <span class="t5">07-13</span>
+                    </div>
+                                                                                                    <div class="el">
+                        <p class="t1 ">
+                            <em class="check" name="delivery_em" onclick="checkboxClick(this)"></em>
+                            <input class="checkbox" type="checkbox" name="delivery_jobid" value="91629288" jt="0" style="display:none" />
+                            <span>
+                                <a target="_blank" title="成本会计" href="http://jobs.51job.com/shanghai-sjq/91629288.html?s=01&t=0" onmousedown="">
+                                    成本会计                                </a>
+                                                            </span>
+                        </p>
+                        <span class="t2"><a target="_blank" title="上海光瑞灯具制造有限公司" href="http://jobs.51job.com/all/co3566950.html">上海光瑞灯具制造有限公司</a></span>
+                        <span class="t3">上海-松江区</span>
+                        <span class="t4">4.5-6千/月</span>
+                        <span class="t5">07-13</span>
+                    </div>
+                                                                                                    <div class="el">
+                        <p class="t1 ">
+                            <em class="check" name="delivery_em" onclick="checkboxClick(this)"></em>
+                            <input class="checkbox" type="checkbox" name="delivery_jobid" value="90732940" jt="0" style="display:none" />
+                            <span>
+                                <a target="_blank" title="tutorabc 课程销售顾问+保障底薪6k+年薪20" href="http://jobs.51job.com/shanghai-ypq/90732940.html?s=01&t=0" onmousedown="">
+                                    tutorabc 课程销售顾问+保障底薪6k+年薪20                                </a>
+                                                            </span>
+                        </p>
+                        <span class="t2"><a target="_blank" title="旺赋商务" href="http://jobs.51job.com/all/co4347084.html">旺赋商务</a></span>
+                        <span class="t3">上海-杨浦区</span>
+                        <span class="t4">1.5-2.5万/月</span>
+                        <span class="t5">07-13</span>
+                    </div>
+                                                                                                    <div class="el">
+                        <p class="t1 ">
+                            <em class="check" name="delivery_em" onclick="checkboxClick(this)"></em>
+                            <input class="checkbox" type="checkbox" name="delivery_jobid" value="91629206" jt="0" style="display:none" />
+                            <span>
+                                <a target="_blank" title="人事专员/招聘专员/HRBP(应届生也可）" href="http://jobs.51job.com/shanghai-pdxq/91629206.html?s=01&t=0" onmousedown="">
+                                    人事专员/招聘专员/HRBP(应届生也可）                                </a>
+                                                            </span>
+                        </p>
+                        <span class="t2"><a target="_blank" title="爱上租（上海）物业管理有限公司" href="http://jobs.51job.com/all/co4224352.html">爱上租（上海）物业管理有限公司</a></span>
                         <span class="t3">上海-浦东新区</span>
                         <span class="t4">4.5-6千/月</span>
-                        <span class="t5">07-03</span>
+                        <span class="t5">07-13</span>
                     </div>
                                                                                                     <div class="el">
                         <p class="t1 ">
                             <em class="check" name="delivery_em" onclick="checkboxClick(this)"></em>
-                            <input class="checkbox" type="checkbox" name="delivery_jobid" value="90643201" jt="0" style="display:none" />
+                            <input class="checkbox" type="checkbox" name="delivery_jobid" value="91479947" jt="0" style="display:none" />
                             <span>
-                                <a target="_blank" title="软件实施工程师" href="http://jobs.51job.com/shanghai-xhq/90643201.html?s=01&t=0" onmousedown="">
-                                    软件实施工程师                                </a>
+                                <a target="_blank" title="渠道拓展专员（5天7小时 周末双休）" href="http://jobs.51job.com/shanghai-lwq/91479947.html?s=01&t=0" onmousedown="">
+                                    渠道拓展专员（5天7小时 周末双休）                                </a>
                                                             </span>
                         </p>
-                        <span class="t2"><a target="_blank" title="上海天坊信息科技有限公司" href="http://jobs.51job.com/all/co3570873.html">上海天坊信息科技有限公司</a></span>
-                        <span class="t3">上海-徐汇区</span>
+                        <span class="t2"><a target="_blank" title="北京丰禾意象教育咨询有限公司湖北分公司" href="http://jobs.51job.com/all/co2385452.html">北京丰禾意象教育咨询有限公司湖北...</a></span>
+                        <span class="t3">上海-卢湾区</span>
+                        <span class="t4">1-1.5万/月</span>
+                        <span class="t5">07-13</span>
+                    </div>
+                                                                                                    <div class="el">
+                        <p class="t1 ">
+                            <em class="check" name="delivery_em" onclick="checkboxClick(this)"></em>
+                            <input class="checkbox" type="checkbox" name="delivery_jobid" value="91629152" jt="0" style="display:none" />
+                            <span>
+                                <a target="_blank" title="FILA长泰广场店长（底薪5000）" href="http://jobs.51job.com/shanghai-pdxq/91629152.html?s=01&t=0" onmousedown="">
+                                    FILA长泰广场店长（底薪5000）                                </a>
+                                                            </span>
+                        </p>
+                        <span class="t2"><a target="_blank" title="FILA中国" href="http://jobs.51job.com/all/co2368508.html">FILA中国</a></span>
+                        <span class="t3">上海-浦东新区</span>
                         <span class="t4">0.8-1万/月</span>
-                        <span class="t5">07-03</span>
-                    </div>
-                                                                                                    <div class="el">
-                        <p class="t1 ">
-                            <em class="check" name="delivery_em" onclick="checkboxClick(this)"></em>
-                            <input class="checkbox" type="checkbox" name="delivery_jobid" value="90614314" jt="0" style="display:none" />
-                            <span>
-                                <a target="_blank" title="工艺流程设计师" href="http://jobs.51job.com/shanghai-xhq/90614314.html?s=01&t=0" onmousedown="">
-                                    工艺流程设计师                                </a>
-                                                            </span>
-                        </p>
-                        <span class="t2"><a target="_blank" title="上海艺特网络科技有限公司" href="http://jobs.51job.com/all/co4078869.html">上海艺特网络科技有限公司</a></span>
-                        <span class="t3">上海-徐汇区</span>
-                        <span class="t4">1-1.5万/月</span>
-                        <span class="t5">07-03</span>
-                    </div>
-                                                                                                    <div class="el">
-                        <p class="t1 ">
-                            <em class="check" name="delivery_em" onclick="checkboxClick(this)"></em>
-                            <input class="checkbox" type="checkbox" name="delivery_jobid" value="89523962" jt="0" style="display:none" />
-                            <span>
-                                <a target="_blank" title="青少年球探总监" href="http://jobs.51job.com/shanghai-xhq/89523962.html?s=01&t=0" onmousedown="">
-                                    青少年球探总监                                </a>
-                                                            </span>
-                        </p>
-                        <span class="t2"><a target="_blank" title="上海聚运动体育投资有限公司" href="http://jobs.51job.com/all/co3619064.html">上海聚运动体育投资有限公司</a></span>
-                        <span class="t3">上海-徐汇区</span>
-                        <span class="t4">1-1.5万/月</span>
-                        <span class="t5">07-03</span>
+                        <span class="t5">07-13</span>
                     </div>
                                             <div class="dw_tlc">
             <input type="hidden" value="" id="advice_email"/>
@@ -1613,13 +1614,13 @@ window.cfg.isJobview = '1';
                 全选
             </div>
             <div class="op">
-                <span onclick="delivery('delivery_jobid', '2', 'http://my.51job.com', 'c', 'http://search.51job.com', '01', '01', 'http://img03.51jobcdn.com');" class="but_sq uck"><i class="dicon Dm"></i>申请职位</span><span onclick="saveCollection('');" class="but_sc uck"><i class="dicon Dm"></i>收藏职位</span>
+                <span onclick="delivery('delivery_jobid', '2', 'http://my.51job.com', 'c', 'http://search.51job.com', '01', '01', 'http://img05.51jobcdn.com');" class="but_sq uck"><i class="dicon Dm"></i>申请职位</span><span onclick="saveCollection('');" class="but_sc uck"><i class="dicon Dm"></i>收藏职位</span>
             </div>
 
             <div class="sbox">
                 <form name="excludeForm" method="post" action="">
                     <p class="ipt"><input class="mytxt" type="text" placeholder="输入排除关键字" name="keyword" maxlength="100" value="" /></p>
-                    <input type="image" class="list_tab_search_btn" value="确定" src="http://img06.51jobcdn.com/im/jobs/confirm.png" />
+                    <input type="image" class="list_tab_search_btn" value="确定" src="http://img03.51jobcdn.com/im/jobs/confirm.png" />
                 </form>
             </div>
         </div>
@@ -1641,12 +1642,12 @@ window.cfg.isJobview = '1';
     <!-- BANNER 广告 -->
     <div class="mainleft s_search search_btm0">
         <table border=0 cellspacing=0 cellpadding=4><tr>
-	<td><a adid="24499220" onmousedown="return AdsClick(24499220)" href="http://companyadc.51job.com/companyads/2017/sh/nan0512_7343wh/index.htm" title="上海新世界大丸百货" target="_blank" onfocus="blur()"><img src="http://img05.51jobcdn.com/im/images/2017/sh/dawan0515a_7235wh.gif" border="0" width="150" height="60"></a></td>
-	<td><a adid="24578647" onmousedown="return AdsClick(24578647)" href="http://companyadc.51job.com/companyads/2017vip/sh/gongtu0519_7330wh/index.htm" title="上海功途教育科技股份有限公司" target="_blank" onfocus="blur()"><img src="http://img05.51jobcdn.com/im/images/2017/sh/gongtu0519c_7330wh.gif" border="0" width="150" height="60"></a></td>
-	<td><a adid="24826167" onmousedown="return AdsClick(24826167)" href="http://companyadc.51job.com/companyads/2017/sh/hengqing0605_7235wh/index.htm" title="上海恒青房地产有限公司（龙湖商业地产）" target="_blank" onfocus="blur()"><img src="http://img05.51jobcdn.com/im/images/2017/sh/hengqing0605b_7235wh.gif" border="0" width="150" height="60"></a></td>
-	<td><a adid="24629618" onmousedown="return AdsClick(24629618)" href="http://companyadc.51job.com/companyads/2017vip/sh/desha0523_7330wh/index.htm" title="德莎国际货运代理（上海）有限公司" target="_blank" onfocus="blur()"><img src="http://img05.51jobcdn.com/im/images/2017/sh/desha0523c_7330wh.gif" border="0" width="150" height="60"></a></td>
 	<td><a adid="24430311" onmousedown="return AdsClick(24430311)" href="http://companyadc.51job.com/companyads/2017vip/sh/herzi0510_7330wh/index.htm" title="赫兹租车咨询（上海）有限公司" target="_blank" onfocus="blur()"><img src="http://img05.51jobcdn.com/im/images/2017/sh/heerzi0510c_7330wh.gif" border="0" width="150" height="60"></a></td>
+	<td><a adid="24839241" onmousedown="return AdsClick(24839241)" href="http://companyadc.51job.com/companyads/2017/wh/damei0606_7330wh/index.htm" title="上海达美乐比萨有限公司" target="_blank" onfocus="blur()"><img src="http://img05.51jobcdn.com/im/images/2017/sh/damei0606c_7330wh.gif" border="0" width="150" height="60"></a></td>
 	<td><a adid="24784834" onmousedown="return AdsClick(24784834)" href="http://companyadc.51job.com/companyads/2017vip/sh/dongfang0602_7330wh/index.htm" title="上海东方金融广场企业发展有限公司" target="_blank" onfocus="blur()"><img src="http://img05.51jobcdn.com/im/images/2017/sh/dongfang0602b_7330wh.gif" border="0" width="150" height="60"></a></td>
+	<td><a adid="24898612" onmousedown="return AdsClick(24898612)" href="http://companyadc.51job.com/companyads/2017vip/sh/bangyue0609_7330wh/index.htm" title="上海棒约翰餐饮管理有限公司" target="_blank" onfocus="blur()"><img src="http://img05.51jobcdn.com/im/images/2017/sh/banyh0609c_7330wh.gif" border="0" width="150" height="60"></a></td>
+	<td><a adid="24499220" onmousedown="return AdsClick(24499220)" href="http://companyadc.51job.com/companyads/2017/sh/nan0512_7343wh/index.htm" title="上海新世界大丸百货" target="_blank" onfocus="blur()"><img src="http://img05.51jobcdn.com/im/images/2017/sh/dawan0515a_7235wh.gif" border="0" width="150" height="60"></a></td>
+	<td><a adid="24629618" onmousedown="return AdsClick(24629618)" href="http://companyadc.51job.com/companyads/2017vip/sh/desha0523_7330wh/index.htm" title="德莎国际货运代理（上海）有限公司" target="_blank" onfocus="blur()"><img src="http://img05.51jobcdn.com/im/images/2017/sh/desha0523c_7330wh.gif" border="0" width="150" height="60"></a></td>
 </tr>
 </table>    </div>
     <!-- 广告 end -->
@@ -1770,9 +1771,9 @@ ul {
     <input type="hidden" name="ppc_num"			value="0">
     <input type="hidden" name="ads_num"			value="0">
     <input type="hidden" name="personnel_department_ad_num"   value="0">
-    <input type="hidden" name="jobid_list"		value="90146159~90621211~91240621~91240231~91144214~89539722~91240330~91240337~90893876~91231121~70107498~91240134~91240706~91113968~91239258~66800481~91240016~90347683~91240329~87686189~91238057~73625937~91239027~90365973~54628892~91240705~91240020~89807843~64384635~88535386~91239973~90303989~85989811~83180951~91239007~91239005~79787284~91240353~89836389~91239710~89968037~91238988~91207423~91240005~77962252~91238979~91240358~90643201~90614314~89523962~70070983~91049575~90717672~91240213~86964709~86711281~80298860~90070423~88567910~91238955~91239807~77470396~91238917~88058692~91238949~84027423~56177826~90896460~91240030~91209568~91238932~91066936~90907923~87819218~91240026~85220671~90882149~87062471~91238900~91239855~89616881~91238888~73990212~91035149~91239675~91228793~91238867~86592695~91239830~90991535~60955196~77308866~71047666~79633997~89138348~85226432~91239519~91238805~91238841~91239551~67684776~74323305~90207619~89507433~83550509~91228673~85421462~91239688~76013296~84204604~86027825~67638899~90179241~91239620~90614052~85008340~91100367~88993646~91239581~74007539~82695006~83316133~81530729~91238683~91222181~91239421~91233248~91238461~91239164~91238712~90583007~91213035~91239564~71363908~91238702~64859411~90917936~91239761~60782964~68558779~91231615~82786419~80893700~62315338~84390361~91239630~91238664~89963674~91239631~65343087~91239634~79079994~91229639~91239651~58198099~90460415~91238600~91052884~86605384~58681843~90785458~91238725~89698515~90683313~91083287~82244363~73787070~88797578~77621406~90810052~80699956~90133731~90756677~67148291~91239523~89537510~80405485~89274360~89092042~90622457~82752053~90892325~91238493~91238234~91239635~91235765~71801300~84581544~90989928~91221050~90961331~64780887~91237557~86959952~90444352~91238479~78406754~89119701~89706371~91082227">
+    <input type="hidden" name="jobid_list"		value="91627539~91101596~91628791~91628793~90420844~91628816~77927864~91628798~89801037~91627499~91628810~67442085~91309416~91628804~91627472~91628744~91628745~91629232~91629168~91628827~91623150~55491344~90133051~90764937~91627452~91629250~91627454~62839018~91629180~84847696~91627425~88804202~91628759~91629119~90654275~91627432~83737368~91629201~91629130~91628864~91629132~91627369~67006864~91627427~84029786~91629288~90732940~91629206~91479947~91629152~91629293~91629156~91004805~86401506~53352329~91629294~91628993~91617094~91628996~87908003~68530614~91628871~91627346~85447868~91629032~91629001~89821869~91628899~90056242~91628852~91427010~91628855~91629035~91629024~91629048~86952046~91352932~91316255~91626853~78946380~60721068~91628949~91628886~91629070~91627246~88441636~91629073~91161816~91629083~91627231~91628716~91628624~91626360~91628921~80146793~91627180~91628633~91628635~91628640~91475651~91628354~89264000~78311538~91628672~91628676~86230127~83073459~90999585~91627107~91627100~81426190~91627104~88505349~84042282~91628707~91628717~81244151~91629170~91626662~90959741~91627024~91425148~69002941~91495206~86619073~84187028~82575369~88953431~75337003~91245481~89226362~85407396~91626971~80924656~91164841~88267267~83452975~91626936~91626934~91627934~89708758~91626925~89673204~52524117~88690477~91626822~89591353~87875595~72182508~91626551~91626790~90068738~84633512~65616743~91626803~91429904~90496152~79799207~91626788~84080145~80221644~91626781~86608131~60584163~54990574~79572800~91626063~90984725~90980296~72805584~77133015~91111448~91626714~91626710~91626693~90230946~91626701~90801421~81003672~71486309~91614244~90898409~84073181~89655059~89015394~91626643~58209217~89650031~89654493~91626624~77342454~65686392~75413832~91625962~78126433~88923762~91614487~91361947~89435010~90266715">
     <input type="hidden" name="jobid_count"		value="100000">
-    <input type="hidden" name="schTime"			value="984">
+    <input type="hidden" name="schTime"			value="900">
     <input type="hidden" name="confirmdate"	value="9">
     <input type="hidden" name="welfare"	value="">
     <input type="hidden" name="fromType"		value="">

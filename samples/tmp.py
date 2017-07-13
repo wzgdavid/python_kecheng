@@ -1,12 +1,21 @@
-import numpy as np
-import pandas as pd
+def decorator(func):
+    def wrapper(*args, **kw):
+        rtn = func(*args, **kw)
+        return rtn
+    return wrapper
 
-df = pd.DataFrame(np.random.randint(10,size=(6,4)), index=list('abcdef'), columns=list('ABCD'))
+a = decorator
 
-print(df)
+def deco(func):
+    def wrapper(a, b):
+        rtn = func(a, b)
+        return rtn+1
+    return wrapper
+def add(a, b):
+    return a+b
 
-df.ix[5,1] = 99
-
-print(df)
-
-print(df.sum())
+@deco
+def mul(a, b):
+    return a*b
+add = deco(add)
+print(mul(1,2))
