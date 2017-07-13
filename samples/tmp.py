@@ -1,11 +1,12 @@
 import numpy as np
 import pandas as pd
 
-df = pd.DataFrame({'A' : ['foo', 'bar', 'foo', 'bar',
-                        'foo', 'bar', 'foo', 'foo'],
-                    'B' : ['one', 'one', 'two', 'three',
-                        'two', 'two', 'one', 'three'],
-                    'C' : np.random.randint(8,size=8),
-                    'D' : np.random.randint(8,size=8)})
+df = pd.DataFrame(np.random.randint(10,size=(6,4)), index=list('abcdef'), columns=list('ABCD'))
 
 print(df)
+
+df.ix[5,1] = 99
+
+print(df)
+
+print(df.sum())

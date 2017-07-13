@@ -153,3 +153,9 @@ dayu10_times = (touzi[0]+touzi[1]>10).sum()
 duizi_gailv = duizi_times / total_times
 dui6_gailv = dui6_times / total_times
 dayu10_gailv = dayu10_times / total_times
+
+元素级数组函数
+对ndarray执行元素级运算的函数
+一元ufunc
+    np.abs      绝对值
+    np.

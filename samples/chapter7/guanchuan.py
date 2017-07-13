@@ -1,10 +1,8 @@
 '''
-学生成绩管理器----记录一个班级的学生（创建一个Student类，记录他们的名字
-，平均分和各门考试分数）和他们的成绩等级。
+学生成绩管理器----创建一个Student类，记录他们的名字
+，平均分和各门考试分数和他们的成绩等级。
 '''
-'''
-现在是用字典做，学了pandas后此题用pandas做
-'''
+
 
 class StudentError(Exception):
     pass
@@ -12,14 +10,13 @@ class StudentError(Exception):
 
 class Student():
     '''
-
     1,可以统计某一门课的平均分
        def subject_avg
     2,可以统计某一期考试的总分(各科的总分)
        def term_sum
     3,可以得到某门课的等级，>=90 A,80到89 B,70到79 C, 60到69 D, 剩下E
        def get_subject_grade
-    4,打印某一期所有课的分数,做成一个字典，
+    4,打印某一期所有课的分数,做成一个字典
        def get_term_grades
       比如第一期的所有等级如下
         {'math': 95, 'english': 66, 'sport': 85}
@@ -33,7 +30,6 @@ class Student():
          。。。。。
     '''
     _subject = ('math', 'english', 'sport')
-    # 做一个装饰器，检查subject是否在_subject中
     def __init__(self, name):
         self._name = name
         '''
@@ -48,6 +44,9 @@ class Student():
         '''
         self._scores = dict()
 
+    def __repr__(self):
+        return str(self._scores)
+
     def add_score(self, subject, term, score):
         if subject not in self._subject:
             raise StudentError('not a subject')
@@ -55,21 +54,10 @@ class Student():
             raise StudentError('invalid score')
         if not 0 <= score <= 100:
             raise StudentError('invalid score')
-        key = ''.join([str(subject), '_', str(term)])
-        self._scores.update({key: score})
+        subject_name = self._get_subject_name(subject, term)
+        self._scores.update({subject_name: score})
 
     # --------------------------------这个类中以下的部分让学生做-----------------------------
-
-    def term_sum(self, term):
-        '''一期总分'''
-        #if term not in self._subject:
-        #    raise StudentError('not a subject')
-        term_sum = 0
-        for key, score in self._scores.items():
-            if key.endswith(str(term)):
-                term_sum += score
-        print(term_sum)
-        return term_sum
 
     def subject_avg(self, subject):
         '''
@@ -86,6 +74,18 @@ class Student():
         avg = subject_sum/cnt
         print(avg)
         return avg
+
+
+    def term_sum(self, term):
+        '''一期总分'''
+        #if term not in self._subject:
+        #    raise StudentError('not a subject')
+        term_sum = 0
+        for key, score in self._scores.items():
+            if key.endswith(str(term)):
+                term_sum += score
+        print(term_sum)
+        return term_sum
 
     def _get_subject_name(self, subject, term):
         return ''.join((subject, '_', str(term)))
@@ -167,12 +167,13 @@ def _test():
     s.add_score('sport', 1, 85)
     s.add_score('sport', 2, 74)
     s.add_score('sport', 3, 83)
-    #print(s)
+    print(s)
     
-    #s.subject_avg('english')
+    s.subject_avg('english')
     #s.term_sum(2)
     #s.get_subject_grade('math', 1)
-    s.get_term_grades(2)
+    
+    #s.get_term_grades(2)
     #s._get_termgscores(2)
     s.print_grade_tables()
 
