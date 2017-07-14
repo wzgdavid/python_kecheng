@@ -23,11 +23,12 @@ def get_html(url):
     html = response.read().decode('utf-8')
     # html = html.replace('\xa0', '')  #没用
     html = html.replace('&nbsp;', '--')   # 保存时有其他出编码错误的，也可以这样replace掉
-    html = html.replace('\xb2', '--')
+    html = html.replace('\xb2', '')
+    html = html.replace('\xa0', '')
     # 即使不保存，这个也要去掉，多余的字符串
 
-    #with open('anjuke.html', 'w') as f: # 第一次执行，保存为本地文件
-    #    f.write(html)
+    with open('anjuke.html', 'w') as f: # 第一次执行，保存为本地文件
+        f.write(html)
     return html
 
 

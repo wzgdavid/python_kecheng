@@ -1,7 +1,7 @@
-s = 'aabb aabb ab ab '.replace('ab', 'AB')
-print(s)
+import pandas as pd
 
-import re
-a = re.sub([r'one', r'four'], '-', 'one1two2three3four4')
+url = 'https://raw.githubusercontent.com/justmarkham/DAT8/master/data/chipotle.tsv'
+    
+chipo = pd.read_csv(url, sep = '\t')
 
-print(a)
+print(chipo)
