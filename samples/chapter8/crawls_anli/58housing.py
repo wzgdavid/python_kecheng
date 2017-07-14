@@ -2,11 +2,12 @@ from urllib import request, error
 from lxml import etree
 import json
 import csv
+import re
+'''
 
 '''
-58
-'''
 def get_html(url):
+
     try:
         response = request.urlopen(url)
         #response = request.urlopen(req)
@@ -15,14 +16,17 @@ def get_html(url):
     except error.HTTPError as e:
         print(e)
     html = response.read().decode('utf-8')
-    with open('sample.html', 'w') as f: # 第一次执行，保存为本地文件
+    # html = html.replace('\xa0', '')  #没用
+    html = html.replace('&nbsp;', '')   # 有其他出编码错误的，也可以这样replace掉
+
+    with open('58housing.html', 'w') as f: # 第一次执行，保存为本地文件
         f.write(html)
     return html
 
 
 def local_html():
     # 先用本地文件跑，等程序写完了，再从网站爬取
-    with open('sample.html', 'r') as html:
+    with open('58housing.html', 'r') as html:
         html = html.read()
     return html
 
@@ -48,9 +52,12 @@ def crawl_data(html):
     
     # 地址
     address = content.xpath('/div/div/div/ul/li/div/p[@class="add"]/text()')
-    titles = [n.replace('\xa0', '').strip() for n in titles if n.strip()]
-    roomtype = [n.replace('\xa0', '').strip() for n in roomtype if n.strip()]
-    rent_unit = [n.replace('\xa0', '').strip() for n in rent_unit if n.strip()]
+    #titles = [n.replace('\xa0', '').strip() for n in titles if n.strip()]  # 在整个网页把&nbsp;replace掉，就不用这三行了
+    #roomtype = [n.replace('\xa0', '').strip() for n in roomtype if n.strip()]
+    #rent_unit = [n.replace('\xa0', '').strip() for n in rent_unit if n.strip()]
+    titles = [n.strip() for n in titles if n.strip()]
+    roomtype = [n.strip() for n in roomtype if n.strip()]
+    rent_unit = [n.strip() for n in rent_unit if n.strip()]
     #address = [n.strip() for n in address if n.strip()]
 
     #print(len(address), address)
@@ -91,15 +98,16 @@ def read_from_json(filename):
         data = json.load(json_file)
     return data
 
+
+
 def _test():
     url = 'http://sh.58.com/chuzu/pn50/'
+    #url = 'http://sh.58.com/ershoufang/?PGTID=0d200001-0000-229e-4b38-eab0423532c9&ClickID=1'
     #url = 'http://tieba.baidu.com/f?kw=python&ie=utf-8&pn=29150'
-    #html = get_html(url)
-    
-    
-    html = local_html()  # 先用本地保存的html边调试边写代码
+    html = get_html(url)
+    #html = local_html()  # 先用本地保存的html边调试边写代码
     data = crawl_data(html)
-    save_to_csv(data, 'tieba')
+    save_to_csv(data, '58housing')
 
     #data = read_from_json('tieba')
     #print(data)

@@ -1,21 +1,7 @@
-def decorator(func):
-    def wrapper(*args, **kw):
-        rtn = func(*args, **kw)
-        return rtn
-    return wrapper
+s = 'aabb aabb ab ab '.replace('ab', 'AB')
+print(s)
 
-a = decorator
+import re
+a = re.sub([r'one', r'four'], '-', 'one1two2three3four4')
 
-def deco(func):
-    def wrapper(a, b):
-        rtn = func(a, b)
-        return rtn+1
-    return wrapper
-def add(a, b):
-    return a+b
-
-@deco
-def mul(a, b):
-    return a*b
-add = deco(add)
-print(mul(1,2))
+print(a)
