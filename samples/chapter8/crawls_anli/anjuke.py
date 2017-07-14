@@ -76,18 +76,18 @@ def save_to_json(data, filename):
     with open('{}.json'.format(filename), 'w') as json_file:
         json_file.write(json.dumps(data))
 
-def save_to_csv(data, filename):
+def save_to_csv(data, filename, mode='a'):
     for n in data:
         print(n)
-    with open("{}.csv".format(filename), "w", newline="") as datacsv:
+    with open("{}.csv".format(filename), mode, newline="") as datacsv:
     #with open("{}.csv".format(filename), "a", newline="") as datacsv: # a是追加写入
         writer = csv.writer(datacsv)
         # 写入标题
         # zip(titles, roomstyle, mianji, cenggao,niandai,price,address)
-        writer.writerow(["标题","房型","面积","层高","年代","价格","地址"])
-        #for row in data:
-        #    writer.writerow(row)
-        #data=[(1,2,3,4,5), (3,4,5,6,7)]
+        if mode=='w':
+            writer.writerow(["标题","房型","面积","层高","年代","价格","地址"]) 
+        else:
+            pass
         writer.writerows(data)
 
 
@@ -97,18 +97,19 @@ def read_from_json(filename):
     return data
 
 
-
 def _test():
-    url = 'https://shanghai.anjuke.com/sale/?from=navigation'
-    
+    url = 'https://shanghai.anjuke.com/sale/p8/#filtersort'
     html = get_html(url)
     #html = local_html()  # 先用本地保存的html边调试边写代码
     data = crawl_data(html)
-    save_to_csv(data, 'anjuke')
+    save_to_csv(data, 'anjuke', mode='a')
 
-    #data = read_from_json('tieba')
-    #print(data)
+
+
+
 
 if __name__ == '__main__':
-
-    _test()
+    url = 'https://shanghai.anjuke.com/sale/p8/#filtersort'
+    html = get_html(url)
+    data = crawl_data(html)
+    save_to_csv(data, 'anjuke', mode='a') 
