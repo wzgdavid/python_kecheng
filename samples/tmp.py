@@ -1,7 +1,8 @@
-import pandas as pd
+# 删除一个列表中的偶数，如果是奇数，乘2
 
-url = 'https://raw.githubusercontent.com/justmarkham/DAT8/master/data/chipotle.tsv'
-    
-chipo = pd.read_csv(url, sep = '\t')
+lst = [1,2,3,4,5,3,4,5]
 
-print(chipo)
+for n in lst:
+    if n not in lst2:
+        lst2.append(n)
+print(lst2)

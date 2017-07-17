@@ -7,7 +7,7 @@ from sklearn.cluster import KMeans
 df = pd.read_csv('consumption_data.csv')
 df = df.ix[:,['F','M']]
 # 数据标准化
-df = (df - df.mean())/df.std()
+#df = (df - df.mean())/df.std()
 
 
 

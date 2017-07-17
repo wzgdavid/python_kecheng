@@ -8,7 +8,7 @@ import pandas as pd
 from sklearn.cluster import KMeans, DBSCAN
 df = pd.read_csv('consumption_data.csv')
 df = df.ix[:,['F','M']]
-# 数据标准化
+# 数据规范化
 df = (df - df.mean())/df.std()
 
 #分为n_clusters类，聚类最大循环次数500
