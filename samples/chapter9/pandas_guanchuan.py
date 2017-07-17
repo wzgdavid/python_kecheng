@@ -96,7 +96,9 @@ class Student():
 
     def print_grade_tables(self):
         df = self._scores
-        print(df[df.sum(axis=1)>0])
+        df = df[df.sum(axis=1)>0]
+        df = df.applymap(self._get_score_grade)
+        print(df)
         
 
 
