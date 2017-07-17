@@ -32,7 +32,7 @@ df = df.sort_values(by='total', ascending=False)
 # https://github.com/guipsamora/pandas_exercises/blob/master/01_Getting_%26_Knowing_Your_Data/Occupation/Exercise_with_Solution.ipynb
 # 
 #users = pd.read_table('https://raw.githubusercontent.com/justmarkham/DAT8/master/data/u.user', 
-                      sep='|', index_col='user_id')
+#                      sep='|', index_col='user_id')
 #users.to_csv('users.csv')
 # 这些练习用user.csv做
 users = pd.read_csv('users.csv')
