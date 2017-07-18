@@ -8,7 +8,7 @@ import pandas as pd
 from sklearn.naive_bayes import GaussianNB
 from sklearn import metrics
 from sklearn.model_selection import train_test_split
-import itertools
+from itertools import product
 '''
 数值  武器类型    子弹  血量  身边队友  行为类别
 0     手枪        少   少       没         逃跑
@@ -47,18 +47,22 @@ expected = y_test  # 期望的结果
 print(metrics.classification_report(expected, predicted))
 # 混淆矩阵
 cm = metrics.confusion_matrix(expected, predicted)
-print(cm)
+# 矩阵标准化 值在0, 1 之间
+cm = cm.astype('float') / cm.sum(axis=1)[:, np.newaxis]
+print(type(cm))
+
 
 # 画混淆矩阵
 classes = ['逃跑','战斗','躲藏'] # 分类名
 matrix_marks = range(len(classes))  # 混淆矩阵的边长
 plt.rcParams['font.sans-serif'] = ['SimHei'] # 正常显示中文
-plt.imshow(cm, interpolation='nearest', cmap = plt.cm.Blues)
+plt.imshow(cm, cmap = plt.cm.Blues)
 thresh = cm.max() / 2.
-for i, j in itertools.product(range(cm.shape[0]), range(cm.shape[1])):
+for i, j in product(range(cm.shape[0]), range(cm.shape[1])):
     plt.text(j, i, cm[i, j],
              horizontalalignment="center",
-             color="white" if cm[i, j] > thresh else "black")
+             # 浅色背景深色字，深背景浅色字
+             color="white" if cm[i, j] > thresh else "black") 
 plt.xticks(matrix_marks, classes)
 plt.yticks(matrix_marks, classes)
 plt.colorbar()
