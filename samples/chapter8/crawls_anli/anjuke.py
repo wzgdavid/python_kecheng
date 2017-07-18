@@ -3,9 +3,7 @@ from lxml import etree
 import json
 import csv
 import re
-'''
 
-'''
 def get_html(url):
     headers = {
         "User-Agent": 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.86 Safari/537.36',
@@ -27,16 +25,16 @@ def get_html(url):
     
     # 即使不保存，这个也要去掉，多余的字符串
 
-    with open('anjuke.html', 'w') as f: # 第一次执行，保存为本地文件
-        f.write(html)
+    #with open('anjuke.html', 'w') as f: # 第一次执行，保存为本地文件
+    #    f.write(html)
     return html
 
 
-def local_html():
-    # 先用本地文件跑，等程序写完了，再从网站爬取
-    with open('anjuke.html', 'r') as html:
-        html = html.read()
-    return html
+#def local_html():
+#    # 先用本地文件跑，等程序写完了，再从网站爬取
+#    with open('anjuke.html', 'r') as html:
+#        html = html.read()
+#    return html
 
 
 def crawl_data(html):
@@ -73,11 +71,11 @@ def crawl_data(html):
 
     return list(rows)
 
-def save_to_json(data, filename):
-    with open('{}.json'.format(filename), 'w') as json_file:
-        json_file.write(json.dumps(data))
+#def save_to_json(data, filename):
+#    with open('{}.json'.format(filename), 'w') as json_file:
+#        json_file.write(json.dumps(data))
 
-def save_to_csv(data, filename, mode='a'):
+def save_to_csv(data, filename, mode='w'):
     for n in data:
         print(n)
     with open("{}.csv".format(filename), mode, newline="") as datacsv:
@@ -103,7 +101,7 @@ def _test():
     html = get_html(url)
     #html = local_html()  # 先用本地保存的html边调试边写代码
     data = crawl_data(html)
-    save_to_csv(data, 'anjuke', mode='a')
+    save_to_csv(data, 'anjuke')
 
 
 if __name__ == '__main__':

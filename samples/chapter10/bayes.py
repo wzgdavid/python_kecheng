@@ -8,7 +8,7 @@ import pandas as pd
 from sklearn.naive_bayes import GaussianNB
 from sklearn import metrics
 from sklearn.model_selection import train_test_split
-
+import itertools
 '''
 数值  武器类型    子弹  血量  身边队友  行为类别
 0     手枪        少   少       没         逃跑
@@ -17,7 +17,7 @@ from sklearn.model_selection import train_test_split
 '''
 
 df = pd.read_csv('fightrun2.csv')
-df = df.ix[:,['子弹','武器','血量','身边队友','行为']] # 读取的列要么都是字符，要么都是数字
+df = df.ix[:,['子弹','武器','血量','身边队友','行为']] # 
 
 df = df.dropna()
 #
@@ -45,6 +45,23 @@ predicted = model.predict(x_test)  # 预测出的结果
 expected = y_test  # 期望的结果
 # 打印预测结果，
 print(metrics.classification_report(expected, predicted))
-print(metrics.confusion_matrix(expected, predicted))
+# 混淆矩阵
+cm = metrics.confusion_matrix(expected, predicted)
+print(cm)
 
-
+# 画混淆矩阵
+classes = ['逃跑','战斗','躲藏'] # 分类名
+matrix_marks = range(len(classes))  # 混淆矩阵的边长
+plt.rcParams['font.sans-serif'] = ['SimHei'] # 正常显示中文
+plt.imshow(cm, interpolation='nearest', cmap = plt.cm.Blues)
+thresh = cm.max() / 2.
+for i, j in itertools.product(range(cm.shape[0]), range(cm.shape[1])):
+    plt.text(j, i, cm[i, j],
+             horizontalalignment="center",
+             color="white" if cm[i, j] > thresh else "black")
+plt.xticks(matrix_marks, classes)
+plt.yticks(matrix_marks, classes)
+plt.colorbar()
+plt.ylabel('真值')
+plt.xlabel('预测值')
+plt.show()

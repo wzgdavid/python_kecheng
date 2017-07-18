@@ -34,7 +34,8 @@ print(r)
 #print(model.predict([[34, 26, 6666]]))
 
 # 3D散点图
-y_pred = model.fit_predict(df2)
+#y_pred = model.fit_predict(df2) # == model.fit(df2).predict(df2)
+y_pred = model.predict(df2)
 sd = plt.figure().add_subplot(111, projection = '3d')  
 sd.scatter(df.R, df.F, df.M, c=y_pred)
 sd.set_xlabel('R')  
