@@ -5,7 +5,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-from sklearn import linear_model
+from sklearn.linear_model import LinearRegression
 from sklearn.model_selection import train_test_split
 
 # Advertising.csv来自http://www-bcf.usc.edu/~gareth/ISL/Advertising.csv
@@ -29,27 +29,15 @@ x_train, x_test, y_train, y_test = train_test_split(x, y, train_size=0.6, test_s
 #print(x_test.shape) 
 #print(y_test.shape)
 
-linreg = linear_model.LinearRegression()
-linreg.fit(x_train, y_train)
+model = LinearRegression()
+model.fit(x_train, y_train)
 
-a, b = linreg.intercept_, linreg.coef_
+a, b = model.intercept_, model.coef_
 print(a)
 print(b)
 #y=2.668+0.0464*TV+0.192*Radio-0.00349*Newspaper
 
 # 预测
-y_predict = linreg.predict(x_test)
+y_predict = model.predict(x_test)
 print(y_predict)
 
-# 做曲线
-##plt.figure()  
-plt.plot(range(len(y_predict)),y_predict,'b',label="predict")
-plt.plot(range(len(y_predict)),y_test,'r',label="test")
-plt.legend(loc="upper right") #显示图中的标签
-plt.xlabel("the number of sales")
-plt.ylabel('value of sales')
-plt.show()
-
-
-#plt.scatter(x_test.Newspaper, y_test, color='blue')
-#plt.show()

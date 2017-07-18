@@ -6,11 +6,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 from sklearn.naive_bayes import GaussianNB
-from sklearn import tree
-from sklearn.externals.six import StringIO
 from sklearn import metrics
-from sklearn.model_selection import GridSearchCV, RandomizedSearchCV, train_test_split
-from scipy.stats import uniform as sp_rand
+from sklearn.model_selection import train_test_split
 
 '''
 数值  武器类型    子弹  血量  身边队友  行为类别
@@ -20,7 +17,7 @@ from scipy.stats import uniform as sp_rand
 '''
 
 df = pd.read_csv('fightrun2.csv')
-df = df.ix[1:,['子弹','武器','血量','身边队友','行为']] # 读取的列要么都是字符，要么都是数字
+df = df.ix[:,['子弹','武器','血量','身边队友','行为']] # 读取的列要么都是字符，要么都是数字
 
 df = df.dropna()
 #

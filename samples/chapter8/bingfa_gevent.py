@@ -3,8 +3,9 @@ from gevent import monkey; monkey.patch_all()
 import time
 
 def foo(n):
-    time.sleep(5)
     print(n)
+    time.sleep(5)  # 好比服务器的响应时间
+    
 #
 #
 tasks = [
@@ -18,8 +19,8 @@ tasks = [
 gevent.joinall(tasks)
 
 # 不用并发，费时
-foo('123456789')
-foo('123456789')
-foo('123456789')
-foo('123456789')
-foo('123456789')
+foo('567')
+foo('567')
+foo('567')
+foo('567')
+foo('567')

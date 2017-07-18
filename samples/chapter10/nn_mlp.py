@@ -6,12 +6,8 @@ mlp神经网络
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-from sklearn.naive_bayes import GaussianNB
-from sklearn import tree
-from sklearn.externals.six import StringIO
 from sklearn import metrics
-from sklearn.model_selection import GridSearchCV, RandomizedSearchCV, train_test_split
-from scipy.stats import uniform as sp_rand
+from sklearn.model_selection import train_test_split
 from sklearn.neural_network import MLPClassifier
 
 '''
@@ -22,7 +18,7 @@ from sklearn.neural_network import MLPClassifier
 '''
 
 df = pd.read_csv('fightrun2.csv')
-df = df.ix[1:,['子弹','武器','血量','身边队友','行为']] # 读取的列要么都是字符，要么都是数字
+df = df.ix[:,['子弹','武器','血量','身边队友','行为']] # 读取的列要么都是字符，要么都是数字
 
 df = df.dropna()
 #
@@ -42,7 +38,7 @@ x = df[['武器','子弹','血量','身边队友']]
 y = df['行为']#.astype(int)
 #print(y)
 x_train, x_test, y_train, y_test = train_test_split(x, y, train_size=0.6, test_size=0.4)
-model = MLPClassifier(hidden_layer_sizes=(13,13,13),max_iter=500)
+model = MLPClassifier(hidden_layer_sizes=(13,13,13),max_iter=1000)
 m = model.fit(x_train, y_train)
 
 # 预测

@@ -1,16 +1,14 @@
 '''
 手动转换数据
+ppt上示例
 '''
 
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 from sklearn.tree import DecisionTreeClassifier as DTC
-from sklearn import tree
-from sklearn.externals.six import StringIO
 from sklearn import metrics
 from sklearn.model_selection import train_test_split
-from scipy.stats import uniform as sp_rand
 '''
 数值  武器类型    子弹  血量  身边是否有队友  行为类别
 0     手枪        少   少       没              逃跑 
@@ -21,6 +19,7 @@ from scipy.stats import uniform as sp_rand
 
 #df = pd.read_csv('fightrun.csv',encoding='utf-8',names=names) # 指定列名
 df = pd.read_csv('fightrun.csv')
+df = df.dropna()
 df = df.ix[:,['子弹','武器','血量','身边队友','行为']]
 #print(df)
 df[df=='手枪'] = 0
@@ -52,8 +51,8 @@ expected = y_test  # 期望的结果
 
 # 预测结果，
 #print(expected.shape, predicted.shape) #出错时打印看看两者是否一致
-#print(metrics.classification_report(expected, predicted))
-#print(metrics.confusion_matrix(expected, predicted))
+print(metrics.classification_report(expected, predicted))
+print(metrics.confusion_matrix(expected, predicted))
 
 # 说明
 #             precision    recall  f1-score   support
@@ -83,5 +82,4 @@ plt.xlabel('False Positive Rate') #坐标轴标签
 plt.ylabel('True Positive Rate') #坐标轴标签
 plt.ylim(0, 1.05) #边界范围
 plt.xlim(0, 1.05) #边界范围
-plt.legend(loc=4) #图例
 plt.show()

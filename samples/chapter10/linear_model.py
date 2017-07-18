@@ -4,7 +4,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-from sklearn import linear_model
+from sklearn.linear_model import LinearRegression
 from sklearn.externals import joblib  # 模型持久化
 from sklearn import metrics
 
@@ -22,28 +22,24 @@ x = df.height.values.reshape(-1,1)
 y = df.weight
 
 # 学习训练集生成模型
-linreg = linear_model.LinearRegression()
-linreg.fit(x, y)
+model = LinearRegression()
+model.fit(x, y)
 # 训练完的模型持久化
-#joblib.dump(linreg, 'linreg.pkl')
+#joblib.dump(model, 'lr.pkl')
 # 读取持久化的模型
-#linreg = joblib.load('linreg.pkl')
-
+#model = joblib.load('lr.pkl')
 
 # 预测
-yucemianji = 170
-result = linreg.predict(yucemianji)
-print(result)
+print(model.predict(170))
+
 # 得到直线的斜率，截距
-a, b = linreg.coef_, linreg.intercept_
-# 方式1：根据直线方程计算的价格
-print(a * yucemianji + b)
+a, b = model.coef_, model.intercept_
 
 # 画图
 # 散点图
 plt.scatter(df['height'], df['weight'], color='blue')
 # 拟合的直线
-plt.plot(df['height'], linreg.predict(x), color='red', linewidth=4)
+plt.plot(df['height'], model.predict(x), color='red', linewidth=4)
 #plt.plot(df['height'], a*df['height']+b, color='red', linewidth=4)
 plt.xlabel("height")
 plt.ylabel('weight')

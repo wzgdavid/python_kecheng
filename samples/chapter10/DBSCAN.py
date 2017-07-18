@@ -6,6 +6,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 from sklearn.cluster import KMeans, DBSCAN
+
+
 df = pd.read_csv('consumption_data.csv')
 df = df.ix[:,['F','M']]
 # 数据规范化

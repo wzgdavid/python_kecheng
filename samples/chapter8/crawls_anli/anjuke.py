@@ -21,10 +21,10 @@ def get_html(url):
     except error.HTTPError as e:
         print(e)
     html = response.read().decode('utf-8')
-    # html = html.replace('\xa0', '')  #没用
-    html = html.replace('&nbsp;', '--')   # 保存时有其他出编码错误的，也可以这样replace掉
+    html = html.replace('\xa0', '')  #'\xa0'就是&nbsp;
+    html = html.replace('&nbsp;', '')   # 保存时有其他出编码错误的，也可以这样replace掉
     html = html.replace('\xb2', '')
-    html = html.replace('\xa0', '')
+    
     # 即使不保存，这个也要去掉，多余的字符串
 
     with open('anjuke.html', 'w') as f: # 第一次执行，保存为本地文件
@@ -106,11 +106,8 @@ def _test():
     save_to_csv(data, 'anjuke', mode='a')
 
 
-
-
-
 if __name__ == '__main__':
     url = 'https://shanghai.anjuke.com/sale/p8/#filtersort'
     html = get_html(url)
     data = crawl_data(html)
-    save_to_csv(data, 'anjuke', mode='a') 
+    save_to_csv(data, 'anjuke', mode='w')

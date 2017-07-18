@@ -8,11 +8,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 from sklearn.tree import DecisionTreeClassifier as DTC
-from sklearn import tree
-from sklearn.externals.six import StringIO
 from sklearn import metrics
-from sklearn.model_selection import GridSearchCV, RandomizedSearchCV, train_test_split
-from scipy.stats import uniform as sp_rand
+from sklearn.model_selection import train_test_split
 '''
 数值  武器类型    子弹  血量  身边队友  行为类别
 0     手枪        少   少       没         逃跑
