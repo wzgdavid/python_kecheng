@@ -19,8 +19,9 @@ from sklearn.model_selection import train_test_split
 
 #df = pd.read_csv('fightrun.csv',encoding='utf-8',names=names) # 指定列名
 df = pd.read_csv('fightrun.csv')
+
+df = df.ix[1:,['武器','子弹','血量','身边队友','行为']]
 df = df.dropna()
-df = df.ix[:,['子弹','武器','血量','身边队友','行为']]
 #print(df)
 df[df=='手枪'] = 0
 df[df=='少'] = 0

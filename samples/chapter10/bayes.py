@@ -17,7 +17,7 @@ from itertools import product
 '''
 
 df = pd.read_csv('fightrun2.csv')
-df = df.ix[:,['子弹','武器','血量','身边队友','行为']] # 
+df = df.ix[:,['子弹','武器','血量','身边队友','行为']] # 选取需要的列
 
 df = df.dropna()
 #
@@ -49,12 +49,12 @@ print(metrics.classification_report(expected, predicted))
 cm = metrics.confusion_matrix(expected, predicted)
 # 矩阵标准化 值在0, 1 之间
 cm = cm.astype('float') / cm.sum(axis=1)[:, np.newaxis]
-print(type(cm))
+print(cm)
 
 
 # 画混淆矩阵
 classes = ['逃跑','战斗','躲藏'] # 分类名
-matrix_marks = range(len(classes))  # 混淆矩阵的边长
+length = range(len(classes))  # 混淆矩阵的边长
 plt.rcParams['font.sans-serif'] = ['SimHei'] # 正常显示中文
 plt.imshow(cm, cmap = plt.cm.Blues)
 thresh = cm.max() / 2.
@@ -63,8 +63,8 @@ for i, j in product(range(cm.shape[0]), range(cm.shape[1])):
              horizontalalignment="center",
              # 浅色背景深色字，深背景浅色字
              color="white" if cm[i, j] > thresh else "black") 
-plt.xticks(matrix_marks, classes)
-plt.yticks(matrix_marks, classes)
+plt.xticks(length, classes)
+plt.yticks(length, classes)
 plt.colorbar()
 plt.ylabel('真值')
 plt.xlabel('预测值')
