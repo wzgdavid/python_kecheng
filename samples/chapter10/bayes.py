@@ -16,7 +16,7 @@ from itertools import product
 2                 多   多                  躲藏
 '''
 
-df = pd.read_csv('fightrun2.csv')
+df = pd.read_csv(r'D:\python_kecheng\samples\csv\fightrun2.csv')
 df = df.ix[:,['子弹','武器','血量','身边队友','行为']] # 选取需要的列
 
 df = df.dropna()
@@ -47,8 +47,8 @@ expected = y_test  # 期望的结果
 print(metrics.classification_report(expected, predicted))
 # 混淆矩阵
 cm = metrics.confusion_matrix(expected, predicted)
-# 矩阵标准化 值在0, 1 之间
-cm = cm.astype('float') / cm.sum(axis=1)[:, np.newaxis]
+## 矩阵标准化 值在0, 1 之间
+#cm = cm.astype('float') / cm.sum(axis=1)[:, np.newaxis]
 print(cm)
 
 

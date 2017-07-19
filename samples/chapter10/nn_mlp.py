@@ -17,7 +17,7 @@ from sklearn.neural_network import MLPClassifier
 2                 多   多                  躲藏
 '''
 
-df = pd.read_csv('fightrun2.csv')
+df = pd.read_csv(r'D:\python_kecheng\samples\csv\fightrun2.csv')
 df = df.ix[:,['子弹','武器','血量','身边队友','行为']] # 读取的列要么都是字符，要么都是数字
 
 df = df.dropna()

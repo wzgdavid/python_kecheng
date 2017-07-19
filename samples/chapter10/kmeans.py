@@ -6,7 +6,7 @@ import pandas as pd
 from sklearn.cluster import KMeans
 from sklearn import preprocessing
 
-df = pd.read_csv('consumption_data.csv')
+df = pd.read_csv(r'D:\python_kecheng\samples\csv\consumption_data.csv')
 df = df.ix[:,['R','F','M']]
 # 数据规范化  选一种
 # 零-均值规范化，均值为0，标准差为1

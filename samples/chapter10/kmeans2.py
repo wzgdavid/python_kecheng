@@ -1,13 +1,15 @@
 #使用K-Means算法聚类消费行为特征数据
-# 选两个特征， 以便画图（二维图）
+# 选两个特征， 以便画二维图
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 from sklearn.cluster import KMeans
 
 
-df = pd.read_csv('consumption_data.csv')
+df = pd.read_csv(r'D:\python_kecheng\samples\csv\consumption_data.csv')
 df = df.ix[:,['F','M']]
+# 去掉离散点
+df = df[(df.F<45) &(df.M<30000)]
 # 数据标准化
 df2 = (df - df.mean())/df.std()
 
@@ -32,7 +34,7 @@ print(r)
 y_pred = model.fit_predict(df2)
 #print(set(y_pred))
 #plt.scatter(df.F, df.M)  # 未分类散点图
-plt.scatter(df.F, df.M, c=y_pred) # 分类
+plt.scatter(df.F, df.M) # 分类
 plt.xlabel('F')
 plt.ylabel('M')
 plt.show()

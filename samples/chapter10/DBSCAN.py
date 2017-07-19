@@ -8,7 +8,7 @@ import pandas as pd
 from sklearn.cluster import KMeans, DBSCAN
 
 
-df = pd.read_csv('consumption_data.csv')
+df = pd.read_csv(r'D:\python_kecheng\samples\csv\consumption_data.csv')
 df = df.ix[:,['F','M']]
 # 数据规范化
 df = (df - df.mean())/df.std()
