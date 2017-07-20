@@ -1,12 +1,13 @@
 '''
 猫狗兔子
+ppt上示例
 '''
 
 from itertools import product
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-from sklearn.naive_bayes import GaussianNB
+from sklearn.naive_bayes import GaussianNB,MultinomialNB
 from sklearn import metrics
 from sklearn.model_selection import train_test_split
 
@@ -34,7 +35,8 @@ y = df['分类']
 x_train, x_test, y_train, y_test = train_test_split(x, y, train_size=0.7, test_size=0.3)
 
 # 学习
-model = GaussianNB()
+#model = GaussianNB()
+model = MultinomialNB()
 model.fit(x_train, y_train)
 
 # 预测结果

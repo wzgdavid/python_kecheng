@@ -1,4 +1,5 @@
 #使用K-Means算法聚类消费行为特征数据
+#ppt上示例
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D #画3D图
 import numpy as np
