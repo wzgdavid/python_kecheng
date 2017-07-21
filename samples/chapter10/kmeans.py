@@ -5,11 +5,27 @@ from mpl_toolkits.mplot3d import Axes3D #画3D图
 import numpy as np
 import pandas as pd
 from sklearn.cluster import KMeans
+import seaborn as sns; sns.set_style("whitegrid")
+
 
 df = pd.read_csv(r'D:\python_kecheng\samples\csv\consumption_data.csv')
 df = df.ix[:,['R','F','M']]
+
+
+# 观察数据，看是否有异常值
+# 可以画箱型图，直观
+#sns.boxplot(data=df.R)
+#plt.ylim(0,df.R.max()) 
+#plt.ylim(0,130) 
+#sns.boxplot(data=df.F)
+#plt.ylim(0,df.F.max())
+#sns.boxplot(data=df.M)
+#plt.ylim(0,df.M.max())
+#plt.ylim(0, 20000)
+#plt.show()
+
 # 去掉夸张离群点
-df = df[(df.F<45) &(df.M<30000)]
+df = df[(df.R<80) | (df.F<50) | (df.M<8400)]
 # 数据规范化  选一种
 # 1  零-均值规范化，均值为0，标准差为1
 df2 = (df - df.mean())/df.std() # df2为规范化的数据集

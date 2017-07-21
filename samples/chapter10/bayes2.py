@@ -68,4 +68,5 @@ for i, j in product(range(cm.shape[0]), range(cm.shape[1])):
              horizontalalignment="center",
              # 浅色背景深色字，深背景浅色字
              color="white" if cm[i, j] > half else "black") 
+#sns.heatmap(cm, annot=True)
 plt.show()
