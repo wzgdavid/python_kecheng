@@ -7,7 +7,7 @@ sns.set_style("whitegrid")
 plt.rcParams['font.sans-serif'] = ['SimHei'] # 正常显示中文
 
 
-df =  pd.read_csv(r'D:\python_kecheng\samples\csv\Pokemon.csv')
+df =  pd.read_csv(r'..\csv\Pokemon.csv')
 #df.head(n=10)
 
 df.columns = df.columns.str.upper().str.replace('_', '') #change into upper case

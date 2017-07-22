@@ -16,7 +16,7 @@ from itertools import product
 2                 多   多                  躲藏
 '''
 
-df = pd.read_csv(r'D:\python_kecheng\samples\csv\fightrun2.csv')
+df = pd.read_csv(r'..\csv\fightrun2.csv')
 df = df.ix[:,['子弹','武器','血量','身边队友','行为']] # 选取需要的列
 
 df = df.dropna()

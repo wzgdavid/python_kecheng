@@ -5,10 +5,11 @@ from mpl_toolkits.mplot3d import Axes3D #画3D图
 import numpy as np
 import pandas as pd
 from sklearn.cluster import KMeans
-import seaborn as sns; sns.set_style("whitegrid")
+import seaborn as sns
+sns.set_style("whitegrid")
 
 
-df = pd.read_csv(r'D:\python_kecheng\samples\csv\consumption_data.csv')
+df = pd.read_csv(r'..\csv\consumption_data.csv')
 df = df.ix[:,['R','F','M']]
 
 

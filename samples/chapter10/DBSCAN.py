@@ -8,8 +8,11 @@ import pandas as pd
 from sklearn.cluster import KMeans, DBSCAN
 
 
-df = pd.read_csv(r'D:\python_kecheng\samples\csv\consumption_data.csv')
+df = pd.read_csv(r'..\csv\consumption_data.csv')
 df = df.ix[:,['F','M']]
+
+# 去掉夸张离群点
+df = df[ (df.F<50) | (df.M<8400)]
 # 数据规范化
 df = (df - df.mean())/df.std()
 

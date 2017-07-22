@@ -8,7 +8,7 @@ import seaborn as sns
 sns.set_style("whitegrid")
 
 
-df = pd.read_csv(r'D:\python_kecheng\samples\csv\Pokemon.csv')
+df = pd.read_csv(r'..\csv\Pokemon.csv')
 df = df.set_index('Name').drop(['#'],axis=1)
 df2 = df[['HP','Attack','Defense','Sp. Atk','Sp. Def','Speed']]
 #print(df)

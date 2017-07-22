@@ -18,7 +18,7 @@ from sklearn.model_selection import train_test_split
 #names = ['zidan','wuqi','xueliang','do_what','duiyou']
 
 #df = pd.read_csv('fightrun.csv',encoding='utf-8',names=names) # 指定列名
-df = pd.read_csv(r'D:\python_kecheng\samples\csv\fightrun.csv')
+df = pd.read_csv(r'..\csv\fightrun.csv')
 
 df = df.ix[1:,['武器','子弹','血量','身边队友','行为']]
 df = df.dropna()

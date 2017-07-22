@@ -20,7 +20,7 @@ from sklearn.model_selection import train_test_split
 #names = ['luobo','yu','haozi','gutou','dwb','ced','fenlei']
 ## 读取csv时自定义列名
 #df = pd.read_csv('D:\csv\catdograbbit.csv', names = names)
-df = pd.read_csv(r'D:\python_kecheng\samples\csv\catdograbbit.csv')
+df = pd.read_csv(r'..\csv\catdograbbit.csv')
 #df = df.ix[:,['喜欢吃萝卜','喜欢吃鱼','喜欢捉耗子','喜欢啃骨头','短尾巴','长耳朵','分类']]
 df[df=='是'] = 1
 df[df=='否'] = 0

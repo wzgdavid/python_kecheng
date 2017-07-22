@@ -6,7 +6,7 @@ import pandas as pd
 from sklearn.cluster import KMeans
 
 
-df = pd.read_csv(r'D:\python_kecheng\samples\csv\consumption_data.csv')
+df = pd.read_csv(r'..\csv\consumption_data.csv')
 df = df.ix[:,['F','M']]
 # 去掉离群点
 df = df[(df.F<45) &(df.M<30000)]

@@ -10,7 +10,7 @@ from sklearn.model_selection import train_test_split
 
 # Advertising.csv来自http://www-bcf.usc.edu/~gareth/ISL/Advertising.csv
 # "","TV","Radio","Newspaper","Sales"
-df = pd.read_csv(r'D:\python_kecheng\samples\csv\Advertising.csv')
+df = pd.read_csv(r'..\csv\Advertising.csv')
 #print(df)
 #
 #print(df.Sales.corr(df.TV))
