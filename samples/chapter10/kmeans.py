@@ -5,6 +5,7 @@ from mpl_toolkits.mplot3d import Axes3D #画3D图
 import numpy as np
 import pandas as pd
 from sklearn.cluster import KMeans
+from sklearn.preprocessing import MinMaxScaler, StandardScaler
 import seaborn as sns
 sns.set_style("whitegrid")
 
@@ -27,11 +28,17 @@ df = df.ix[:,['R','F','M']]
 
 # 去掉夸张离群点
 df = df[(df.R<80) | (df.F<50) | (df.M<8400)]
-# 数据规范化  选一种
+
+# 特征数据规范化，统一取值范围  选一种
 # 1  零-均值规范化，均值为0，标准差为1
-df2 = (df - df.mean())/df.std() # df2为规范化的数据集
+#df2 = (df - df.mean())/df.std() # df2为规范化的数据集
+# 用sklearn方法
+df2 = StandardScaler().fit_transform(df)
+
 # 2  最小-最大规范化， 范围限定在0到1之间
 #df2 = (df - df.min())/(df.max() - df.min())
+# 用sklearn方法
+#df2 = MinMaxScaler().fit_transform(df)
 
 #分为n_clusters类，聚类最大循环次数500
 model = KMeans(n_clusters = 5, max_iter = 500)
@@ -46,7 +53,7 @@ r2 = pd.DataFrame(model.cluster_centers_)
 #横向连接（0是纵向），得到聚类中心对应的类别下的数目
 r = pd.concat([r2, r1], axis = 1) 
 #重命名表头
-r.columns = list(df2.columns) + ['类别数目'] 
+r.columns = list(df.columns) + ['类别数目'] 
 print(r)
 
 

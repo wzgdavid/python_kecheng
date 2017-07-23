@@ -1,14 +1,16 @@
 '''
 from decision_tree_t2
 '''
-
+from itertools import product
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
+from sklearn.preprocessing import LabelEncoder
 from sklearn.naive_bayes import GaussianNB
 from sklearn import metrics
 from sklearn.model_selection import train_test_split
-from itertools import product
+from sklearn.preprocessing import LabelEncoder
+
 '''
 数值  武器类型    子弹  血量  身边队友  行为类别
 0     手枪        少   少       没         逃跑
@@ -20,21 +22,27 @@ df = pd.read_csv(r'..\csv\fightrun2.csv')
 df = df.ix[:,['子弹','武器','血量','身边队友','行为']] # 选取需要的列
 
 df = df.dropna()
-#
-df[(df=='手枪')|(df=='少')|(df=='没')|(df=='逃跑')] = 0
-df[(df=='机枪')|(df=='中')|(df=='有')|(df=='战斗')] = 1
-df[(df=='多')|(df=='躲藏')] = 2
-# 单列处理数据变换
-#sq = df['武器'].copy()
-#sq[sq=='手枪'] = 0
-#sq[sq=='机枪'] = 1
-#df['武器'] = sq
 
-df = df.astype(int)
-#print(df)
+# 手动转
+#df[(df=='手枪')|(df=='少')|(df=='没')|(df=='逃跑')] = 0
+#df[(df=='机枪')|(df=='中')|(df=='有')|(df=='战斗')] = 1
+#df[(df=='多')|(df=='躲藏')] = 2
+#df = df.astype(int)
+# 用LabelEncoder转
+classle = LabelEncoder()
+df['武器'] = classle.fit_transform(df['武器'].values)
+df['子弹'] = classle.fit_transform(df['子弹'].values)
+df['血量'] = classle.fit_transform(df['血量'].values)
+df['身边队友'] = classle.fit_transform(df['身边队友'].values)
+df['行为'] = classle.fit_transform(df['行为'].values)
+
 x = df[['武器','子弹','血量','身边队友']]
-#print(x)
-y = df['行为']#.astype(int)
+y = df['行为']
+
+
+
+
+
 #print(y)
 x_train, x_test, y_train, y_test = train_test_split(x, y, train_size=0.6, test_size=0.4)
 model = GaussianNB()

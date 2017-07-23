@@ -9,6 +9,8 @@ import pandas as pd
 from sklearn.tree import DecisionTreeClassifier as DTC
 from sklearn import metrics
 from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import LabelEncoder
+
 '''
 数值  武器类型    子弹  血量  身边是否有队友  行为类别
 0     手枪        少   少       没              逃跑 
@@ -22,16 +24,22 @@ df = pd.read_csv(r'..\csv\fightrun.csv')
 
 df = df.ix[1:,['武器','子弹','血量','身边队友','行为']]
 df = df.dropna()
-#print(df)
-df[df=='手枪'] = 0
-df[df=='少'] = 0
-df[df=='没'] = 0
-df[df=='逃跑'] = 0
-df[df!=0] = 1
-# 此时df中数据类型是object，要转换一下astype(int)
-df = df.astype(int)
-#print(df)
-#model = DTC()
+
+# 手动转
+#df[(df=='手枪')|(df=='少')|(df=='没')|(df=='逃跑')] = 0
+#df[(df=='机枪')|(df=='中')|(df=='有')|(df=='战斗')] = 1
+#df[(df=='多')|(df=='躲藏')] = 2
+#df = df.astype(int)
+# 用LabelEncoder转
+classle = LabelEncoder()
+df['武器'] = classle.fit_transform(df['武器'].values)
+df['子弹'] = classle.fit_transform(df['子弹'].values)
+df['血量'] = classle.fit_transform(df['血量'].values)
+df['身边队友'] = classle.fit_transform(df['身边队友'].values)
+df['行为'] = classle.fit_transform(df['行为'].values)
+
+x = df[['武器','子弹','血量','身边队友']]
+y = df['行为']
 
 x = df[['武器','子弹','血量','身边队友']]#.astype(int) 
 #print(x)

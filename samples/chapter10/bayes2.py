@@ -10,6 +10,7 @@ import matplotlib.pyplot as plt
 from sklearn.naive_bayes import GaussianNB,MultinomialNB
 from sklearn import metrics
 from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import LabelEncoder
 
 '''
 是 1 
@@ -22,15 +23,33 @@ from sklearn.model_selection import train_test_split
 #df = pd.read_csv('D:\csv\catdograbbit.csv', names = names)
 df = pd.read_csv(r'..\csv\catdograbbit.csv')
 #df = df.ix[:,['喜欢吃萝卜','喜欢吃鱼','喜欢捉耗子','喜欢啃骨头','短尾巴','长耳朵','分类']]
-df[df=='是'] = 1
-df[df=='否'] = 0
-df[df=='狗'] = 1
-df[df=='猫'] = 2
-df[df=='兔子'] = 3
-df = df.astype(np.int8)
 
-x = df[['喜欢吃萝卜','喜欢吃鱼','喜欢捉耗子','喜欢啃骨头','短尾巴','长耳朵']]
-y = df['分类']
+# 特征处理
+# 手动转
+#df[df=='是'] = 1
+#df[df=='否'] = 0
+#df[df=='狗'] = 1
+#df[df=='猫'] = 2
+#df[df=='兔子'] = 3
+#df = df.astype(np.int8)
+#x = df[['喜欢吃萝卜','喜欢吃鱼','喜欢捉耗子','喜欢啃骨头','短尾巴','长耳朵']]
+#y = df['分类']
+
+# 用labelencoder 转
+#classle = LabelEncoder()
+#df['喜欢吃萝卜'] = classle.fit_transform(df['喜欢吃萝卜'].values)
+#df['喜欢吃鱼'] = classle.fit_transform(df['喜欢吃鱼'].values)
+#df['喜欢捉耗子'] = classle.fit_transform(df['喜欢捉耗子'].values)
+#df['喜欢啃骨头'] = classle.fit_transform(df['喜欢啃骨头'].values)
+#df['短尾巴'] = classle.fit_transform(df['短尾巴'].values)
+#df['长耳朵'] = classle.fit_transform(df['长耳朵'].values)
+#x = df[['喜欢吃萝卜','喜欢吃鱼','喜欢捉耗子','喜欢啃骨头','短尾巴','长耳朵']]
+#y = classle.fit_transform(df['分类'].values)
+
+# 用哑变量
+classle = LabelEncoder()
+x = pd.get_dummies(df.drop('分类', axis=1))
+y = classle.fit_transform(df['分类'].values)
 
 x_train, x_test, y_train, y_test = train_test_split(x, y, train_size=0.7, test_size=0.3)
 
@@ -41,7 +60,7 @@ model.fit(x_train, y_train)
 
 # 预测结果
 #print(model.predict([[0,0,0,0,0,1]]))  # 预测一个，传一组特征
-predicted = model.predict(x_test)
+predicted = model.predict(x_test) # 检验是否过拟合，也可以把这里两行的test换成train
 expected = y_test
 report = metrics.classification_report(predicted, expected)
 print(report)
