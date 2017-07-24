@@ -32,7 +32,7 @@ df = pd.read_csv(r'..\csv\catdograbbit.csv')
 #df[df=='猫'] = 2
 #df[df=='兔子'] = 3
 #df = df.astype(np.int8)
-#x = df[['喜欢吃萝卜','喜欢吃鱼','喜欢捉耗子','喜欢啃骨头','短尾巴','长耳朵']]
+#X = df[['喜欢吃萝卜','喜欢吃鱼','喜欢捉耗子','喜欢啃骨头','短尾巴','长耳朵']]
 #y = df['分类']
 
 # 用labelencoder 转
@@ -43,25 +43,25 @@ df = pd.read_csv(r'..\csv\catdograbbit.csv')
 #df['喜欢啃骨头'] = classle.fit_transform(df['喜欢啃骨头'].values)
 #df['短尾巴'] = classle.fit_transform(df['短尾巴'].values)
 #df['长耳朵'] = classle.fit_transform(df['长耳朵'].values)
-#x = df[['喜欢吃萝卜','喜欢吃鱼','喜欢捉耗子','喜欢啃骨头','短尾巴','长耳朵']]
+#X = df[['喜欢吃萝卜','喜欢吃鱼','喜欢捉耗子','喜欢啃骨头','短尾巴','长耳朵']]
 #y = classle.fit_transform(df['分类'].values)
 
 # 用哑变量
 classle = LabelEncoder()
-x = pd.get_dummies(df.drop('分类', axis=1))
-# print(type(x))  # DataFrame
+X = pd.get_dummies(df.drop('分类', axis=1))
+# print(type(X))  # DataFrame
 y = classle.fit_transform(df['分类'].values)
 
-x_train, x_test, y_train, y_test = train_test_split(x, y, train_size=0.7, test_size=0.3)
+X_train, X_test, y_train, y_test = train_test_split(X, y, train_size=0.7, test_size=0.3)
 
 # 学习
 #model = GaussianNB()
 model = MultinomialNB()
-model.fit(x_train, y_train)
+model.fit(X_train, y_train)
 
 # 预测结果
 #print(model.predict([[0,0,0,0,0,1]]))  # 预测一个，传一组特征
-predicted = model.predict(x_test) # 检验是否过拟合，也可以把这里两行的test换成train
+predicted = model.predict(X_test) # 检验是否过拟合，也可以把这里两行的test换成train
 expected = y_test
 report = metrics.classification_report(predicted, expected)
 print(report)

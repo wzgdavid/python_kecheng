@@ -18,19 +18,19 @@ df = pd.read_csv(r'..\csv\Advertising.csv')
 #print(df.Sales.corr(df.Newspaper))
 
 # 选择特征库 
-x = df[['TV', 'Radio', 'Newspaper']]
+X = df[['TV', 'Radio', 'Newspaper']]
 #print(x)
 # 生成训练集和测试集
 y = df['Sales'] 
 # 交叉验证，用一部分数据来训练，另一部分来验证，这两部分数据不能重复
-x_train, x_test, y_train, y_test = train_test_split(x, y, train_size=0.6, test_size=0.4)
-#print(x_train.shape)  
+X_train, X_test, y_train, y_test = train_test_split(X, y, train_size=0.6, test_size=0.4)
+#print(X_train.shape)  
 #print(y_train.shape) 
-#print(x_test.shape) 
+#print(X_test.shape) 
 #print(y_test.shape)
 
 model = LinearRegression()
-model.fit(x_train, y_train)
+model.fit(X_train, y_train)
 
 a, b = model.intercept_, model.coef_
 print(a)
@@ -38,6 +38,6 @@ print(b)
 #y=2.668+0.0464*TV+0.192*Radio-0.00349*Newspaper
 
 # 预测
-y_predict = model.predict(x_test)
+y_predict = model.predict(X_test)
 print(y_predict)
 

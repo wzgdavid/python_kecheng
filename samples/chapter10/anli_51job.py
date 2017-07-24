@@ -66,8 +66,7 @@ df['工作地点'] = df['工作地点'].map(_area)
 area = pd.get_dummies(df['工作地点'])
 df = pd.concat([area, df], axis=1).drop('工作地点', axis=1)
 
-print(df)
-
+#print(df)
 
 X = df.drop('薪资', axis=1)
 y = df['薪资']
@@ -90,8 +89,6 @@ y_pred = model.predict(X_test)
 #    xi = X_test.iloc[i]
 #    print(xi[xi>0], y)
 
-#xueli = list(le.classes_).index('本科')
-#print(xueli)
 
 # 自己构建一个函数，来预测具体给定的值
 def predict_salary(area, xueli, exp):

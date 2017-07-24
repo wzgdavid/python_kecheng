@@ -33,16 +33,16 @@ df['身边队友'] = classle.fit_transform(df['身边队友'].values)
 df['行为'] = classle.fit_transform(df['行为'].values)
 
 
-x = df[['武器','子弹','血量','身边队友']]
-#print(x)
+X = df[['武器','子弹','血量','身边队友']]
+#print(X)
 y = df['行为']#.astype(int)
 #print(y)
-x_train, x_test, y_train, y_test = train_test_split(x, y, train_size=0.6, test_size=0.4)
+X_train, X_test, y_train, y_test = train_test_split(X, y, train_size=0.6, test_size=0.4)
 model = DTC()
-model.fit(x_train, y_train)
+model.fit(X_train, y_train)
 
 # 预测
-predicted = model.predict(x_test)  # 预测出的结果
+predicted = model.predict(X_test)  # 预测出的结果
 expected = y_test  # 期望的结果
 # 打印预测结果，
 print(metrics.classification_report(expected, predicted))

@@ -38,15 +38,15 @@ df['血量'] = classle.fit_transform(df['血量'].values)
 df['身边队友'] = classle.fit_transform(df['身边队友'].values)
 df['行为'] = classle.fit_transform(df['行为'].values)
 
-x = df[['武器','子弹','血量','身边队友']]
+X = df[['武器','子弹','血量','身边队友']]
 y = df['行为']
 
-x = df[['武器','子弹','血量','身边队友']]#.astype(int) 
-#print(x)
+X = df[['武器','子弹','血量','身边队友']]#.astype(int) 
+#print(X)
 y = df['行为']#.astype(int)
 #print(y)
-x_train, x_test, y_train, y_test = train_test_split(x, y, train_size=0.5, test_size=0.5)
-model = DTC().fit(x_train, y_train)
+X_train, X_test, y_train, y_test = train_test_split(X, y, train_size=0.7, test_size=0.3)
+model = DTC().fit(X_train, y_train)
 
 # 预测
 # 预测一组特征
@@ -55,7 +55,7 @@ predicted = model.predict([(1,1,0,1)])
 
 
 # 预测n组特征
-predicted = model.predict(x_test)  # 预测出的结果
+predicted = model.predict(X_test)  # 预测出的结果
 expected = y_test  # 期望的结果
 
 # 预测结果，
@@ -84,7 +84,7 @@ print(metrics.confusion_matrix(expected, predicted))
 
 
 # ROC曲线
-probas_ = model.predict_proba(x_test)
+probas_ = model.predict_proba(X_test)
 fpr, tpr, thresholds = metrics.roc_curve(y_test, probas_[:, 1], pos_label=1)
 plt.plot(fpr, tpr, linewidth=2, label = 'ROC', color = 'green') #作出ROC曲线
 plt.xlabel('False Positive Rate') #坐标轴标签

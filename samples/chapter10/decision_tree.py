@@ -26,10 +26,10 @@ data = {
 df = pd.DataFrame(data)
 print(df)
 dtc = DTC()
-x = df[['wuqi','zidan','xueliang','duiyou']]
+X = df[['wuqi','zidan','xueliang','duiyou']]
 y = df['do_what']
 
-dtc.fit(x, y)
+dtc.fit(X, y)
 
 r = dtc.predict([[1,0,0,1]])
 print(r)
