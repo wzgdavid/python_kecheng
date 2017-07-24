@@ -49,6 +49,7 @@ df = pd.read_csv(r'..\csv\catdograbbit.csv')
 # 用哑变量
 classle = LabelEncoder()
 x = pd.get_dummies(df.drop('分类', axis=1))
+# print(type(x))  # DataFrame
 y = classle.fit_transform(df['分类'].values)
 
 x_train, x_test, y_train, y_test = train_test_split(x, y, train_size=0.7, test_size=0.3)

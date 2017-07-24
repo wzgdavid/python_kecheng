@@ -3,7 +3,7 @@
 #
 # 选两个特征， 以便画图
 import matplotlib.pyplot as plt
-import numpy as np
+import numpy as  np
 import pandas as pd
 from sklearn.cluster import KMeans, DBSCAN
 
@@ -16,8 +16,9 @@ df = df[ (df.F<50) | (df.M<8400)]
 # 数据规范化
 df = (df - df.mean())/df.std()
 
-#分为n_clusters类，聚类最大循环次数500
-model = DBSCAN(eps = 0.2)
+# 参数eps：确定在同一聚类中两个点彼此之间的距离
+#     min_samples: 每个分类最少点数
+model = DBSCAN(eps = 0.1, min_samples=10)
 model.fit(df) #开始聚类
 
 #print(model.predict([[1, 2535]]))
