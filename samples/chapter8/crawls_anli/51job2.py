@@ -1,3 +1,9 @@
+'''
+这边抓取到的数据，用
+chapter10的anli_51job.py
+来机器学习并预测职位薪资
+'''
+
 from urllib import request, error
 from lxml import etree
 import json

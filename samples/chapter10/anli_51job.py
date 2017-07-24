@@ -1,5 +1,7 @@
 '''
-用chapter8中51jobs2.py抓取的csv数据，通过经验，学历，地点预测职位工资
+用
+chapter8中51jobs2.py
+抓取的csv数据，通过经验，学历，地点预测职位工资
 '''
 
 import numpy as np
@@ -54,20 +56,17 @@ df = df[['工作地点','经验','学历','薪资']]
 
 df['薪资'] = df['薪资'].map(_salary) # series用map dataframe用applymap
 le = LabelEncoder()
-df['学历'] = le.fit_transform(df['学历'].values)
-#print(dir(le))
-#print(le.inverse_transform(0))
-#print(le.classes_) # encoder之后的值是这个classes_的index
+# 学历用哑变量
+#df['学历'] = le.fit_transform(df['学历'].values)
+xueli = pd.get_dummies(df['学历'])
+df = pd.concat([xueli, df], axis=1).drop('学历', axis=1)
 df['经验'] = df['经验'].map(_exp)
 df['工作地点'] = df['工作地点'].map(_area)
-area_list = df['工作地点'].unique()
-#print(area_list)
-
 # 工作地点用哑变量
 area = pd.get_dummies(df['工作地点'])
 df = pd.concat([area, df], axis=1).drop('工作地点', axis=1)
 
-#print(df)
+print(df)
 
 
 X = df.drop('薪资', axis=1)
@@ -91,17 +90,17 @@ y_pred = model.predict(X_test)
 #    xi = X_test.iloc[i]
 #    print(xi[xi>0], y)
 
-xueli = list(le.classes_).index('本科')
+#xueli = list(le.classes_).index('本科')
 #print(xueli)
 
 # 自己构建一个函数，来预测具体给定的值
 def predict_salary(area, xueli, exp):
-    xueli = list(le.classes_).index('本科')
+
     x = X_test.iloc[0].copy() # 随便取一行，构建一个特征的结构
     x[:] = 0
-    x['学历'] = xueli
     x['经验'] = exp
     x[area] = 1
+    x[xueli] = 1
     #print(x)
     x = x.values.reshape(1, -1)
     #print(x)
@@ -109,6 +108,7 @@ def predict_salary(area, xueli, exp):
     print(pred)
     
 
-predict_salary('北京', '大专', 4)
-predict_salary('北京', '本科', 3)
-predict_salary('上海', '本科', 2)
+
+predict_salary('上海', '大专', 5)
+predict_salary('上海', '本科', 5)
+predict_salary('上海', '硕士', 5)
