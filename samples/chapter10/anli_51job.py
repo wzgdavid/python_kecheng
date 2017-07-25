@@ -106,6 +106,9 @@ def predict_salary(area, xueli, exp):
     
 
 
-predict_salary('上海', '大专', 5)
-predict_salary('上海', '本科', 5)
-predict_salary('上海', '硕士', 5)
+predict_salary('北京', '大专', 1)
+predict_salary('北京', '本科', 1)
+predict_salary('上海', '本科', 1)
+predict_salary('北京', '大专', 2)
+predict_salary('北京', '本科', 2)
+predict_salary('上海', '本科', 2)

@@ -38,22 +38,6 @@ def get_html(url):
     return html
 
 
-#def local_html():
-#    # 先用本地文件跑，等程序写完了，再从网站爬取
-#    with open('..\csv\51jobs.html', 'r') as html:
-#        html = html.read()
-#    return html
-
-#def _get_salary(salary_str):
-#
-#    '''
-#    0.8-1.2万/月   
-#    4-6千/月
-#    15-20万/年
-#    100元/天
-#    是爬数据时处理还是做机器学习时处理
-#    '''
-
 def crawl_data(html):
     html = etree.HTML(html)
     html = etree.ElementTree(html)

@@ -13,7 +13,7 @@ df =  pd.read_csv(r'..\csv\Pokemon.csv')
 df.columns = df.columns.str.upper().str.replace('_', '') #change into upper case
 #print(df.head())
 
-df[df['LEGENDARY']==True].head(5)
+df[df['LEGENDARY']==True]
 
 df = df.set_index('NAME')
 #### 清洗数据
@@ -35,24 +35,31 @@ fire_dradon = df[((df['TYPE 1']=='Fire') & (df['TYPE 2']=='Dragon')) | ((df['TYP
 #print(fire_dradon)
 
 # 找出HP最高的宠物和它的HP量
-maxhp = (df['ATTACK'].argmax(), df['HP'].max())
+maxhp = (df['HP'].argmax(), df['HP'].max())
 #print(maxhp[0])
-# 打印出这个宠物的所有属性
-#print(df.loc[maxhp[0]])
 
 # 总属性值最高的3个
 totalmax = df.sort_values('TOTAL',ascending=False).head(3)
 #print(totalmax)
 
-# 一共有多少种类型
-types = df['TYPE 1'].unique()
-#print(types)
+# 查看类型
+types1 = df['TYPE 1'].unique()
+types2 = df['TYPE 2'].unique()
 
-# 计算每个类型宠物的数量, 两种方法
+# 火系中攻击力最高的宠物
+typefire = df[(df['TYPE 1'] == 'Fire') | (df['TYPE 2'] == 'Fire')]
+#print(typefire.ATTACK.idxmax())
+# 火系中攻击力前三的宠物
+#print(typefire.sort_values('ATTACK', ascending=False).head(3))
+
+
+
+
+# 计算每个类型宠物的数量
 type1 = df['TYPE 1'].value_counts()
 type2 = df['TYPE 2'].value_counts()
-type1 = df.groupby(['TYPE 1']).size()
-type2 = df.groupby(['TYPE 2']).size()
+#type1 = df.groupby(['TYPE 1']).size()
+#type2 = df.groupby(['TYPE 2']).size()
 typecount = (type1+type2).sort_values(ascending=False)
 #print(typecount)
 
@@ -102,15 +109,13 @@ def scatter1():
 def pie1():
     labels = 'Water', 'Normal', 'Flying', 'Grass', 'Psychic', 'Bug', 'Ground', 'Fire', 'Poison', 'Rock', 'Fighting', 'Other' 
     sizes = [126, 102, 101, 95, 90, 72, 67, 64, 62, 58, 53, 324]
-    colors = ['Y', 'B', '#00ff00', 'C', 'R', 'G', 'silver', 'gray', 'M', '#234567', '#987654','#ab35b6']
     # 突出显示
     explode = (0, 0, 0.1, 0, 0, 0, 0, 0, 0, 0, 0, 0)  
-    plt.pie(sizes, explode=explode, labels=labels, colors=colors,
-            autopct='%1.1f%%')
-    plt.axis('equal') # 圆形
+    plt.pie(sizes, explode=explode, labels=labels, autopct='%1.1f%%')
+    plt.axis('equal') # 轴相等，即圆形
     plt.title("不同类型宠物比例")
     plt.show()
-#pie1()
+pie1()
 
 
 # 所有宠物各属性值箱型图分布
@@ -132,7 +137,7 @@ def boxplot2(col, maxsize=200):
     sns.boxplot(x="TYPE 1", y =col, data = df)
     plt.ylim(0,maxsize)
     plt.show()
-#boxplot2('HP')
+#boxplot2('ATTACK')
 
 # 每个类型的类别散布图
 def swarmplot1(col):
@@ -162,6 +167,6 @@ def bar():
     #print(a)
     # 选出一部分画
     a = a[['Water','Fire','Grass','Dragon','Normal','Rock','Flying','Electric']]
-    a.plot(color=['b','r','g','#FFA500','brown','#6666ff','#001012','y'], marker='o')
+    a.plot(marker='o')
     plt.show()
-bar()
+#bar()

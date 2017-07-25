@@ -16,14 +16,11 @@ df2 = df[['HP','Attack','Defense','Sp. Atk','Sp. Def','Speed']]
 # 观察数据，看是否有异常值
 # 可以画箱型图，直观
 sns.boxplot(data=df.HP)
-plt.ylim(0,df.HP.max()) 
-#plt.ylim(0,130) 
-#sns.boxplot(data=df.F)
-#plt.ylim(0,df.F.max())
-#sns.boxplot(data=df.M)
-#plt.ylim(0,df.M.max())
-#plt.ylim(0, 20000)
-#plt.show()
+
+sns.boxplot(data=df.Attack)
+plt.ylim(0,222) 
+
+plt.show()
 
 
 
