@@ -44,6 +44,7 @@ strong = df.sort_values(by='TOTAL', ascending=False)
 strong = strong.drop_duplicates(subset=['TYPE 1'],keep='first')
 #print(strong)
 
+# type 1 和type2 合并
 df1 = df.drop('TYPE 2', axis=1)
 df1['TYPE'] = df['TYPE 1']
 df2 = df.drop('TYPE 1', axis=1).dropna()

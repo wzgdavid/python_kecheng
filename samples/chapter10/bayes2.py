@@ -32,6 +32,7 @@ df = pd.read_csv(r'..\csv\catdograbbit.csv')
 #df[df=='猫'] = 2
 #df[df=='兔子'] = 3
 #df = df.astype(np.int8)
+## 选取训练集特征
 #X = df[['喜欢吃萝卜','喜欢吃鱼','喜欢捉耗子','喜欢啃骨头','短尾巴','长耳朵']]
 #y = df['分类']
 
@@ -43,13 +44,13 @@ df = pd.read_csv(r'..\csv\catdograbbit.csv')
 #df['喜欢啃骨头'] = classle.fit_transform(df['喜欢啃骨头'].values)
 #df['短尾巴'] = classle.fit_transform(df['短尾巴'].values)
 #df['长耳朵'] = classle.fit_transform(df['长耳朵'].values)
+## 选取训练集特征
 #X = df[['喜欢吃萝卜','喜欢吃鱼','喜欢捉耗子','喜欢啃骨头','短尾巴','长耳朵']]
 #y = classle.fit_transform(df['分类'].values)
 
 # 用哑变量
 classle = LabelEncoder()
 X = pd.get_dummies(df.drop('分类', axis=1))
-# print(type(X))  # DataFrame
 y = classle.fit_transform(df['分类'].values)
 
 X_train, X_test, y_train, y_test = train_test_split(X, y, train_size=0.7, test_size=0.3)
@@ -59,16 +60,15 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, train_size=0.7, test_s
 model = MultinomialNB()
 model.fit(X_train, y_train)
 
-# 预测结果
-#print(model.predict([[0,0,0,0,0,1]]))  # 预测一个，传一组特征
-predicted = model.predict(X_test) # 检验是否过拟合，也可以把这里两行的test换成train
+# 查看预测效果
+predicted = model.predict(X_test)
 expected = y_test
 report = metrics.classification_report(predicted, expected)
 print(report)
-
 # 混淆矩阵
 cm = metrics.confusion_matrix(predicted, expected)
 print(cm)
+
 
 # 画混淆矩阵
 
@@ -88,5 +88,8 @@ for i, j in product(range(cm.shape[0]), range(cm.shape[1])):
              horizontalalignment="center",
              # 浅色背景深色字，深背景浅色字
              color="white" if cm[i, j] > half else "black") 
-#sns.heatmap(cm, annot=True)
 plt.show()
+
+
+
+print(dir(metrics))

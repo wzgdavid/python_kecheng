@@ -115,7 +115,7 @@ def pie1():
     plt.axis('equal') # 轴相等，即圆形
     plt.title("不同类型宠物比例")
     plt.show()
-pie1()
+#pie1()
 
 
 # 所有宠物各属性值箱型图分布
@@ -139,6 +139,19 @@ def boxplot2(col, maxsize=200):
     plt.show()
 #boxplot2('ATTACK')
 
+#提琴图，和盒形图作用类似，但不是显示真实值，显示的是概率分布
+def violinplot1():
+    plt.title('以TYPE 1分类ATTACK')
+    sns.violinplot(x = "TYPE 1", y = "ATTACK",data = df)
+    plt.ylim(0,200)
+    plt.show()
+
+#plt.title('Strongest Genaration')
+##sns.violinplot(x = "GENERATION", y = "TOTAL",data = df)
+#sns.violinplot(x = "LEGENDARY", y = "TOTAL",data = df)
+#plt.show()
+
+
 # 每个类型的类别散布图
 def swarmplot1(col):
     plt.figure(figsize=(12,6))
@@ -146,11 +159,11 @@ def swarmplot1(col):
     # 取出数量最多的类型
     df1=df[df['TYPE 1'].isin(top_types.index)]
     # 没一点代表一个宠物
-    sns.swarmplot(x='TYPE 1',y=col, data=df1, hue='LEGENDARY')
+    sns.swarmplot(x='TYPE 1',y=col, data=df1, hue='GENERATION')
     # 均值画线
     plt.axhline(df1[col].mean(),color='red',linestyle='dashed')
     plt.show()
-#swarmplot1('HP')
+swarmplot1('HP')
 
 # 属性之间相关性
 #sns.heatmap(df.corr(), annot=True)

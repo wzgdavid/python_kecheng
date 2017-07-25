@@ -16,7 +16,7 @@ height_weight = {
 df = pd.DataFrame(height_weight)
 # 相关性高，用线性回归得出的结果才可靠
 print(df.height.corr(df.weight))
-# 训练集 特征库
+# 训练集 特征
 X_train = df.height.values.reshape(-1,1)
 # 结果集
 y_train = df.weight
