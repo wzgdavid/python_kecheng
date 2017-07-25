@@ -10,5 +10,5 @@ plt.scatter(x, y, color='blue')
 plt.xlabel("x")
 plt.ylabel('y')
 
-plt.savefig('1.png')
+#plt.savefig('1.png')
 plt.show()

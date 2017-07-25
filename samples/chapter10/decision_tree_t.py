@@ -25,7 +25,7 @@ df = pd.read_csv(r'..\csv\fightrun.csv')
 #df = df.ix[1:,['武器','子弹','血量','身边队友','行为']]
 df.columns = ['#', 'zidan', 'wuqi', 'hp', 'duiyou', 'do']
 df = df.drop('#', axis=1)
-print(df.columns)
+
 # 手动转
 #df[(df=='手枪')|(df=='少')|(df=='没')|(df=='逃跑')] = 0
 #df[(df=='机枪')|(df=='中')|(df=='有')|(df=='战斗')] = 1
@@ -81,13 +81,18 @@ print(metrics.confusion_matrix(expected, predicted))
 
 
 
-# ROC曲线
+
 probas_ = model.predict_proba(X_test)
 fpr, tpr, thresholds = metrics.roc_curve(y_test, probas_[:, 1], pos_label=1)
+
+# 计算AUC值
+auc = metrics.auc(fpr, tpr, reorder=False)
+print('auc is ', auc)
+
+# 作ROC曲线
 plt.plot(fpr, tpr, linewidth=2, label = 'ROC', color = 'green') #作出ROC曲线
 plt.xlabel('False Positive Rate') #坐标轴标签
 plt.ylabel('True Positive Rate') #坐标轴标签
 plt.ylim(0, 1.05) #边界范围
 plt.xlim(0, 1.05) #边界范围
-print(fpr, tpr)
 plt.show()
