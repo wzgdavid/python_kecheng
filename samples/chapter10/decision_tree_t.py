@@ -22,9 +22,10 @@ from sklearn.preprocessing import LabelEncoder
 #df = pd.read_csv('fightrun.csv',encoding='utf-8',names=names) # 指定列名
 df = pd.read_csv(r'..\csv\fightrun.csv')
 
-df = df.ix[1:,['武器','子弹','血量','身边队友','行为']]
-df = df.dropna()
-
+#df = df.ix[1:,['武器','子弹','血量','身边队友','行为']]
+df.columns = ['#', 'zidan', 'wuqi', 'hp', 'duiyou', 'do']
+df = df.drop('#', axis=1)
+print(df.columns)
 # 手动转
 #df[(df=='手枪')|(df=='少')|(df=='没')|(df=='逃跑')] = 0
 #df[(df=='机枪')|(df=='中')|(df=='有')|(df=='战斗')] = 1
@@ -32,20 +33,17 @@ df = df.dropna()
 #df = df.astype(int)
 # 用LabelEncoder转
 classle = LabelEncoder()
-df['武器'] = classle.fit_transform(df['武器'].values)
-df['子弹'] = classle.fit_transform(df['子弹'].values)
-df['血量'] = classle.fit_transform(df['血量'].values)
-df['身边队友'] = classle.fit_transform(df['身边队友'].values)
-df['行为'] = classle.fit_transform(df['行为'].values)
+df['zidan'] = classle.fit_transform(df['zidan'].values)
+df['wuqi'] = classle.fit_transform(df['wuqi'].values)
+df['hp'] = classle.fit_transform(df['hp'].values)
+df['duiyou'] = classle.fit_transform(df['duiyou'].values)
+df['do'] = classle.fit_transform(df['do'].values)
 
-X = df[['武器','子弹','血量','身边队友']]
-y = df['行为']
+X = df[['zidan','wuqi','hp','duiyou']]
+y = df['do']
 
-X = df[['武器','子弹','血量','身边队友']]#.astype(int) 
-#print(X)
-y = df['行为']#.astype(int)
 #print(y)
-X_train, X_test, y_train, y_test = train_test_split(X, y, train_size=0.7, test_size=0.3)
+X_train, X_test, y_train, y_test = train_test_split(X, y, train_size=0.5, test_size=0.5)
 model = DTC().fit(X_train, y_train)
 
 # 预测
@@ -91,4 +89,5 @@ plt.xlabel('False Positive Rate') #坐标轴标签
 plt.ylabel('True Positive Rate') #坐标轴标签
 plt.ylim(0, 1.05) #边界范围
 plt.xlim(0, 1.05) #边界范围
+print(fpr, tpr)
 plt.show()
