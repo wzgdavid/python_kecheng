@@ -74,13 +74,13 @@ class Student3(Student2):
 
 s2 = Student2('trump', 99)
 s3 = Student2('tom', 70)
-print(s2.get_score())
+#print(s2.get_score())
 s2.score = 88
-print(s2.score)
-print(s2)
+#print(s2.score)
+#print(s2)
 s2['name'] = 'disney'
-print(s2['name'])
-print(s2+s3)
+#print(s2['name'])
+#print(s2+s3)
 #__str__()
 #__len__()
 #__getitem__()

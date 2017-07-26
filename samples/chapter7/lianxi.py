@@ -32,7 +32,15 @@ class Rectangle():
                 self.__width, self.__height, self.area
             )
 
+    def __add__(self, other):
+        return self.area + other.area
+
 r = Rectangle(4, 6)
 r.height = 5
 print(r.height)
-print(r)
+print(str(r))
+
+r1 = Rectangle(4, 6)
+r2 = Rectangle(5, 5)
+
+print(r1+r2)
