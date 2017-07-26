@@ -46,7 +46,7 @@ df['长耳朵'] = classle.fit_transform(df['长耳朵'].values)
 # 选取训练集特征
 X = df[['喜欢吃萝卜','喜欢吃鱼','喜欢捉耗子','喜欢啃骨头','短尾巴','长耳朵']]
 y = classle.fit_transform(df['分类'].values)
-
+print(dir(classle))
 # 用哑变量
 #classle = LabelEncoder()
 #X = pd.get_dummies(df.drop('分类', axis=1))
@@ -74,7 +74,9 @@ print(cm)
 plt.rcParams['font.sans-serif'] = ['SimHei'] # 正常显示中文
 plt.imshow(cm, cmap = plt.cm.Blues)     # 画矩阵
 half = cm.max() / 2
-classes = ['狗','猫','兔子'] # 分类名
+#classes = ['狗','猫','兔子'] # 分类名
+classes = classle.classes_
+#print(classes)
 length = range(len(classes))  # 混淆矩阵的边长
 plt.xticks(length, classes)
 plt.yticks(length, classes)
@@ -87,7 +89,7 @@ for i, j in product(range(cm.shape[0]), range(cm.shape[1])):
              horizontalalignment="center",
              # 浅色背景深色字，深背景浅色字
              color="white" if cm[i, j] > half else "black") 
-#plt.show()
+plt.show()
 
 
 # 预测一个值
