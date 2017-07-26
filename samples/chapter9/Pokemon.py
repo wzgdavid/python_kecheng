@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
-sns.set_style("whitegrid")
+sns.set_style("darkgrid")# darkgrid , whitegrid , dark , white ,和 ticks 
 
 plt.rcParams['font.sans-serif'] = ['SimHei'] # 正常显示中文
 
@@ -77,6 +77,8 @@ strong = strong.drop_duplicates(subset=['TYPE 1'],keep='first')
 可视化
 VISUALISATIONS
 #########################################
+#########################################
+#########################################
 '''#########################################
 
 # 所有类型宠物的攻击力分布柱状图
@@ -125,7 +127,7 @@ def boxplot1():
     # whis参数指胡须的长度是盒子长度的几倍，
     # 超出这个值被认为是离群点（异常值）
     # #默认1.5
-    sns.boxplot(data=df2, whis=1.5)
+    sns.boxplot(data=df2, y='HP', x="TYPE 1")
     plt.ylim(0,300)  #change the scale of the plot
     plt.show()
 #boxplot1()
@@ -158,12 +160,12 @@ def swarmplot1(col):
     top_types=df['TYPE 1'].value_counts()[:10]
     # 取出数量最多的类型
     df1=df[df['TYPE 1'].isin(top_types.index)]
-    # 没一点代表一个宠物
+    # 每一点代表一个宠物
     sns.swarmplot(x='TYPE 1',y=col, data=df1, hue='GENERATION')
     # 均值画线
     plt.axhline(df1[col].mean(),color='red',linestyle='dashed')
     plt.show()
-swarmplot1('HP')
+#swarmplot1('HP')
 
 # 属性之间相关性
 #sns.heatmap(df.corr(), annot=True)
@@ -183,3 +185,9 @@ def bar():
     a.plot(marker='o')
     plt.show()
 #bar()
+
+
+
+
+sns.jointplot(x="HP", y="ATTACK", data=df)
+plt.show()

@@ -11,7 +11,8 @@ from mpl_toolkits.mplot3d import Axes3D #画3D图
 from sklearn.preprocessing import LabelEncoder
 from sklearn.linear_model import LinearRegression
 from sklearn.model_selection import train_test_split
-
+import seaborn as sns
+plt.rcParams['font.sans-serif'] = ['SimHei']
 
 def _salary(salary):
     '''薪资统一以月计算，取均值'''
@@ -53,15 +54,50 @@ def _area(area):
 df = pd.read_csv(r'..\csv\51jobs.csv', encoding='gbk')
 df = df.dropna()
 df = df[['工作地点','经验','学历','薪资']]
-
 df['薪资'] = df['薪资'].map(_salary) # series用map dataframe用applymap
-le = LabelEncoder()
+df['经验'] = df['经验'].map(_exp)
+df['工作地点'] = df['工作地点'].map(_area)
+print(df['工作地点'].value_counts())
+
+''' 
+              数据探索 start
+-------------------------------------------------------------
+-------------------------------------------------------------
+'''
+
+def salary_hist(): 
+    bins=range(0,55555,5000) # 范围0到200，每个柱的宽度20
+    data = df["薪资"]
+    #data = df[df['工作地点']=='上海']['薪资']
+    plt.hist(data, bins, color='#3333ee', width=4000) 
+    plt.xlabel('薪资')
+    plt.ylabel('计数')
+    plt.plot()
+    # 平均值
+    plt.axvline(df['薪资'].mean(),linestyle='dashed',color='red')
+    plt.show()
+#salary_hist()
+
+def salary_boxplot():
+    top_areas=df['工作地点'].value_counts()[:5]
+    df1=df[df['工作地点'].isin(top_areas.index)]    
+    #sns.boxplot(data=df1, y='薪资', x='工作地点')
+    #sns.boxplot(data=df1, y='薪资', x='经验')
+    sns.boxplot(data=df1, y='薪资', x='学历')
+    plt.ylim(0,55555)  #change the scale of the plot
+    plt.show()
+#salary_boxplot()
+
+'''      
+-------------------------------------------------------------
+-------------------------------------------------------------
+                数据探索 end
+'''
 # 学历用哑变量
+#le = LabelEncoder() # 这个预测出来学历不同结果却一样，所以用哑变量
 #df['学历'] = le.fit_transform(df['学历'].values)
 xueli = pd.get_dummies(df['学历'])
 df = pd.concat([xueli, df], axis=1).drop('学历', axis=1)
-df['经验'] = df['经验'].map(_exp)
-df['工作地点'] = df['工作地点'].map(_area)
 # 工作地点用哑变量
 area = pd.get_dummies(df['工作地点'])
 df = pd.concat([area, df], axis=1).drop('工作地点', axis=1)
