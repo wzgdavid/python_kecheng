@@ -46,7 +46,7 @@ df['长耳朵'] = classle.fit_transform(df['长耳朵'].values)
 # 选取训练集特征
 X = df[['喜欢吃萝卜','喜欢吃鱼','喜欢捉耗子','喜欢啃骨头','短尾巴','长耳朵']]
 y = classle.fit_transform(df['分类'].values)
-print(dir(classle))
+#print(dir(classle))
 # 用哑变量
 #classle = LabelEncoder()
 #X = pd.get_dummies(df.drop('分类', axis=1))
@@ -58,7 +58,7 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, train_size=0.7, test_s
 model = GaussianNB()
 #model = MultinomialNB()
 model.fit(X_train, y_train)
-
+print(model.score(X_train, y_train))
 # 查看预测效果
 predicted = model.predict(X_test)
 expected = y_test
@@ -70,7 +70,6 @@ print(cm)
 
 
 # 画混淆矩阵
-
 plt.rcParams['font.sans-serif'] = ['SimHei'] # 正常显示中文
 plt.imshow(cm, cmap = plt.cm.Blues)     # 画矩阵
 half = cm.max() / 2
