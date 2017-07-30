@@ -58,7 +58,7 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, train_size=0.7, test_s
 model = GaussianNB()
 #model = MultinomialNB()
 model.fit(X_train, y_train)
-print(model.score(X_train, y_train))
+print(model.score(X_test, y_test))
 # 查看预测效果
 predicted = model.predict(X_test)
 expected = y_test

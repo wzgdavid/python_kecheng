@@ -152,7 +152,7 @@ def violinplot1():
 ##sns.violinplot(x = "GENERATION", y = "TOTAL",data = df)
 #sns.violinplot(x = "LEGENDARY", y = "TOTAL",data = df)
 #plt.show()
-
+#violinplot1()
 
 # 每个类型的类别散布图
 def swarmplot1(col):
@@ -189,5 +189,5 @@ def bar():
 
 
 
-sns.jointplot(x="HP", y="ATTACK", data=df)
-plt.show()
+#sns.jointplot(x="HP", y="ATTACK", data=df)
+#plt.show()
