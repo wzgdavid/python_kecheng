@@ -46,7 +46,7 @@ def crawl_data(html):
     rows = []
     for i, item in enumerate(items):
         item = etree.ElementTree(item)
-        #print(item, i)
+        print(i)
         #title = item.xpath('//p[@class="t1 "]/span/a/@title')[0]
         #有些带图标的p的类名不是t1，是"t1 tg", 所以用contain
         title = item.xpath('//p[contains(@class,"t1")]/span/a/@title')[0]
@@ -62,12 +62,14 @@ def crawl_data(html):
         if detail:
             detail = etree.ElementTree(etree.HTML(detail))
             exp = detail.xpath('//div[@class="jtag inbox"]//em[@class="i1"]/following::text()[1]')
+            #exp = detail.xpath('//div[@class="t1"]/span/em[@class="i1"]/parent::span/text()')
             exp = exp[0] if exp else None
             xueli = detail.xpath('//div[@class="jtag inbox"]//em[@class="i2"]/following::text()[1]')
+            #xueli = detail.xpath('//div[@class="t1"]/span/em[@class="i2"]/parent::span/text()')
             xueli = xueli[0] if xueli else None
         else:
             continue
-        print(i, exp, xueli)
+        #print(i, exp, xueli)
         row = (title, link, company, area, salary, exp, xueli)
         rows.append(row)
     return rows
@@ -81,8 +83,7 @@ def save_to_csv(data, filename, mode):
         # 写入标题
         if mode =='w':
             writer.writerow(["职位名","链接", "公司","工作地点","薪资","经验","学历"])
-        else:
-            pass
+        # 写数据
         writer.writerows(data)
 
 
