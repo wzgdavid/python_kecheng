@@ -18,13 +18,10 @@ from sklearn.preprocessing import LabelEncoder
 狗 1  猫 2  兔子 3
 '''
 
-#names = ['luobo','yu','haozi','gutou','dwb','ced','fenlei']
-## 读取csv时自定义列名
-#df = pd.read_csv('D:\csv\catdograbbit.csv', names = names)
 df = pd.read_csv(r'..\csv\catdograbbit.csv')
 
-# 特征处理
-# 手动转
+# 特征处理 3选1
+# 1 手动转
 #df[df=='是'] = 1
 #df[df=='否'] = 0
 #df[df=='狗'] = 1
@@ -35,7 +32,7 @@ df = pd.read_csv(r'..\csv\catdograbbit.csv')
 #X = df[['喜欢吃萝卜','喜欢吃鱼','喜欢捉耗子','喜欢啃骨头','短尾巴','长耳朵']]
 #y = df['分类']
 
-# 用labelencoder 转
+# 2 用labelencoder 转
 classle = LabelEncoder()
 df['喜欢吃萝卜'] = classle.fit_transform(df['喜欢吃萝卜'].values)
 df['喜欢吃鱼'] = classle.fit_transform(df['喜欢吃鱼'].values)
@@ -43,11 +40,11 @@ df['喜欢捉耗子'] = classle.fit_transform(df['喜欢捉耗子'].values)
 df['喜欢啃骨头'] = classle.fit_transform(df['喜欢啃骨头'].values)
 df['短尾巴'] = classle.fit_transform(df['短尾巴'].values)
 df['长耳朵'] = classle.fit_transform(df['长耳朵'].values)
-# 选取训练集特征
+#  选取训练集特征
 X = df[['喜欢吃萝卜','喜欢吃鱼','喜欢捉耗子','喜欢啃骨头','短尾巴','长耳朵']]
 y = classle.fit_transform(df['分类'].values)
-#print(dir(classle))
-# 用哑变量
+
+# 3 用哑变量
 #classle = LabelEncoder()
 #X = pd.get_dummies(df.drop('分类', axis=1))
 #y = classle.fit_transform(df['分类'].values)
@@ -56,10 +53,12 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, train_size=0.7, test_s
 
 # 学习
 model = GaussianNB()
-#model = MultinomialNB()
+model = MultinomialNB()
 model.fit(X_train, y_train)
+
+# 查看预测效果 -------------------start--------------------------------
 print(model.score(X_test, y_test))
-# 查看预测效果
+
 predicted = model.predict(X_test)
 expected = y_test
 report = metrics.classification_report(predicted, expected)
@@ -88,9 +87,11 @@ for i, j in product(range(cm.shape[0]), range(cm.shape[1])):
              horizontalalignment="center",
              # 浅色背景深色字，深背景浅色字
              color="white" if cm[i, j] > half else "black") 
-plt.show()
-
+#plt.show()
+# 查看预测效果 ------------------end---------------------------------
 
 # 预测一个值
-n = model.predict([[1,1,1,1,1,1]])
+n = model.predict([[0,0,0,1,1,1]])
+print(classle.inverse_transform(n))
+n = model.predict([[1,0,0,0,0,1]])
 print(classle.inverse_transform(n))
