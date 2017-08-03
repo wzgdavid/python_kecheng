@@ -37,7 +37,7 @@ df['长耳朵'] = classle.fit_transform(df['长耳朵'].values)
 X = df[['喜欢吃萝卜','喜欢吃鱼','喜欢捉耗子','喜欢啃骨头','短尾巴','长耳朵']]
 y = classle.fit_transform(df['分类'].values)
 
-X_train, X_test, y_train, y_test = train_test_split(X, y, train_size=0.7, test_size=0.3)
+X_train, X_test, y_train, y_test = train_test_split(X, y, train_size=0.8, test_size=0.2)
 
 model1 = GaussianNB()
 model2 = MultinomialNB()
@@ -46,7 +46,7 @@ model4 = DecisionTreeClassifier()
 model5 = LogisticRegression()
 models = [model1,model2,model3,model4,model5]
 labels = ['GaussianNB','MultinomialNB','KNeighborsClassifier','DecisionTreeClassifier','LogisticRegression']
-eclf = VotingClassifier(estimators=list(zip(labels, models)), voting='hard') 
+eclf = VotingClassifier(estimators=list(zip(labels, models))) 
 
 models.append(eclf)
 labels.append('VotingClassifier')

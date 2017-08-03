@@ -113,13 +113,9 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, train_size=0.7, test_s
 model = LinearRegression()
 model.fit(X_train, y_train)
 
-a, b = model.intercept_, model.coef_
-#print(a)
-#print(b)
-#y=2.668+0.0464*TV+0.192*Radio-0.00349*Newspaper
 
 # 预测
-y_pred = model.predict(X_test) 
+#y_pred = model.predict(X_test) 
 ## 打印特征与结果
 #for i, y in enumerate(y_pred):
 #    xi = X_test.iloc[i]
@@ -128,7 +124,6 @@ y_pred = model.predict(X_test)
 
 # 自己构建一个函数，来预测具体给定的值
 def predict_salary(area, xueli, exp):
-
     x = X_test.iloc[0].copy() # 随便取一行，构建一个特征的结构
     x[:] = 0
     x['经验'] = exp
@@ -138,7 +133,7 @@ def predict_salary(area, xueli, exp):
     x = x.values.reshape(1, -1)
     #print(x)
     pred = model.predict(x) 
-    print(pred)
+    print('地区：{} 学历：{} 经验：{} 薪资：{}'.format(area, xueli, exp, pred[0]))
     
 
 
