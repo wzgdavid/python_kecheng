@@ -31,7 +31,7 @@ def _salary(salary):
         rtn = (float(s[0]) + float(s[1]))*10000 / 2 / 12
     elif salary.endswith('元/天'):
         salary = salary.replace('元/天', '')
-        rtn = float(salary) * 22.75
+        rtn = float(salary) * 21.75
     #print(rtn)
     return rtn
 
@@ -54,7 +54,7 @@ def _area(area):
 df = pd.read_csv(r'..\csv\51jobs.csv', encoding='gbk')
 df = df.dropna()
 df = df[['工作地点','经验','学历','薪资']]
-df['薪资'] = df['薪资'].map(_salary) # series用map dataframe用applymap
+df['薪资'] = df['薪资'].apply(_salary) # series用map,或apply dataframe用applymap
 df['经验'] = df['经验'].map(_exp)
 df['工作地点'] = df['工作地点'].map(_area)
 print(df['工作地点'].value_counts())
@@ -84,7 +84,7 @@ def salary_boxplot():
     #sns.boxplot(data=df1, y='薪资', x='工作地点')
     #sns.boxplot(data=df1, y='薪资', x='经验')
     sns.boxplot(data=df1, y='薪资', x='学历')
-    plt.ylim(0,55555)  #change the scale of the plot
+    plt.ylim(0,55555)  
     plt.show()
 #salary_boxplot()
 
@@ -143,3 +143,4 @@ predict_salary('上海', '本科', 1)
 predict_salary('北京', '大专', 2)
 predict_salary('北京', '本科', 2)
 predict_salary('上海', '本科', 2)
+predict_salary('深圳', '本科', 2)

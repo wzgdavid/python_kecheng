@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D #画3D图
 import numpy as np
 import pandas as pd
-from sklearn.cluster import KMeans
+from sklearn.cluster import KMeans, DBSCAN
 from sklearn.preprocessing import MinMaxScaler, StandardScaler
 import seaborn as sns
 sns.set_style("whitegrid")
@@ -41,7 +41,8 @@ df2 = StandardScaler().fit_transform(df)
 #df2 = MinMaxScaler().fit_transform(df)
 
 #分为n_clusters类，聚类最大循环次数500
-model = KMeans(n_clusters = 5, max_iter = 500)
+#model = KMeans(n_clusters = 5, max_iter = 500)
+model = DBSCAN(eps=0.5)
 model.fit(df2) #开始聚类学习
 
 #print(model.labels_)
@@ -64,7 +65,7 @@ sd = plt.figure().add_subplot(111, projection = '3d')
 sd.set_xlabel('R')  
 sd.set_ylabel('F')  
 sd.set_zlabel('M') 
-sd.scatter(df.R, df.F, df.M, c=y_pred)
+sd.scatter(df.R, df.F, df.M)
 plt.show() 
 
 
