@@ -6,7 +6,6 @@ sns.set_style("darkgrid")# darkgrid , whitegrid , dark , white ,和 ticks
 
 plt.rcParams['font.sans-serif'] = ['SimHei'] # 正常显示中文
 
-
 df =  pd.read_csv(r'..\csv\Pokemon.csv')
 #df.head(n=10)
 
@@ -18,7 +17,7 @@ df[df['LEGENDARY']==True]
 df = df.set_index('NAME')
 #### 清洗数据
 # 通过查看数据，发现Mega前都是重复的文字
-df[df.index.str.contains('Mega')]
+#df[df.index.str.contains('Mega')]
 # 去掉index中'Mega'前不需要的部分
 
 df=df.drop(['#'],axis=1)
@@ -106,6 +105,25 @@ def scatter1():
     plt.show()
 #scatter1()
 
+# 某一类型宠物两种属性jointplot
+def jointplot():
+    data=df[(df['TYPE 1']=='Water') | ((df['TYPE 2'])=="Water")]
+    #data=df[(df['TYPE 1']=='Fire') | ((df['TYPE 2'])=="Fire")]
+    #data=df[(df['TYPE 1']=='Dragon') | ((df['TYPE 2'])=="Dragon")]
+    g = sns.jointplot(x="ATTACK", y="DEFENSE", data=data) # 默认散点柱状图
+    #g = sns.jointplot(x="ATTACK", y="DEFENSE", data=data, kind='kde', color='g') # kind还可以是hex
+    g.set_axis_labels("$ATTACK$", "$DEFENSE$");
+    plt.show()
+#jointplot()
+
+
+#def pairplot():
+#    data=df[(df['TYPE 1']=='Water') | ((df['TYPE 2'])=="Water")]
+#    sns.pairplot(data)
+#    plt.show()
+#pairplot()
+
+
 
 # 各系比例饼图
 def pie1():
@@ -148,11 +166,20 @@ def violinplot1():
     plt.ylim(0,200)
     plt.show()
 
+
 #plt.title('Strongest Genaration')
 ##sns.violinplot(x = "GENERATION", y = "TOTAL",data = df)
 #sns.violinplot(x = "LEGENDARY", y = "TOTAL",data = df)
 #plt.show()
 #violinplot1()
+
+# 两代之间宠物属性对比
+def violinplot2():
+    data = df[df['GENERATION'].isin([1,2])]
+    data = data[data['TYPE 1'].isin(['Fire', 'Water', 'Grass', 'Dragon'])]
+    sns.violinplot(x="TYPE 1", y="TOTAL", hue="GENERATION", data=data, split=False)
+    plt.show()
+#violinplot2()
 
 # 每个类型的类别散布图
 def swarmplot1(col):
