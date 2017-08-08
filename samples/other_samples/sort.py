@@ -17,3 +17,21 @@ l = [6,7,8,69,'a',44,5,6,7,3,1]
 
 
 print bubble_sort(l)
+
+
+class Base():
+    x = 'base'
+
+class A(Base):
+    pass
+
+class B(Base):
+    x = 'b'
+
+#print(A.x)
+print(B.x)
+
+class C(A, B):
+    pass
+
+print(C.x)
