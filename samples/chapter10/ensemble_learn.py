@@ -2,18 +2,15 @@
 
 '''
 
-from itertools import product
 import numpy as np
 import pandas as pd
-import matplotlib.pyplot as plt
-from sklearn.naive_bayes import GaussianNB,MultinomialNB
-from sklearn import metrics
-from sklearn.model_selection import train_test_split, cross_val_score
-from sklearn.preprocessing import LabelEncoder
+from sklearn.naive_bayes import GaussianNB, MultinomialNB
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.linear_model import LogisticRegression
-from sklearn.ensemble import VotingClassifier  
+from sklearn.model_selection import train_test_split, cross_val_score
+from sklearn.preprocessing import LabelEncoder
+from sklearn.ensemble import VotingClassifier
 '''
 是 1 
 否 0
@@ -36,8 +33,7 @@ df['长耳朵'] = classle.fit_transform(df['长耳朵'].values)
 # 选取训练集特征
 X = df[['喜欢吃萝卜','喜欢吃鱼','喜欢捉耗子','喜欢啃骨头','短尾巴','长耳朵']]
 y = classle.fit_transform(df['分类'].values)
-
-X_train, X_test, y_train, y_test = train_test_split(X, y, train_size=0.8, test_size=0.2)
+X_train, X_test, y_train, y_test = train_test_split(X, y, train_size=0.7, test_size=0.3)
 
 model1 = GaussianNB()
 model2 = MultinomialNB()
@@ -50,9 +46,7 @@ eclf = VotingClassifier(estimators=list(zip(labels, models)))
 
 models.append(eclf)
 labels.append('VotingClassifier')
-
 for model, label in list(zip(models, labels)):  
-    
     scores = cross_val_score(model, X_train, y_train)  
     #print(scores)
     print("Accuracy: {0:.2f} (+/- {1:.2f}) -{2}".format(scores.mean(), scores.std(), label))
