@@ -201,20 +201,16 @@ def swarmplot1(col):
 
 
 # 各代各类型数量变化
-def bar():
+def pivot():
     a = df.groupby(['GENERATION','TYPE 1']).count().reset_index()
     a = a[['GENERATION','TYPE 1','TOTAL']]
-    #print(a)
+    print(a.head(9))
+    print('----------------------------------------')
     a = a.pivot(index='GENERATION',columns='TYPE 1',values='TOTAL')
-    #print(a)
+    print(a)
     # 选出一部分画
     a = a[['Water','Fire','Grass','Dragon','Normal','Rock','Flying','Electric']]
     a.plot(marker='o')
     plt.show()
-#bar()
+pivot()
 
-
-
-
-#sns.jointplot(x="HP", y="ATTACK", data=df)
-#plt.show()
