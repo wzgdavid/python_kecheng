@@ -40,14 +40,18 @@ a, b = model.intercept_, model.coef_
 #y=2.668+0.0464*TV+0.192*Radio-0.00349*Newspaper
 
 # 预测
-predicted = model.predict(X_test)
-#print(predicted)
+y_pred = model.predict(X_test)
+#print(y_pred)
 
-#print(metrics.accuracy_score(y_test, predicted))
+#print(metrics.accuracy_score(y_test, y_pred))
 # 以上报错 continuous is not supported
+# 
+
+
+# 预测结果和真实值比较
 dct = {
     'y_test':y_test,
-    'y_pred': predicted
+    'y_pred': y_pred
 }
 df = pd.DataFrame(dct)
 print(df.y_test.corr(df.y_pred))

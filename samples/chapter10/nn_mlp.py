@@ -39,11 +39,11 @@ model = MLPClassifier(hidden_layer_sizes=(13,13,13),max_iter=1000)
 m = model.fit(X_train, y_train)
 
 # 预测
-predicted = model.predict(X_test)  # 预测出的结果
+y_pred = model.predict(X_test)  # 预测出的结果
 expected = y_test  # 期望的结果
 # 打印预测结果，
-print(metrics.classification_report(expected, predicted))
-cm = metrics.confusion_matrix(expected, predicted)
+print(metrics.classification_report(y_test, y_pred))
+cm = metrics.confusion_matrix(y_test, y_pred)
 print(cm)
 
 

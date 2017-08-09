@@ -48,18 +48,17 @@ model = DTC().fit(X_train, y_train)
 
 # 预测
 # 预测一组特征
-predicted = model.predict([(1,1,0,1)])
-#print(predicted)
+y_pred = model.predict([(1,1,0,1)])
+#print(y_pred)
 
 
 # 预测n组特征
-predicted = model.predict(X_test)  # 预测出的结果
-expected = y_test  # 期望的结果
+y_pred = model.predict(X_test)  # 预测出的结果
 
 # 预测结果，
-#print(expected.shape, predicted.shape) #出错时打印看看两者是否一致
-print(metrics.classification_report(expected, predicted))
-print(metrics.confusion_matrix(expected, predicted))
+#print(y_test.shape, y_pred.shape) #出错时打印看看两者是否一致
+print(metrics.classification_report(y_test, y_pred))
+print(metrics.confusion_matrix(y_test, y_pred))
 
 # 说明
 #             precision    recall  f1-score   support
@@ -82,17 +81,17 @@ print(metrics.confusion_matrix(expected, predicted))
 
 
 
-probas_ = model.predict_proba(X_test)
-fpr, tpr, thresholds = metrics.roc_curve(y_test, probas_[:, 1], pos_label=1)
-
-# 计算AUC值
-auc = metrics.auc(fpr, tpr, reorder=False)
-print('auc is ', auc)
-
-# 作ROC曲线
-plt.plot(fpr, tpr, linewidth=2, label = 'ROC', color = 'green') #作出ROC曲线
-plt.xlabel('False Positive Rate') #坐标轴标签
-plt.ylabel('True Positive Rate') #坐标轴标签
-plt.ylim(0, 1.05) #边界范围
-plt.xlim(0, 1.05) #边界范围
-plt.show()
+#probas_ = model.predict_proba(X_test)
+#fpr, tpr, thresholds = metrics.roc_curve(y_test, probas_[:, 1], pos_label=1)
+#
+## 计算AUC值
+#auc = metrics.auc(fpr, tpr, reorder=False)
+#print('auc is ', auc)
+#
+## 作ROC曲线
+#plt.plot(fpr, tpr, linewidth=2, label = 'ROC', color = 'green') #作出ROC曲线
+#plt.xlabel('False Positive Rate') #坐标轴标签
+#plt.ylabel('True Positive Rate') #坐标轴标签
+#plt.ylim(0, 1.05) #边界范围
+#plt.xlim(0, 1.05) #边界范围
+#plt.show()

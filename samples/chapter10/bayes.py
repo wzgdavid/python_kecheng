@@ -49,12 +49,12 @@ model = GaussianNB()
 m = model.fit(X_train, y_train)
 
 # 预测
-predicted = model.predict(X_test)  # 预测出的结果
-expected = y_test  # 期望的结果
+y_pred = model.predict(X_test)  # 预测出的结果
+y_test = y_test  # 期望的结果
 # 打印预测结果，
-print(metrics.classification_report(expected, predicted))
+print(metrics.classification_report(y_test, y_pred))
 # 混淆矩阵
-cm = metrics.confusion_matrix(expected, predicted)
+cm = metrics.confusion_matrix(y_test, y_pred)
 ## 矩阵标准化 值在0, 1 之间
 #cm = cm.astype('float') / cm.sum(axis=1)[:, np.newaxis]
 print(cm)

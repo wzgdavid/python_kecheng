@@ -2,6 +2,7 @@
 用
 chapter8中51jobs2.py
 抓取的csv数据，通过经验，学历，地点预测职位工资
+用哑变量， 比较麻烦
 '''
 
 import numpy as np
