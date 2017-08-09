@@ -49,14 +49,9 @@ model = DTC().fit(X_train, y_train)
 # 预测
 # 预测一组特征
 y_pred = model.predict([(1,1,0,1)])
-#print(y_pred)
-
-
 # 预测n组特征
 y_pred = model.predict(X_test)  # 预测出的结果
-
 # 预测结果，
-#print(y_test.shape, y_pred.shape) #出错时打印看看两者是否一致
 print(metrics.classification_report(y_test, y_pred))
 print(metrics.confusion_matrix(y_test, y_pred))
 

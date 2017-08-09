@@ -71,9 +71,7 @@ model.fit(X_train, y_train)
 
 # 查看预测效果 -------------------start--------------------------------
 print(model.score(X_test, y_test)) # 分数，就是report的f1-score
-
 y_pred = model.predict(X_test)
-
 report = metrics.classification_report(y_test, y_pred)
 print(report)
 # 混淆矩阵
