@@ -49,13 +49,26 @@ model.fit(df2) #开始聚类学习
 #print(model.cluster_centers_)
 #统计各个类别的数目
 r1 = pd.Series(model.labels_).value_counts()
-#找出聚类中心
-r2 = pd.DataFrame(ss.inverse_transform(model.cluster_centers_))
+# 找出聚类中心
+r2 = pd.DataFrame(model.cluster_centers_)
+# 聚类中心真实值
+#r2 = pd.DataFrame(ss.inverse_transform(model.cluster_centers_))
 #横向连接（0是纵向），得到聚类中心对应的类别下的数目
 r = pd.concat([r2, r1], axis = 1) 
 #重命名表头
 r.columns = list(df.columns) + ['类别数目']
 print(r)
+#sns.barplot(x="sex", y="survived", hue="class", data=r2)
+#plt.show()
+
+
+# ----------------分类中心的柱状图----------------------
+#r3 = r.drop('类别数目', axis=1)
+##plt.bar(range(3), r3.ix[0], label='0')
+##plt.legend()
+#sns.barplot(data=r3)
+#plt.show()
+# --------------------------------------
 
 
 # 3D散点图

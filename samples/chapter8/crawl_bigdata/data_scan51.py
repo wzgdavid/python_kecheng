@@ -1,3 +1,7 @@
+'''
+抓取51job上关键字是数据分析的职位，并简单作图分析
+'''
+
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt

@@ -60,7 +60,7 @@ type2 = df['TYPE 2'].value_counts()
 #type1 = df.groupby(['TYPE 1']).size()
 #type2 = df.groupby(['TYPE 2']).size()
 typecount = (type1+type2).sort_values(ascending=False)
-#print(typecount)
+print(typecount)
 
 # 计算指定类型宠物的数量
 bugsum = (df['TYPE 1']=='Bug').sum()
@@ -80,10 +80,11 @@ VISUALISATIONS
 #########################################
 '''#########################################
 
+
 # 所有类型宠物的攻击力分布柱状图
 def foo1(): # 写成函数加减注释容易
     bins=range(0,200,20) # 范围0到200，每个柱的宽度20
-    # hist画柱状图
+    # hist画柱状分布图
     plt.hist(df["ATTACK"],bins,color='#3333ee',width=16) 
     plt.xlabel('攻击力')
     plt.ylabel('计数')
@@ -124,6 +125,13 @@ def jointplot():
 #pairplot()
 
 
+# 各系数量计数
+def countplot():
+    sns.set(style="darkgrid")
+    sns.countplot(x='TYPE 1', data=df)
+    #sns.countplot(x='TYPE 1', data=df, hue='GENERATION')
+    plt.show()
+#countplot()
 
 # 各系比例饼图
 def pie1():
@@ -212,5 +220,5 @@ def pivot():
     a = a[['Water','Fire','Grass','Dragon','Normal','Rock','Flying','Electric']]
     a.plot(marker='o')
     plt.show()
-pivot()
+#pivot()
 
