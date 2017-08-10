@@ -1,6 +1,6 @@
 '''
 手动转换数据
-ppt上示例
+ppt上示例（移除）
 '''
 
 import matplotlib.pyplot as plt
