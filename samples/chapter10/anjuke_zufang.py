@@ -111,7 +111,7 @@ def recommend(viewed):
     value_counts = pd.Series(viewed_types).value_counts()
     #print(value_counts)
     most_view = value_counts.index[0] # 推荐最多浏览的类型
-    print(most_view)
+    #print(most_view)
     recommended = data_recommend[data_recommend['分类'] == most_view]
     #idx = np.array([1,2,3,4,5])
     n = 5
@@ -121,8 +121,7 @@ def recommend(viewed):
         while n > 0:
             a = choice(idx)
             choiced_idx.append(a)
-            idx.remove(a)
-            
+            idx.remove(a) # 避免重复选择
             n -= 1
     choiced_idx = np.array(choiced_idx)
     #print(choiced_idx)
