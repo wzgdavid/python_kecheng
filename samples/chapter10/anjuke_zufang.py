@@ -15,14 +15,14 @@ def recommend()
   如果accept了几条房源的话，看属于哪个类别的房源最多
 4 recommend函数就推荐那个最多类别的房源，推5条左右
 
-简单起见，这里只考虑，租金，装修，面积，房型，租赁方式
+简单起见，这里只考虑，租金，装修，面积，租赁方式
 '''
-
+import copy
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 from sklearn.cluster import KMeans, DBSCAN
-from sklearn.preprocessing import MinMaxScaler, StandardScaler
+from sklearn.preprocessing import LabelEncoder, StandardScaler
 import seaborn as sns
 from sklearn.neighbors import KNeighborsClassifier
 sns.set_style("whitegrid")
@@ -30,12 +30,45 @@ sns.set_style("whitegrid")
 df = pd.read_csv(r'..\csv\anjuke.csv', encoding='gbk')
 #print(df)
 print(df.columns)
-X = df.ix[:, ['租金', '房型', '租赁方式', '装修', '面积']]
+X = df.loc[:, ['租金', '租赁方式', '装修', '面积', '年代']]
 # 特征整理
-# 装修手工整理，安装装修的简单到豪华排序
-#X[X=='毛坯'] = 1
-#X[X=='简单装修'] = 2
-#X[X=='中等装修'] = 3
-#X[X=='精装修'] = 4
-#X[X=='豪华装修'] = 5
-print(X['装修'][X['装修']=='毛坯'])
+def get_mianji(mianji):
+    return mianji.replace('平米', '')
+def get_niandai(niandai):
+    if niandai == "暂无":
+        rtn = None
+    else:
+        rtn = niandai.replace('年', '')
+    return rtn
+# 装修用手工整理，安装装修的简单到豪华排序，LabelEncoder的顺序不一定，所以不用
+zx = X['装修'].copy()
+zx[zx=='毛坯'] = 1
+zx[zx=='简单装修'] = 2
+zx[zx=='中等装修'] = 3
+zx[zx=='精装修'] = 4
+zx[zx=='豪华装修'] = 5
+X['装修'] = zx
+X['面积'] = X['面积'].apply(get_mianji)
+X['年代'] = X['年代'].apply(get_niandai)
+X['租赁方式'] = LabelEncoder().fit_transform(X['租赁方式'].values)
+X = X.dropna()
+print(X.head(20))
+ss = StandardScaler()
+X2 = ss.fit_transform(X)
+kmeans = KMeans(n_clusters=10, max_iter=100)
+kmeans.fit(X2)
+
+#统计各个类别的数目
+r1 = pd.Series(kmeans.labels_).value_counts()
+# 找出聚类中心
+#r2 = pd.DataFrame(kmeans.cluster_centers_)
+# 聚类中心真实值
+r2 = pd.DataFrame(ss.inverse_transform(kmeans.cluster_centers_))
+#横向连接（0是纵向），得到聚类中心对应的类别下的数目
+r = pd.concat([r2, r1], axis = 1) 
+#重命名表头
+r.columns = list(X.columns) + ['类别数目']
+print(r)
+
+
+y = kmeans.predict(X2)
