@@ -1,5 +1,6 @@
 '''
 从boss直聘抓取title包含'数据分析'的职位信息
+boss直聘 会封IP
 '''
 
 from urllib import request, error
