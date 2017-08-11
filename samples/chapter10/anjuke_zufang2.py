@@ -8,12 +8,11 @@ def accept()
 另一个函数推荐和前面一个函数接收的房源 类似的房源
 def recommend()
 
-初步设想思路是
+之前是不是麻烦了点，
+改变一下思路
 1 先用聚类分好类，产生data
-2 然后用knn（K最近邻）算法，去学习上述分好类的data，产生一个model
-3 再用上面的model去预测历史浏览记录的房源，
-  看属于哪个类别的房源最多
-4 recommend函数就推荐那个最多类别的房源，推5条左右
+2 看历史最近浏览的房源的类别，看属于哪个类别的房源最多
+3 recommend函数就推荐那个最多类别的房源，推5条左右
 
 简单起见，这里只考虑，租金，装修，面积
 '''
@@ -26,8 +25,18 @@ from sklearn.preprocessing import LabelEncoder, StandardScaler, MinMaxScaler
 from sklearn.neighbors import KNeighborsClassifier
 from random import choice
 
-
 df = pd.read_csv(r'..\csv\anjuke.csv', encoding='gbk')
+
+
+def history_viewed(viewed_index):
+    '''根据输入的index选择几条数据，
+       假装是某个用户最近的浏览历史记录最新的几条'''
+    return df.ix[viewed_index, :]
+viewed_index = 2, 3
+#viewed_index = 60, 62
+viewed = history_viewed(viewed_index)
+#print(viewed)
+
 #print(df.tail(10))
 #print(df.columns)
 #X = df.loc[:, ['租金', '租赁方式', '装修', '面积', '年代']]
@@ -54,38 +63,17 @@ X['面积'] = X['面积'].apply(get_mianji)
 #X['年代'] = X['年代'].apply(get_niandai)
 #X['租赁方式'] = LabelEncoder().fit_transform(X['租赁方式'].values)
 #X = X.dropna()
-#print(X.head(50), X.shape)
+#print(df.shape[0])
+#print(X.shape[0])
 ss = StandardScaler()
 X2 = ss.fit_transform(X)
 kmeans = KMeans(n_clusters=15, n_init=50)
-kmeans.fit(X2)
-
-#统计各个类别的数目
-#r1 = pd.Series(kmeans.labels_).value_counts()
-## 找出聚类中心
-##r2 = pd.DataFrame(kmeans.cluster_centers_)
-## 聚类中心真实值
-#r2 = pd.DataFrame(ss.inverse_transform(kmeans.cluster_centers_))
-##横向连接（0是纵向），得到聚类中心对应的类别下的数目
-#r = pd.concat([r2, r1], axis = 1) 
-##重命名表头
-#r.columns = list(X.columns) + ['类别数目']
-#print(r)
-
-
-y_pred = kmeans.predict(X2)
+#kmeans.fit(X2)
+y_pred = kmeans.fit_predict(X2)
 ydata = pd.DataFrame(y_pred, columns=['分类'])
-# knn学习用
-data = pd.concat([X, ydata], axis=1)
+#print(y_pred.size)
 # 推荐用
 data_recommend = pd.concat([df, ydata], axis=1)
-
-#print(data.head(30), data.shape[0])
-X = data.drop('分类', axis=1)
-y = data['分类']
-knn = KNeighborsClassifier(n_neighbors=7)
-knn.fit(X, y)
-
 
 
 def _random_choice(lst, n):
@@ -105,66 +93,21 @@ def _random_choice(lst, n):
 #print(rc)
 
 
-# 假装这是某个用户最近的浏览历史记录
-viewed = [
-    [9900,  1, 150],
-    [9000,  4, 150],
-    [9000,  4, 150],
-    [9000,  3, 150],
-    [9200,  4, 160],
-    [9400,  4, 180],
-    [9000,  4, 150],
-    [9000,  4, 160],
-    [92000, 4, 1120],
-    [9000,  4, 190],
-    [9500,  2, 127],
-    ]
-
-def history_view():
-    
-    # 从csv文件中随机选择20条，假装是某个用户最近的浏览历史记录
-    choosed_idx = _random_choice(list(df.index), 20)
-    choosed_rows = df.ix[choosed_idx,:]
-    #print(choosed_rows)
-    X = choosed_rows.loc[:, ['租金', '装修', '面积']]
-    print('-----------------------------查看历史----------------------------------------------')
-    print(X)
-    zx = X['装修'].copy()
-    zx[zx=='毛坯'] = 1
-    zx[zx=='简单装修'] = 2
-    zx[zx=='中等装修'] = 3
-    zx[zx=='精装修'] = 4
-    zx[zx=='豪华装修'] = 5
-    X['装修'] = zx
-    X['面积'] = X['面积'].apply(get_mianji)
-    
-    return X
-#history_view()
-
-
-
-def recommend(viewed):
+def recommend():
     '''
     根据用户最近的浏览记录，推荐浏览类型最多的房源
     '''
-    viewed_types = knn.predict(viewed)
-    #print(viewed_types)
+    ydata = pd.DataFrame(y_pred, columns=['分类'])
+    data = pd.concat([df, ydata], axis=1)
+    #print(data.shape[0])
+    viewed_types = y_pred[np.array(viewed_index)]
     value_counts = pd.Series(viewed_types).value_counts()
-    #print(value_counts)
     most_view = value_counts.index[0] # 推荐最多浏览的类型
     #print(most_view)
     recommended = data_recommend[data_recommend['分类'] == most_view]
     #idx = np.array([1,2,3,4,5])
     n = 5
-    #if recommended.shape[0]>n: # 在这一类别里随机选5条，否则就全部选出
-    #    idx = list(recommended.index)
-    #    choiced_idx = []
-    #    while n > 0:
-    #        a = choice(idx)
-    #        choiced_idx.append(a)
-    #        idx.remove(a) # 避免重复选择
-    #        n -= 1
-    ##choiced_idx = np.array(choiced_idx)
+
     choiced_idx = _random_choice(list(recommended.index), n)
     #print(choiced_idx)
     recommended = recommended.ix[choiced_idx, :]
@@ -172,6 +115,4 @@ def recommend(viewed):
     print(recommended)
     return recommended
 
-
-#recommend(viewed)
-#recommend(history_view())
+recommend()
