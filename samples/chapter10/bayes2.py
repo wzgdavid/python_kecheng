@@ -87,10 +87,10 @@ half = cm.max() / 2
 classes = classle.classes_
 #print(classes)
 length = range(len(classes))  # 混淆矩阵的边长
-plt.xticks(length, classes)
+plt.xticks(length, classes, rotation=0)
 plt.yticks(length, classes)
 plt.colorbar()
-plt.ylabel('真值')
+plt.ylabel('真值', rotation=0)
 plt.xlabel('预测值')
 # 每个块显示数字
 for i, j in product(range(cm.shape[0]), range(cm.shape[1])):
@@ -98,7 +98,7 @@ for i, j in product(range(cm.shape[0]), range(cm.shape[1])):
              horizontalalignment="center",
              # 浅色背景深色字，深背景浅色字
              color="white" if cm[i, j] > half else "black") 
-#plt.show()
+plt.show()
 # 查看预测效果 ------------------end---------------------------------
 
 # 预测一个值
