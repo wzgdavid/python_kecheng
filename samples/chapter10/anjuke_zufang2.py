@@ -17,6 +17,7 @@ def recommend()
 简单起见，这里只考虑，租金，装修，面积
 '''
 
+import copy
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
@@ -32,8 +33,9 @@ def history_viewed(viewed_index):
     '''根据输入的index选择几条数据，
        假装是某个用户最近的浏览历史记录最新的几条'''
     return df.ix[viewed_index, :]
-viewed_index = 2, 3
-#viewed_index = 60, 62
+viewed_index = 3, 4, 5, 6, 22, 40, 43   # 四五十平米，租金2,3千
+#viewed_index = 12, 18, 39, 46  # 中等装修
+#viewed_index = 1, 8, 17, 20, 27, 30, 37  # 一百多平米
 viewed = history_viewed(viewed_index)
 #print(viewed)
 
@@ -44,12 +46,7 @@ X = df.loc[:, ['租金', '装修', '面积']]
 # 特征整理
 def get_mianji(mianji):
     return mianji.replace('平米', '')
-#def get_niandai(niandai):
-#    if niandai == "暂无":
-#        rtn = 2000
-#    else:
-#        rtn = niandai.replace('年', '')
-#    return int(rtn) - 1980
+
 
 # 装修用手工整理，安装装修的简单到豪华排序，LabelEncoder的顺序不一定，所以不用
 zx = X['装修'].copy()
@@ -60,21 +57,24 @@ zx[zx=='精装修'] = 4
 zx[zx=='豪华装修'] = 5
 X['装修'] = zx
 X['面积'] = X['面积'].apply(get_mianji)
-#X['年代'] = X['年代'].apply(get_niandai)
-#X['租赁方式'] = LabelEncoder().fit_transform(X['租赁方式'].values)
-#X = X.dropna()
-#print(df.shape[0])
-#print(X.shape[0])
+X = X.astype(int)
+
+X_filtered = X[(X['面积']<300) | (X['租金']<30000)]
+df_filtered = df[df.index.isin(X_filtered.index)]
+
+print(df_filtered.shape[0])
+print(X_filtered.shape[0])
 ss = StandardScaler()
-X2 = ss.fit_transform(X)
+X2 = ss.fit_transform(X_filtered)
 kmeans = KMeans(n_clusters=15, n_init=50)
 #kmeans.fit(X2)
 y_pred = kmeans.fit_predict(X2)
-ydata = pd.DataFrame(y_pred, columns=['分类'])
-#print(y_pred.size)
+y_data = pd.DataFrame(y_pred, columns=['分类'], index=df_filtered.index)
+print(y_data.index)
+print(y_data.shape[0])
 # 推荐用
-data_recommend = pd.concat([df, ydata], axis=1)
-
+data_recommend = pd.concat([df_filtered, y_data], axis=1)
+print(data_recommend.shape[0])
 
 def _random_choice(lst, n):
     '''从列表lst中随机选择n个不重复的元素'''
@@ -97,9 +97,6 @@ def recommend():
     '''
     根据用户最近的浏览记录，推荐浏览类型最多的房源
     '''
-    ydata = pd.DataFrame(y_pred, columns=['分类'])
-    data = pd.concat([df, ydata], axis=1)
-    #print(data.shape[0])
     viewed_types = y_pred[np.array(viewed_index)]
     value_counts = pd.Series(viewed_types).value_counts()
     most_view = value_counts.index[0] # 推荐最多浏览的类型
@@ -108,8 +105,10 @@ def recommend():
     #idx = np.array([1,2,3,4,5])
     n = 5
 
+    # 随机选这一类别的n跳记录
     choiced_idx = _random_choice(list(recommended.index), n)
     #print(choiced_idx)
+    
     recommended = recommended.ix[choiced_idx, :]
     print('-----------------------------推荐的----------------------------------------------')
     print(recommended)
