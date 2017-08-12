@@ -37,7 +37,8 @@ viewed_index = 3, 4, 5, 6, 22, 40, 43   # 四五十平米，租金2,3千
 #viewed_index = 12, 18, 39, 46  # 中等装修
 #viewed_index = 1, 8, 17, 20, 27, 30, 37  # 一百多平米
 viewed = history_viewed(viewed_index)
-#print(viewed)
+print('-----------------------------浏览过的----------------------------------------------')
+print(viewed)
 
 #print(df.tail(10))
 #print(df.columns)
@@ -62,19 +63,19 @@ X = X.astype(int)
 X_filtered = X[(X['面积']<300) | (X['租金']<30000)]
 df_filtered = df[df.index.isin(X_filtered.index)]
 
-print(df_filtered.shape[0])
-print(X_filtered.shape[0])
+#print(df_filtered.shape[0])
+#print(X_filtered.shape[0])
 ss = StandardScaler()
 X2 = ss.fit_transform(X_filtered)
 kmeans = KMeans(n_clusters=15, n_init=50)
 #kmeans.fit(X2)
 y_pred = kmeans.fit_predict(X2)
 y_data = pd.DataFrame(y_pred, columns=['分类'], index=df_filtered.index)
-print(y_data.index)
-print(y_data.shape[0])
+#print(y_data.index)
+#print(y_data.shape[0])
 # 推荐用
 data_recommend = pd.concat([df_filtered, y_data], axis=1)
-print(data_recommend.shape[0])
+#print(data_recommend.shape[0])
 
 def _random_choice(lst, n):
     '''从列表lst中随机选择n个不重复的元素'''
