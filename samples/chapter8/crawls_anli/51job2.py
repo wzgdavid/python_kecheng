@@ -19,7 +19,7 @@ headers = {
 }
 
 def get_html(url):
-
+    html = None
     req = request.Request(url, headers=headers)
     try:
         #response = request.urlopen(url)
@@ -27,10 +27,10 @@ def get_html(url):
         html = response.read().decode('gbk')
     except error.URLError as e:
         print(e)
-        html = None
+        print(url)
     except error.HTTPError as e:
         print(e)
-        html = None
+        print(url)
     
     #print(html)
     #with open('51jobs.html', 'w') as f: # 第一次执行，保存为本地文件

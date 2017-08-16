@@ -4,7 +4,7 @@ import time
 
 def foo(n):
     print(n)
-    time.sleep(5)  # 好比服务器的响应时间
+    time.sleep(2)  # 好比服务器的响应时间
 tasks = [
     gevent.spawn(foo, '123'),
     gevent.spawn(foo, '124'),
@@ -12,7 +12,7 @@ tasks = [
     gevent.spawn(foo, '126'),
     gevent.spawn(foo, '127')
 ]
-#gevent.joinall(tasks)
+gevent.joinall(tasks)
 
 # 不用并发，费时
 foo('567')
