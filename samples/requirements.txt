@@ -5,3 +5,4 @@ pandas==0.20.2
 scikit-learn==0.18.2
 matplotlib==2.0.2
 seaborn==0.8
+flask==0.12.2

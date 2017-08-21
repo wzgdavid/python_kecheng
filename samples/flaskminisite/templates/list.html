@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+        <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="/static/list.css" />
+        <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+        <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+        <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+        <script src="/static/js/list.js"></script>
+
+    </head>
+
+    <body> 
+
+        <div class="container">
+            <div id='list-housing' class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+            {% for row in rows %}
+                <div><h4><a class='item' id="{{ row.idx }}" target='blank' href="{{ row.link }}">{{ row.title }}</a></h4>
+                    <span>{{ row.rent }}元/月</span> &nbsp;&nbsp;
+                    <span>{{ row.area1 }}</span>  &nbsp;&nbsp;
+                    <span>{{ row.mianji }}</span>  &nbsp;&nbsp;
+                    <span>{{ row.deco }}</span> &nbsp;&nbsp;
+                    
+                   
+                </div>
+                </br>
+            {% endfor %}
+            </div>
+            <div id='recommend-div' class="col-lg-4 col-md-4 col-sm-12 col-xs-12" >
+                <h4>猜你喜欢</h4>
+                <div id='recommend-list'>
+                    {% for row in recommended %}
+                        <div><h5><a class='item' id="{{ row.idx }}" target='blank' href="{{ row.link }}">{{ row.title }}</a></h5>
+                            <span>{{ row.rent }}元/月</span> &nbsp;&nbsp;
+                            <span>{{ row.area1 }}</span>  &nbsp;&nbsp;
+                            <span>{{ row.mianji }}</span>  &nbsp;&nbsp;
+                            <span>{{ row.deco }}</span> &nbsp;&nbsp;
+                        </div>
+                        </br>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
