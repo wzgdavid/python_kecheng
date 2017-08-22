@@ -35,6 +35,9 @@ fire_dradon = df[((df['TYPE 1']=='Fire') & (df['TYPE 2']=='Dragon')) | ((df['TYP
 
 # 找出HP最高的宠物和它的HP量
 maxhp = (df['HP'].argmax(), df['HP'].max())
+#print(df.sort_values(by='HP', ascending=False).ix[0])
+#print(df[df.HP==df.HP.max()])
+#print(df.ix[df.HP.idxmax()])
 #print(maxhp[0])
 
 # 总属性值最高的3个
@@ -44,6 +47,7 @@ totalmax = df.sort_values('TOTAL',ascending=False).head(3)
 # 查看类型
 types1 = df['TYPE 1'].unique()
 types2 = df['TYPE 2'].unique()
+#print(set(type1) | set(type2) - set([np.nan]))
 
 # 火系中攻击力最高的宠物
 typefire = df[(df['TYPE 1'] == 'Fire') | (df['TYPE 2'] == 'Fire')]
@@ -60,7 +64,7 @@ type2 = df['TYPE 2'].value_counts()
 #type1 = df.groupby(['TYPE 1']).size()
 #type2 = df.groupby(['TYPE 2']).size()
 typecount = (type1+type2).sort_values(ascending=False)
-print(typecount)
+#print(typecount)
 
 # 计算指定类型宠物的数量
 bugsum = (df['TYPE 1']=='Bug').sum()
@@ -87,7 +91,7 @@ def foo1(): # 写成函数加减注释容易
     # hist画柱状分布图
     plt.hist(df["ATTACK"],bins,color='#3333ee',width=16) 
     plt.xlabel('攻击力')
-    plt.ylabel('计数')
+    plt.ylabel('计数', rotation=0)
     plt.plot()
     # 平均值
     plt.axvline(df['ATTACK'].mean(),linestyle='dashed',color='red')
@@ -108,12 +112,14 @@ def scatter1():
 
 # 某一类型宠物两种属性jointplot
 def jointplot():
-    data=df[(df['TYPE 1']=='Water') | ((df['TYPE 2'])=="Water")]
+    #data=df[(df['TYPE 1']=='Water') | ((df['TYPE 2'])=="Water")]
     #data=df[(df['TYPE 1']=='Fire') | ((df['TYPE 2'])=="Fire")]
-    #data=df[(df['TYPE 1']=='Dragon') | ((df['TYPE 2'])=="Dragon")]
+    data=df[(df['TYPE 1']=='Dragon') | ((df['TYPE 2'])=="Dragon")]
     g = sns.jointplot(x="ATTACK", y="DEFENSE", data=data) # 默认散点柱状图
     #g = sns.jointplot(x="ATTACK", y="DEFENSE", data=data, kind='kde', color='g') # kind还可以是hex
-    g.set_axis_labels("$ATTACK$", "$DEFENSE$");
+    g.set_axis_labels("$ATTACK$", "$DEFENSE$")
+    g.set_axis_labels("ATTACK", "DEFENSE")
+    #plt.xlabel("攻击力")
     plt.show()
 #jointplot()
 
@@ -130,6 +136,7 @@ def countplot():
     sns.set(style="darkgrid")
     sns.countplot(x='TYPE 1', data=df)
     #sns.countplot(x='TYPE 1', data=df, hue='GENERATION')
+    #sns.countplot(x='GENERATION', data=df, hue='TYPE 1')
     plt.show()
 #countplot()
 
@@ -202,7 +209,7 @@ def swarmplot1(col):
     plt.show()
 #swarmplot1('HP')
 
-# 属性之间相关性
+# 属性之间相关性                                                      
 #sns.heatmap(df.corr(), annot=True)
 #plt.show()
 # 可见属性之间相关性并不强
@@ -219,6 +226,6 @@ def pivot():
     # 选出一部分画
     a = a[['Water','Fire','Grass','Dragon','Normal','Rock','Flying','Electric']]
     a.plot(marker='o')
-    plt.show()
+    #plt.show()
 #pivot()
 
