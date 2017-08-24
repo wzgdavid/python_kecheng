@@ -21,11 +21,14 @@ def _load_pickle(filename):
     with open(filename, 'rb') as f:
         return pickle.load(f)
 
+def get_all():
+    df = pd.read_csv(r'data\anjuke.csv', encoding='gbk')
+    return df
+
 
 def get_page(n):
     '''n代表第几页，一页20条记录'''
-    
-    df = pd.read_csv(r'D:\Users\Administrator\Desktop\flaskminisite\data\anjuke.csv', encoding='gbk')
+    df = get_all()
     #['标题', '租金', '房型', '租赁方式', '装修', '区域1', '区域2', '面积', '朝向', '住宅类型', '小区名',
     #   '地址', '年代', '容积率', '绿化率', '链接']
     page_rows = 50  # 一页50条记录
@@ -43,20 +46,20 @@ def get_page(n):
     return rows
 
 def record_clicked(idx):
-    '''记录点击过的房源index,记录最近30条'''
+    '''记录点击过的房源index,记录最近10条'''
     #data = []
     #with open('click_history.pickle', 'wb') as f:
     #    pickle.dump(data, f)
-    max_ = 30
+    max_ = 10
     #with open('click_history.pickle', 'rb') as f:
     #    data = pickle.load(f)
     data = _load_pickle('click_history.pickle')
+    print(data,'--------------')
     if len(data) > max_:
         data.pop()
         data.insert(0, idx)
     else:
         data.insert(0, idx)
-    print(data)
     #with open('click_history.pickle', 'wb') as f:
     #    pickle.dump(data, f)
     _save_pickle('click_history.pickle', data)
@@ -81,7 +84,7 @@ def train_model():
     )
     area_gps = dict(zip(area, gps))
 
-    df = pd.read_csv(r'D:\Users\Administrator\Desktop\flaskminisite\data\anjuke.csv', encoding='gbk')
+    df = get_all()
     X = df.loc[:, ['租金', '装修', '面积', '区域1']]
     # 特征整理
     def get_mianji(mianji):
