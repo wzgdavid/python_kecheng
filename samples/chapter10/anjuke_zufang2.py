@@ -93,6 +93,18 @@ df_filtered = df[df.index.isin(X_filtered.index)]
 ss = StandardScaler()
 X2 = ss.fit_transform(X_filtered)
 model = KMeans(n_clusters=15, n_init=50)
+
+# 肘方法
+ine = [[],[]] # 画图用的坐标点
+for n in range(2, 50):
+    inertia = KMeans(n_clusters=n, n_init=20).fit(X2).inertia_
+    ine[0].append(n)
+    ine[1].append(inertia)
+# 肘方法
+plt.plot(ine[0], ine[1])
+#plt.show()
+
+
 #model = DBSCAN(eps = 0.1, min_samples=10)
 #model.fit(X2)
 y_pred = model.fit_predict(X2)

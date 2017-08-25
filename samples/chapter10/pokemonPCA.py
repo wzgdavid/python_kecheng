@@ -20,7 +20,7 @@ cols = ['HP', 'Attack', 'Defense', 'Sp. Atk', 'Sp. Def', 'Speed']
 #scaler = StandardScaler().fit(df[cols])
 df_scaled = StandardScaler().fit_transform(df[cols])
 
-pca = PCA(n_components=0.8)  # n_components 可认为是压缩比例
+pca = PCA(n_components=4)  # 
 pca.fit(df_scaled)
 pcscores = pd.DataFrame(pca.transform(df_scaled))
 pcscores.columns = ['PC'+str(i+1) for i in range(len(pcscores.columns))]

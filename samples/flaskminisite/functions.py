@@ -45,6 +45,9 @@ def get_page(n):
     #print(rows)
     return rows
 
+def temp(a):
+    _save_pickle('temp.pickle', [a])
+
 def record_clicked(idx):
     '''记录点击过的房源index,记录最近10条'''
     #data = []
