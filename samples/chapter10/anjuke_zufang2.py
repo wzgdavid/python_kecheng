@@ -21,7 +21,6 @@ import numpy as np
 import pandas as pd
 from sklearn.cluster import KMeans, DBSCAN
 from sklearn.preprocessing import LabelEncoder, StandardScaler, MinMaxScaler
-from sklearn.neighbors import KNeighborsClassifier
 from random import choice
 
 area = ['浦东新区', '闵行区', '松江区', 
@@ -40,7 +39,7 @@ gps = (
     (31.6288408354,121.4038337007), (30.7479665497,121.3489176446)
 )
 area_gps = dict(zip(area, gps))
-print(area_gps)
+#print(area_gps)
 
 
 df = pd.read_csv(r'..\csv\anjuke.csv', encoding='gbk')
@@ -82,10 +81,10 @@ X['区域1'] = X['区域1'].apply(get_area_gps)
 X['area_x'] = X['区域1'].apply(lambda x:x[0])
 X['area_y'] = X['区域1'].apply(lambda x:x[1])
 X = X.drop('区域1', axis=1)
-print(X.head())
+#print(X.head())
 X = X.astype(float)
 
-X_filtered = X[(X['面积']<300) | (X['租金']<20000)]
+X_filtered = X[(X['面积']<300) & (X['租金']<20000)]
 df_filtered = df[df.index.isin(X_filtered.index)]
 
 #print(df_filtered.shape[0])
@@ -95,13 +94,13 @@ X2 = ss.fit_transform(X_filtered)
 model = KMeans(n_clusters=15, n_init=50)
 
 # 肘方法
-ine = [[],[]] # 画图用的坐标点
-for n in range(2, 50):
-    inertia = KMeans(n_clusters=n, n_init=20).fit(X2).inertia_
-    ine[0].append(n)
-    ine[1].append(inertia)
-# 肘方法
-plt.plot(ine[0], ine[1])
+#ine = [[],[]] # 画图用的坐标点
+#for n in range(2, 50):
+#    inertia = KMeans(n_clusters=n, n_init=20).fit(X2).inertia_
+#    ine[0].append(n)
+#    ine[1].append(inertia)
+## 肘方法
+#plt.plot(ine[0], ine[1])
 #plt.show()
 
 
@@ -115,9 +114,9 @@ y_data = pd.DataFrame(y_pred, columns=['分类'], index=df_filtered.index)
 data_recommend = pd.concat([df_filtered, y_data], axis=1)
 #print(data_recommend.shape[0])
 
-
-
-def _random_choice(lst, n):
+print(y_pred == model.labels_)
+print(data_recommend.shape)
+def _random_choice(lst, n=5):
     '''从列表lst中随机选择n个不重复的元素'''
     if n > len(lst):
         return lst
@@ -153,5 +152,22 @@ def recommend():
     print('-----------------------------推荐的----------------------------------------------')
     print(recommended)
     return recommended
+def recommend2():
+    viewed2 = data_recommend[data_recommend.index.isin(viewed_index)]
+    print(viewed2['分类'])
+    print(viewed2['分类'].value_counts())
+    viewed_types = model.labels_[np.array(viewed_index)]
+    print(viewed_types)
 
-recommend()
+    view_counts = pd.Series(viewed_types).value_counts()
+    most_view = view_counts.index[0]
+    print(most_view)
+
+    sametype = data_recommend[data_recommend['分类']==most_view]
+    #print(sametype.head())
+
+    choosed_index = _random_choice(list(sametype.index))
+
+    #print(data_recommend.ix[choosed_index,:])
+    return data_recommend.ix[choosed_index,:]
+recommend2()
