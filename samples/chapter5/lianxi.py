@@ -26,6 +26,15 @@ for name, number in phone_number.items():
     pn[number] = name
 print(pn)
 
+# 值有重复的情况
+# 可以把相同值的键放在一个列表里
+dct = {}
+for name, phone in phone_number.items():
+    if phone in dct:
+        dct[phone].append(name)
+    else:
+        dct[phone] = [name]
+print(dct)
 
 '''
 3, 有两门课的成绩，打印出两门课都及格的学生名字
