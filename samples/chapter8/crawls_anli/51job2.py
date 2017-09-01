@@ -32,9 +32,6 @@ def get_html(url):
         print(e)
         print(url)
     
-    #print(html)
-    #with open('51jobs.html', 'w') as f: # 第一次执行，保存为本地文件
-    #    f.write(html)
     return html
 
 
@@ -91,7 +88,6 @@ def crawl_one(url):
     #url = 'http://search.51job.com/list/020000,000000,0000,00,9,99,%2520,2,{}.html?lang=c&stype=&postchannel=0000&workyear=99&cotype=99&degreefrom=99&jobterm=99&companysize=99&providesalary=99&lonlat=0%2C0&radius=-1&ord_field=0&confirmdate=9&fromType=&dibiaoid=0&address=&line=&specialarea=00&from=&welfare='.format(1) # format里页数
 
     html = get_html(url)
-    #html = local_html()  # 先用本地保存的html边调试边写代码
     if html:
         data = crawl_data(html)
         save_to_csv(data, r'51jobs.csv', mode='a')
