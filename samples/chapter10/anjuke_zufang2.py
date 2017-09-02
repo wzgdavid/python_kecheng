@@ -152,22 +152,3 @@ def recommend():
     print('-----------------------------推荐的----------------------------------------------')
     print(recommended)
     return recommended
-def recommend2():
-    viewed2 = data_recommend[data_recommend.index.isin(viewed_index)]
-    print(viewed2['分类'])
-    print(viewed2['分类'].value_counts())
-    viewed_types = model.labels_[np.array(viewed_index)]
-    print(viewed_types)
-
-    view_counts = pd.Series(viewed_types).value_counts()
-    most_view = view_counts.index[0]
-    print(most_view)
-
-    sametype = data_recommend[data_recommend['分类']==most_view]
-    #print(sametype.head())
-
-    choosed_index = _random_choice(list(sametype.index))
-
-    #print(data_recommend.ix[choosed_index,:])
-    return data_recommend.ix[choosed_index,:]
-recommend2()
