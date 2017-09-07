@@ -44,10 +44,13 @@ maxhp = (df['HP'].argmax(), df['HP'].max())
 totalmax = df.sort_values('TOTAL',ascending=False).head(3)
 #print(totalmax)
 
-# 查看类型
-types1 = df['TYPE 1'].unique()
-types2 = df['TYPE 2'].unique()
-#print(set(type1) | set(type2) - set([np.nan]))
+# 查看有多少种类型
+# 1用集合
+type1 = df['TYPE 1'].unique()
+type2 = df['TYPE 2'].dropna().unique()
+print( set(type1) | set(type2) )
+# 2 用numpy的集合
+print( np.union1d(type1, type2) )
 
 # 火系中攻击力最高的宠物
 typefire = df[(df['TYPE 1'] == 'Fire') | (df['TYPE 2'] == 'Fire')]

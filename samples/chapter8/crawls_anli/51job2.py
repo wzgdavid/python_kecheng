@@ -58,11 +58,11 @@ def crawl_data(html):
         detail = get_html(link)
         if detail:
             detail = etree.ElementTree(etree.HTML(detail))
-            exp = detail.xpath('//div[@class="jtag inbox"]//em[@class="i1"]/following::text()[1]')
-            #exp = detail.xpath('//div[@class="t1"]/span/em[@class="i1"]/parent::span/text()')
+            #exp = detail.xpath('//div[@class="jtag inbox"]//em[@class="i1"]/following::text()[1]')
+            exp = detail.xpath('//div[@class="t1"]/span/em[@class="i1"]/parent::span/text()')
             exp = exp[0] if exp else None
-            xueli = detail.xpath('//div[@class="jtag inbox"]//em[@class="i2"]/following::text()[1]')
-            #xueli = detail.xpath('//div[@class="t1"]/span/em[@class="i2"]/parent::span/text()')
+            #xueli = detail.xpath('//div[@class="jtag inbox"]//em[@class="i2"]/following::text()[1]')
+            xueli = detail.xpath('//div[@class="t1"]/span/em[@class="i2"]/parent::span/text()')
             xueli = xueli[0] if xueli else None
         else:
             continue
