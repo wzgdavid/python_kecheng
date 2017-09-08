@@ -90,39 +90,39 @@ df_filtered = df[df.index.isin(X_filtered.index)]
 #print(df_filtered.shape[0])
 #print(X_filtered.shape[0])
 ss = StandardScaler()
-X2 = ss.fit_transform(X_filtered)
+X_filtered = ss.fit_transform(X_filtered)
 model = KMeans(n_clusters=15, n_init=50)
 
 # 肘方法
 #ine = [[],[]] # 画图用的坐标点
 #for n in range(2, 50):
-#    inertia = KMeans(n_clusters=n, n_init=20).fit(X2).inertia_
+#    inertia = KMeans(n_clusters=n, n_init=20).fit(X_filtered).inertia_
 #    ine[0].append(n)
 #    ine[1].append(inertia)
 ## 肘方法
 #plt.plot(ine[0], ine[1])
 #plt.show()
 
-
-#model = DBSCAN(eps = 0.1, min_samples=10)
-#model.fit(X2)
-y_pred = model.fit_predict(X2)
+y_pred = model.fit_predict(X_filtered)
+# 也可以不用y_pred,直接用model.labels_
 y_data = pd.DataFrame(y_pred, columns=['分类'], index=df_filtered.index)
 #print(y_data.index)
 #print(y_data.shape[0])
 # 推荐用
 data_recommend = pd.concat([df_filtered, y_data], axis=1)
+# 其实也可以直接用
+# df_filtered['分类'] = model.labels_, 然后不用data_recommend，就用df_filtered
 #print(data_recommend.shape[0])
 
-print(y_pred == model.labels_)
-print(data_recommend.shape)
+#print(y_pred == model.labels_)
+#print(data_recommend.shape)
 def _random_choice(lst, n=5):
     '''从列表lst中随机选择n个不重复的元素'''
     if n > len(lst):
         return lst
     choiced_elements = []
     lst = lst.copy()
-    while n > 0:
+    while n:
         element = choice(lst)
         choiced_elements.append(element)
         lst.remove(element) # 避免重复选择
@@ -144,11 +144,13 @@ def recommend():
     #idx = np.array([1,2,3,4,5])
     n = 5
 
-    # 随机选这一类别的n跳记录
+    # 随机选这一类别的n条记录
     choiced_idx = _random_choice(list(recommended.index), n)
     #print(choiced_idx)
     
-    recommended = recommended.ix[choiced_idx, :]
+    recommended = recommended.ix[choiced_idx]
     print('-----------------------------推荐的----------------------------------------------')
     print(recommended)
     return recommended
+
+recommend()

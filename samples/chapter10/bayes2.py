@@ -74,6 +74,23 @@ print(model.score(X_test, y_test)) # 分数，就是report的f1-score
 y_pred = model.predict(X_test)
 report = metrics.classification_report(y_test, y_pred)
 print(report)
+# 说明
+#             precision    recall  f1-score   support
+#
+#          0       0.73      0.89      0.80         9
+#          1       0.95      0.87      0.91        23
+#
+#avg / total       0.89      0.88      0.88        32
+# 以上为metrics.classification_report的返回结果，
+#[[ 8  1]   
+# [ 3 20]]
+# 上面两行metrics.confusion_matrix的结果
+# 其中precision = 8 / (8 + 3)
+# recall = 8 / (8 + 1)
+# f1-score = 2 * (precision * recall) / (precision + recall)
+# support是权重
+# avg / total 是加权均值 比如recall = (0.89*9+0.87*23)/(9+23)
+# 
 # 混淆矩阵
 cm = metrics.confusion_matrix(y_test, y_pred)
 print(cm)
@@ -86,9 +103,9 @@ half = cm.max() / 2
 #classes = ['狗','猫','兔子'] # 分类名
 classes = classle.classes_
 #print(classes)
-length = range(len(classes))  # 混淆矩阵的边长
-plt.xticks(length, classes, rotation=0)
-plt.yticks(length, classes)
+idx = range(len(classes))  # 混淆矩阵的边长
+plt.xticks(idx, classes, rotation=0)
+plt.yticks(idx, classes)
 plt.colorbar()
 plt.ylabel('真值', rotation=0)
 plt.xlabel('预测值')
@@ -106,3 +123,5 @@ n = model.predict([[0,0,0,1,1,1]])
 print(classle.inverse_transform(n))
 n = model.predict([[1,0,0,0,0,1]])
 print(classle.inverse_transform(n))
+
+

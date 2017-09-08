@@ -47,14 +47,14 @@ model.fit(df2) #开始聚类学习
 print(model.inertia_)
 
 # 肘方法
-inertias = [[],[]]
-for n in range(3, 60):
-    inertia = KMeans(n_clusters = n, n_init=5).fit(df2).inertia_
-    inertias[0].append(n)
-    inertias[1].append(inertia)
-print(inertias)
-plt.plot(inertias[0], inertias[1])
-plt.show()
+#inertias = [[],[]]
+#for n in range(3, 60):
+#    inertia = KMeans(n_clusters = n, n_init=5).fit(df2).inertia_
+#    inertias[0].append(n)
+#    inertias[1].append(inertia)
+#print(inertias)
+#plt.plot(inertias[0], inertias[1])
+#plt.show()
 
 
 #print(model.labels_)
@@ -69,7 +69,7 @@ r2 = pd.DataFrame(model.cluster_centers_)
 r = pd.concat([r2, r1], axis = 1) 
 #重命名表头
 r.columns = list(df.columns) + ['类别数目']
-#print(r)
+print(r)
 #sns.barplot(x="sex", y="survived", hue="class", data=r2)
 #plt.show()
 
