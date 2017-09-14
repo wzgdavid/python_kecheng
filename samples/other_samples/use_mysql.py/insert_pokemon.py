@@ -40,16 +40,15 @@ def insert_onebyone():
 
 def insert_all():
     rows = []
-    for idx in range(length):
+    for idx in range(5,11):
 
         row = df.ix[idx].copy()
         if row['Type 2'] is np.nan:
             row['Type 2'] = 'null'
-        row = tuple(row)
-        rows.append(str(row))
-    rows = ''.join(rows)
+        rows.append( str(tuple(row)) )
+    rows = ','.join(rows)
     sql = "insert into pokemon values {}".format(rows)
-    #print(sql)
+    print(sql)
     try:
         # 执行sql语句
         cursor.execute(sql)
