@@ -194,6 +194,24 @@ df - s   # 沿着行逐一向下计算
 s2 = df[0]     # 选取一列
 df.sub(s2, axis=0)
 
+函数应用到每个元素
+func = lambda x: x+2
+df.applymap(func)
+np.abs(df)    #Numpy的元素级数组方法
+函数应用到行或列
+func = lambda x:x.max() – x.min()
+df.apply(func)   # 行
+df.apply(func, axis=1)
+
+函数应用到多列
+df = pd.DataFrame ({'a' : np.random.randint(6,size=6),
+             'b' : ['foo', 'bar'] * 3,
+             'c' : np.random.randint(6,size=6)})
+def foo(row):
+    return row['a'] * row['c']
+df['Value'] = df.apply(foo, axis=1)
+
+
 page20 分组
 df = pd.DataFrame({'A' : ['foo', 'bar', 'foo', 'bar',
                         'foo', 'bar', 'foo', 'foo'],

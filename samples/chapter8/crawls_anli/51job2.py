@@ -95,7 +95,7 @@ def crawl_one(url):
 def run():
     tasks = []
     url = 'http://search.51job.com/list/000000,000000,0000,00,9,99,python,2,{}.html?lang=c&stype=1&postchannel=0000&workyear=99&cotype=99&degreefrom=99&jobterm=99&companysize=99&lonlat=0%2C0&radius=-1&ord_field=0&confirmdate=9&fromType=1&dibiaoid=0&address=&line=&specialarea=00&from=&welfare='
-    for n in range(22, 32):
+    for n in range(1, 10):
         tasks.append(gevent.spawn(crawl_one, url.format(n)))
     gevent.joinall(tasks)
 
