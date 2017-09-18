@@ -16,7 +16,7 @@ length = df.shape[0]
 
 def insert_onebyone():
     for idx in range(length):
-        #print(idx)
+        print(idx)
         row = df.ix[idx].copy()
         #print(row['Type 2'])
         if row['Type 2'] is np.nan:
@@ -61,4 +61,6 @@ def insert_all():
     # 关闭数据库连接
     db.close()
 
-insert_all()
+if __name__ == '__main__':
+    insert_onebyone()
+    #insert_all()

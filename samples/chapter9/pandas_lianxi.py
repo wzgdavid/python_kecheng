@@ -59,3 +59,20 @@ users.occupation.value_counts().head(5)
 round(users.age.mean())
 # 9 所有性别为男的平均年龄
 users.age[users.gender=='M'].mean()
+
+
+# apply 简单示例
+
+df =  pd.read_csv(r'E:\python_files\csv\users.csv')
+df = df.iloc[:50,:]
+df['ziphead'] = df.zip_code.str[:3].astype(int) # 取出字段的前3位
+# 模仿手机号码分运营商
+# 小于500移动，其他联通
+
+def get_yys(x):
+    if x<500:
+        return '移动'
+    else:
+        return '联通'
+df['运营商'] = df.ziphead.apply(get_yys)
+print(df.head())
