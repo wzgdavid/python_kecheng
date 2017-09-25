@@ -1,0 +1,872 @@
+<?xml version='1.0' encoding='utf-8' ?>
+
+<datasource formatted-name='世界发展指标' inline='true' source-platform='win' version='9.3' xmlns:user='http://www.tableausoftware.com/xml/user'>
+  <connection class='dataengine' dbname='世界发展指标.tde' schema='Extract' tablename='Extract'>
+    <relation name='Extract' table='[Extract].[Extract]' type='table' />
+    <calculations>
+      <calculation column='[Number of Records]' formula='1' />
+    </calculations>
+    <refresh>
+      <refresh-event add-from-file-path='' increment-value='%null%' refresh-type='create' rows-inserted='2704' timestamp-start='2014-12-10 00:07:56.231' />
+    </refresh>
+    <metadata-records>
+      <metadata-record class='column'>
+        <remote-name>0-14 岁人口</remote-name>
+        <remote-type>5</remote-type>
+        <local-name>[0-14 岁人口]</local-name>
+        <parent-name>[Extract]</parent-name>
+        <remote-alias>0-14 岁人口</remote-alias>
+        <ordinal>0</ordinal>
+        <family>Chinese$</family>
+        <local-type>real</local-type>
+        <aggregation>Sum</aggregation>
+        <approx-count>377</approx-count>
+        <contains-null>true</contains-null>
+        <statistics>
+          <statistic aggregation='Min' datatype='real'>0.11799999999999999</statistic>
+          <statistic aggregation='Max' datatype='real'>0.5</statistic>
+        </statistics>
+        <attributes>
+          <attribute datatype='boolean' name='DebugRemoteMetadata (comparable)'>true</attribute>
+          <attribute datatype='string' name='DebugRemoteMetadata (compression)'>&quot;array&quot;</attribute>
+          <attribute datatype='boolean' name='DebugRemoteMetadata (distinct)'>true</attribute>
+          <attribute datatype='integer' name='DebugRemoteMetadata (size)'>8</attribute>
+          <attribute datatype='integer' name='DebugRemoteMetadata (storagewidth)'>2</attribute>
+          <attribute datatype='string' name='DebugRemoteType'>&quot;double&quot;</attribute>
+        </attributes>
+      </metadata-record>
+      <metadata-record class='column'>
+        <remote-name>15-64 岁人口</remote-name>
+        <remote-type>5</remote-type>
+        <local-name>[15-64 岁人口]</local-name>
+        <parent-name>[Extract]</parent-name>
+        <remote-alias>15-64 岁人口</remote-alias>
+        <ordinal>1</ordinal>
+        <family>Chinese$</family>
+        <local-type>real</local-type>
+        <aggregation>Sum</aggregation>
+        <approx-count>299</approx-count>
+        <contains-null>true</contains-null>
+        <statistics>
+          <statistic aggregation='Min' datatype='real'>0.47399999999999998</statistic>
+          <statistic aggregation='Max' datatype='real'>0.85799999999999998</statistic>
+        </statistics>
+        <attributes>
+          <attribute datatype='boolean' name='DebugRemoteMetadata (comparable)'>true</attribute>
+          <attribute datatype='string' name='DebugRemoteMetadata (compression)'>&quot;array&quot;</attribute>
+          <attribute datatype='boolean' name='DebugRemoteMetadata (distinct)'>true</attribute>
+          <attribute datatype='integer' name='DebugRemoteMetadata (size)'>8</attribute>
+          <attribute datatype='integer' name='DebugRemoteMetadata (storagewidth)'>2</attribute>
+          <attribute datatype='string' name='DebugRemoteType'>&quot;double&quot;</attribute>
+        </attributes>
+      </metadata-record>
+      <metadata-record class='column'>
+        <remote-name>65 岁以上人口</remote-name>
+        <remote-type>5</remote-type>
+        <local-name>[65 岁以上人口]</local-name>
+        <parent-name>[Extract]</parent-name>
+        <remote-alias>65 岁以上人口</remote-alias>
+        <ordinal>2</ordinal>
+        <family>Chinese$</family>
+        <local-type>real</local-type>
+        <aggregation>Sum</aggregation>
+        <approx-count>209</approx-count>
+        <contains-null>true</contains-null>
+        <statistics>
+          <statistic aggregation='Min' datatype='real'>0.0030000000000000001</statistic>
+          <statistic aggregation='Max' datatype='real'>0.24399999999999999</statistic>
+        </statistics>
+        <attributes>
+          <attribute datatype='boolean' name='DebugRemoteMetadata (comparable)'>true</attribute>
+          <attribute datatype='string' name='DebugRemoteMetadata (compression)'>&quot;array&quot;</attribute>
+          <attribute datatype='boolean' name='DebugRemoteMetadata (distinct)'>true</attribute>
+          <attribute datatype='integer' name='DebugRemoteMetadata (size)'>8</attribute>
+          <attribute datatype='integer' name='DebugRemoteMetadata (storagewidth)'>1</attribute>
+          <attribute datatype='string' name='DebugRemoteType'>&quot;double&quot;</attribute>
+        </attributes>
+      </metadata-record>
+      <metadata-record class='column'>
+        <remote-name>CO2 排放量</remote-name>
+        <remote-type>3</remote-type>
+        <local-name>[CO2 排放量]</local-name>
+        <parent-name>[Extract]</parent-name>
+        <remote-alias>CO2 排放量</remote-alias>
+        <ordinal>3</ordinal>
+        <family>Chinese$</family>
+        <local-type>integer</local-type>
+        <aggregation>Sum</aggregation>
+        <approx-count>1744</approx-count>
+        <contains-null>true</contains-null>
+        <statistics>
+          <statistic aggregation='Min' datatype='integer'>7</statistic>
+          <statistic aggregation='Max' datatype='integer'>8286892</statistic>
+        </statistics>
+        <attributes>
+          <attribute datatype='integer' name='DebugRemoteMetadata (size)'>4</attribute>
+          <attribute datatype='string' name='DebugRemoteType'>&quot;sint32&quot;</attribute>
+        </attributes>
+      </metadata-record>
+      <metadata-record class='column'>
+        <remote-name>GDP</remote-name>
+        <remote-type>20</remote-type>
+        <local-name>[GDP]</local-name>
+        <parent-name>[Extract]</parent-name>
+        <remote-alias>GDP</remote-alias>
+        <ordinal>4</ordinal>
+        <family>Chinese$</family>
+        <local-type>integer</local-type>
+        <aggregation>Sum</aggregation>
+        <approx-count>2495</approx-count>
+        <contains-null>true</contains-null>
+        <statistics>
+          <statistic aggregation='Min' datatype='integer'>63101272</statistic>
+          <statistic aggregation='Max' datatype='integer'>2147483647</statistic>
+        </statistics>
+        <attributes>
+          <attribute datatype='integer' name='DebugRemoteMetadata (size)'>8</attribute>
+          <attribute datatype='string' name='DebugRemoteType'>&quot;sint64&quot;</attribute>
+        </attributes>
+      </metadata-record>
+      <metadata-record class='column'>
+        <remote-name>Number of Records</remote-name>
+        <remote-type>16</remote-type>
+        <local-name>[Number of Records]</local-name>
+        <parent-name>[Extract]</parent-name>
+        <remote-alias>Number of Records</remote-alias>
+        <ordinal>5</ordinal>
+        <local-type>integer</local-type>
+        <aggregation>Sum</aggregation>
+        <approx-count>1</approx-count>
+        <contains-null>false</contains-null>
+        <statistics>
+          <statistic aggregation='Min' datatype='integer'>1</statistic>
+          <statistic aggregation='Max' datatype='integer'>1</statistic>
+        </statistics>
+        <attributes>
+          <attribute datatype='string' name='DebugRemoteMetadata (ordered)'>&quot;asc&quot;</attribute>
+          <attribute datatype='integer' name='DebugRemoteMetadata (size)'>1</attribute>
+          <attribute datatype='string' name='DebugRemoteType'>&quot;sint8&quot;</attribute>
+        </attributes>
+      </metadata-record>
+      <metadata-record class='column'>
+        <remote-name>互联网使用率</remote-name>
+        <remote-type>5</remote-type>
+        <local-name>[互联网使用率]</local-name>
+        <parent-name>[Extract]</parent-name>
+        <remote-alias>互联网使用率</remote-alias>
+        <ordinal>6</ordinal>
+        <family>Chinese$</family>
+        <local-type>real</local-type>
+        <aggregation>Sum</aggregation>
+        <approx-count>709</approx-count>
+        <contains-null>true</contains-null>
+        <statistics>
+          <statistic aggregation='Min' datatype='real'>0.0</statistic>
+          <statistic aggregation='Max' datatype='real'>0.96199999999999997</statistic>
+        </statistics>
+        <attributes>
+          <attribute datatype='boolean' name='DebugRemoteMetadata (comparable)'>true</attribute>
+          <attribute datatype='string' name='DebugRemoteMetadata (compression)'>&quot;array&quot;</attribute>
+          <attribute datatype='boolean' name='DebugRemoteMetadata (distinct)'>true</attribute>
+          <attribute datatype='integer' name='DebugRemoteMetadata (size)'>8</attribute>
+          <attribute datatype='integer' name='DebugRemoteMetadata (storagewidth)'>2</attribute>
+          <attribute datatype='string' name='DebugRemoteType'>&quot;double&quot;</attribute>
+        </attributes>
+      </metadata-record>
+      <metadata-record class='column'>
+        <remote-name>人口总数</remote-name>
+        <remote-type>3</remote-type>
+        <local-name>[人口总数]</local-name>
+        <parent-name>[Extract]</parent-name>
+        <remote-alias>人口总数</remote-alias>
+        <ordinal>7</ordinal>
+        <family>Chinese$</family>
+        <local-type>integer</local-type>
+        <aggregation>Sum</aggregation>
+        <approx-count>2699</approx-count>
+        <contains-null>false</contains-null>
+        <statistics>
+          <statistic aggregation='Min' datatype='integer'>18876</statistic>
+          <statistic aggregation='Max' datatype='integer'>1350695000</statistic>
+        </statistics>
+        <attributes>
+          <attribute datatype='integer' name='DebugRemoteMetadata (size)'>4</attribute>
+          <attribute datatype='string' name='DebugRemoteType'>&quot;sint32&quot;</attribute>
+        </attributes>
+      </metadata-record>
+      <metadata-record class='column'>
+        <remote-name>人均医疗费用</remote-name>
+        <remote-type>2</remote-type>
+        <local-name>[人均医疗费用]</local-name>
+        <parent-name>[Extract]</parent-name>
+        <remote-alias>人均医疗费用</remote-alias>
+        <ordinal>8</ordinal>
+        <family>Chinese$</family>
+        <local-type>integer</local-type>
+        <aggregation>Sum</aggregation>
+        <approx-count>1070</approx-count>
+        <contains-null>true</contains-null>
+        <statistics>
+          <statistic aggregation='Min' datatype='integer'>2</statistic>
+          <statistic aggregation='Max' datatype='integer'>9908</statistic>
+        </statistics>
+        <attributes>
+          <attribute datatype='integer' name='DebugRemoteMetadata (size)'>2</attribute>
+          <attribute datatype='string' name='DebugRemoteType'>&quot;sint16&quot;</attribute>
+        </attributes>
+      </metadata-record>
+      <metadata-record class='column'>
+        <remote-name>入境旅游</remote-name>
+        <remote-type>20</remote-type>
+        <local-name>[入境旅游]</local-name>
+        <parent-name>[Extract]</parent-name>
+        <remote-alias>入境旅游</remote-alias>
+        <ordinal>9</ordinal>
+        <family>Chinese$</family>
+        <local-type>integer</local-type>
+        <aggregation>Sum</aggregation>
+        <approx-count>1651</approx-count>
+        <contains-null>true</contains-null>
+        <statistics>
+          <statistic aggregation='Min' datatype='integer'>700000</statistic>
+          <statistic aggregation='Max' datatype='integer'>2147483647</statistic>
+        </statistics>
+        <attributes>
+          <attribute datatype='boolean' name='DebugRemoteMetadata (comparable)'>true</attribute>
+          <attribute datatype='string' name='DebugRemoteMetadata (compression)'>&quot;array&quot;</attribute>
+          <attribute datatype='boolean' name='DebugRemoteMetadata (distinct)'>true</attribute>
+          <attribute datatype='integer' name='DebugRemoteMetadata (size)'>8</attribute>
+          <attribute datatype='integer' name='DebugRemoteMetadata (storagewidth)'>2</attribute>
+          <attribute datatype='string' name='DebugRemoteType'>&quot;sint64&quot;</attribute>
+        </attributes>
+      </metadata-record>
+      <metadata-record class='column'>
+        <remote-name>出境旅游</remote-name>
+        <remote-type>20</remote-type>
+        <local-name>[出境旅游]</local-name>
+        <parent-name>[Extract]</parent-name>
+        <remote-alias>出境旅游</remote-alias>
+        <ordinal>10</ordinal>
+        <family>Chinese$</family>
+        <local-type>integer</local-type>
+        <aggregation>Sum</aggregation>
+        <approx-count>1458</approx-count>
+        <contains-null>true</contains-null>
+        <statistics>
+          <statistic aggregation='Min' datatype='integer'>200000</statistic>
+          <statistic aggregation='Max' datatype='integer'>2147483647</statistic>
+        </statistics>
+        <attributes>
+          <attribute datatype='boolean' name='DebugRemoteMetadata (comparable)'>true</attribute>
+          <attribute datatype='string' name='DebugRemoteMetadata (compression)'>&quot;array&quot;</attribute>
+          <attribute datatype='boolean' name='DebugRemoteMetadata (distinct)'>true</attribute>
+          <attribute datatype='integer' name='DebugRemoteMetadata (size)'>8</attribute>
+          <attribute datatype='integer' name='DebugRemoteMetadata (storagewidth)'>2</attribute>
+          <attribute datatype='string' name='DebugRemoteType'>&quot;sint64&quot;</attribute>
+        </attributes>
+      </metadata-record>
+      <metadata-record class='column'>
+        <remote-name>出生率</remote-name>
+        <remote-type>5</remote-type>
+        <local-name>[出生率]</local-name>
+        <parent-name>[Extract]</parent-name>
+        <remote-alias>出生率</remote-alias>
+        <ordinal>11</ordinal>
+        <family>Chinese$</family>
+        <local-type>real</local-type>
+        <aggregation>Sum</aggregation>
+        <approx-count>48</approx-count>
+        <contains-null>true</contains-null>
+        <statistics>
+          <statistic aggregation='Min' datatype='real'>0.0070000000000000001</statistic>
+          <statistic aggregation='Max' datatype='real'>0.052999999999999999</statistic>
+        </statistics>
+        <attributes>
+          <attribute datatype='boolean' name='DebugRemoteMetadata (comparable)'>true</attribute>
+          <attribute datatype='string' name='DebugRemoteMetadata (compression)'>&quot;array&quot;</attribute>
+          <attribute datatype='boolean' name='DebugRemoteMetadata (distinct)'>true</attribute>
+          <attribute datatype='integer' name='DebugRemoteMetadata (size)'>8</attribute>
+          <attribute datatype='integer' name='DebugRemoteMetadata (sort-position)'>3</attribute>
+          <attribute datatype='string' name='DebugRemoteMetadata (sort-sense)'>&quot;asc&quot;</attribute>
+          <attribute datatype='integer' name='DebugRemoteMetadata (storagewidth)'>1</attribute>
+          <attribute datatype='string' name='DebugRemoteType'>&quot;double&quot;</attribute>
+        </attributes>
+      </metadata-record>
+      <metadata-record class='column'>
+        <remote-name>办税小时数</remote-name>
+        <remote-type>2</remote-type>
+        <local-name>[办税小时数]</local-name>
+        <parent-name>[Extract]</parent-name>
+        <remote-alias>办税小时数</remote-alias>
+        <ordinal>12</ordinal>
+        <family>Chinese$</family>
+        <local-type>integer</local-type>
+        <aggregation>Sum</aggregation>
+        <approx-count>281</approx-count>
+        <contains-null>true</contains-null>
+        <statistics>
+          <statistic aggregation='Min' datatype='integer'>12</statistic>
+          <statistic aggregation='Max' datatype='integer'>2600</statistic>
+        </statistics>
+        <attributes>
+          <attribute datatype='integer' name='DebugRemoteMetadata (size)'>2</attribute>
+          <attribute datatype='string' name='DebugRemoteType'>&quot;sint16&quot;</attribute>
+        </attributes>
+      </metadata-record>
+      <metadata-record class='column'>
+        <remote-name>医疗费用 % GDP</remote-name>
+        <remote-type>5</remote-type>
+        <local-name>[医疗费用 % GDP]</local-name>
+        <parent-name>[Extract]</parent-name>
+        <remote-alias>医疗费用 % GDP</remote-alias>
+        <ordinal>13</ordinal>
+        <family>Chinese$</family>
+        <local-type>real</local-type>
+        <aggregation>Sum</aggregation>
+        <approx-count>146</approx-count>
+        <contains-null>true</contains-null>
+        <statistics>
+          <statistic aggregation='Min' datatype='real'>0.0080000000000000002</statistic>
+          <statistic aggregation='Max' datatype='real'>0.22500000000000001</statistic>
+        </statistics>
+        <attributes>
+          <attribute datatype='boolean' name='DebugRemoteMetadata (comparable)'>true</attribute>
+          <attribute datatype='string' name='DebugRemoteMetadata (compression)'>&quot;array&quot;</attribute>
+          <attribute datatype='boolean' name='DebugRemoteMetadata (distinct)'>true</attribute>
+          <attribute datatype='integer' name='DebugRemoteMetadata (size)'>8</attribute>
+          <attribute datatype='integer' name='DebugRemoteMetadata (storagewidth)'>1</attribute>
+          <attribute datatype='string' name='DebugRemoteType'>&quot;double&quot;</attribute>
+        </attributes>
+      </metadata-record>
+      <metadata-record class='column'>
+        <remote-name>国家</remote-name>
+        <remote-type>129</remote-type>
+        <local-name>[国家]</local-name>
+        <parent-name>[Extract]</parent-name>
+        <remote-alias>国家</remote-alias>
+        <ordinal>14</ordinal>
+        <family>Chinese$</family>
+        <local-type>string</local-type>
+        <aggregation>Count</aggregation>
+        <approx-count>208</approx-count>
+        <scale>1</scale>
+        <width>1073741823</width>
+        <contains-null>false</contains-null>
+        <collation flag='1' name='LEN_RUS_S2' />
+        <statistics>
+          <statistic aggregation='Min' datatype='string'>&quot;不丹&quot;</statistic>
+          <statistic aggregation='Max' datatype='string'>&quot;黑山&quot;</statistic>
+        </statistics>
+        <attributes>
+          <attribute datatype='string' name='DebugRemoteCollation'>&quot;en_US_CI&quot;</attribute>
+          <attribute datatype='boolean' name='DebugRemoteMetadata (comparable)'>true</attribute>
+          <attribute datatype='string' name='DebugRemoteMetadata (compression)'>&quot;heap&quot;</attribute>
+          <attribute datatype='boolean' name='DebugRemoteMetadata (distinct)'>true</attribute>
+          <attribute datatype='integer' name='DebugRemoteMetadata (size)'>4294967292</attribute>
+          <attribute datatype='integer' name='DebugRemoteMetadata (sort-position)'>2</attribute>
+          <attribute datatype='string' name='DebugRemoteMetadata (sort-sense)'>&quot;asc&quot;</attribute>
+          <attribute datatype='integer' name='DebugRemoteMetadata (storagewidth)'>2</attribute>
+          <attribute datatype='string' name='DebugRemoteType'>&quot;str&quot;</attribute>
+        </attributes>
+      </metadata-record>
+      <metadata-record class='column'>
+        <remote-name>地区</remote-name>
+        <remote-type>129</remote-type>
+        <local-name>[地区]</local-name>
+        <parent-name>[Extract]</parent-name>
+        <remote-alias>地区</remote-alias>
+        <ordinal>15</ordinal>
+        <family>Chinese$</family>
+        <local-type>string</local-type>
+        <aggregation>Count</aggregation>
+        <approx-count>6</approx-count>
+        <scale>1</scale>
+        <width>1073741823</width>
+        <contains-null>false</contains-null>
+        <collation flag='1' name='LEN_RUS_S2' />
+        <statistics>
+          <statistic aggregation='Min' datatype='string'>&quot;中东&quot;</statistic>
+          <statistic aggregation='Max' datatype='string'>&quot;非洲&quot;</statistic>
+        </statistics>
+        <attributes>
+          <attribute datatype='string' name='DebugRemoteCollation'>&quot;en_US_CI&quot;</attribute>
+          <attribute datatype='boolean' name='DebugRemoteMetadata (comparable)'>true</attribute>
+          <attribute datatype='string' name='DebugRemoteMetadata (compression)'>&quot;heap&quot;</attribute>
+          <attribute datatype='boolean' name='DebugRemoteMetadata (distinct)'>true</attribute>
+          <attribute datatype='integer' name='DebugRemoteMetadata (size)'>4294967292</attribute>
+          <attribute datatype='integer' name='DebugRemoteMetadata (sort-position)'>1</attribute>
+          <attribute datatype='string' name='DebugRemoteMetadata (sort-sense)'>&quot;asc&quot;</attribute>
+          <attribute datatype='integer' name='DebugRemoteMetadata (storagewidth)'>1</attribute>
+          <attribute datatype='string' name='DebugRemoteType'>&quot;str&quot;</attribute>
+        </attributes>
+      </metadata-record>
+      <metadata-record class='column'>
+        <remote-name>城市人口</remote-name>
+        <remote-type>5</remote-type>
+        <local-name>[城市人口]</local-name>
+        <parent-name>[Extract]</parent-name>
+        <remote-alias>城市人口</remote-alias>
+        <ordinal>16</ordinal>
+        <family>Chinese$</family>
+        <local-type>real</local-type>
+        <aggregation>Sum</aggregation>
+        <approx-count>823</approx-count>
+        <contains-null>true</contains-null>
+        <statistics>
+          <statistic aggregation='Min' datatype='real'>0.082000000000000003</statistic>
+          <statistic aggregation='Max' datatype='real'>1.0</statistic>
+        </statistics>
+        <attributes>
+          <attribute datatype='boolean' name='DebugRemoteMetadata (comparable)'>true</attribute>
+          <attribute datatype='string' name='DebugRemoteMetadata (compression)'>&quot;array&quot;</attribute>
+          <attribute datatype='boolean' name='DebugRemoteMetadata (distinct)'>true</attribute>
+          <attribute datatype='integer' name='DebugRemoteMetadata (size)'>8</attribute>
+          <attribute datatype='integer' name='DebugRemoteMetadata (storagewidth)'>2</attribute>
+          <attribute datatype='string' name='DebugRemoteType'>&quot;double&quot;</attribute>
+        </attributes>
+      </metadata-record>
+      <metadata-record class='column'>
+        <remote-name>女性预期寿命</remote-name>
+        <remote-type>16</remote-type>
+        <local-name>[女性预期寿命]</local-name>
+        <parent-name>[Extract]</parent-name>
+        <remote-alias>女性预期寿命</remote-alias>
+        <ordinal>17</ordinal>
+        <family>Chinese$</family>
+        <local-type>integer</local-type>
+        <aggregation>Sum</aggregation>
+        <approx-count>50</approx-count>
+        <contains-null>true</contains-null>
+        <statistics>
+          <statistic aggregation='Min' datatype='integer'>39</statistic>
+          <statistic aggregation='Max' datatype='integer'>87</statistic>
+        </statistics>
+        <attributes>
+          <attribute datatype='integer' name='DebugRemoteMetadata (size)'>1</attribute>
+          <attribute datatype='string' name='DebugRemoteType'>&quot;sint8&quot;</attribute>
+        </attributes>
+      </metadata-record>
+      <metadata-record class='column'>
+        <remote-name>年份</remote-name>
+        <remote-type>133</remote-type>
+        <local-name>[年份]</local-name>
+        <parent-name>[Extract]</parent-name>
+        <remote-alias>年份</remote-alias>
+        <ordinal>18</ordinal>
+        <family>Chinese$</family>
+        <local-type>date</local-type>
+        <aggregation>Year</aggregation>
+        <approx-count>13</approx-count>
+        <contains-null>false</contains-null>
+        <statistics>
+          <statistic aggregation='Min' datatype='date'>#2000-12-01#</statistic>
+          <statistic aggregation='Max' datatype='date'>#2012-12-01#</statistic>
+        </statistics>
+        <attributes>
+          <attribute datatype='boolean' name='DebugRemoteMetadata (comparable)'>true</attribute>
+          <attribute datatype='string' name='DebugRemoteMetadata (compression)'>&quot;array&quot;</attribute>
+          <attribute datatype='boolean' name='DebugRemoteMetadata (distinct)'>true</attribute>
+          <attribute datatype='string' name='DebugRemoteMetadata (ordered)'>&quot;asc&quot;</attribute>
+          <attribute datatype='integer' name='DebugRemoteMetadata (size)'>4</attribute>
+          <attribute datatype='integer' name='DebugRemoteMetadata (sort-position)'>0</attribute>
+          <attribute datatype='string' name='DebugRemoteMetadata (sort-sense)'>&quot;asc&quot;</attribute>
+          <attribute datatype='integer' name='DebugRemoteMetadata (storagewidth)'>1</attribute>
+          <attribute datatype='string' name='DebugRemoteType'>&quot;date&quot;</attribute>
+        </attributes>
+      </metadata-record>
+      <metadata-record class='column'>
+        <remote-name>开业天数</remote-name>
+        <remote-type>2</remote-type>
+        <local-name>[开业天数]</local-name>
+        <parent-name>[Extract]</parent-name>
+        <remote-alias>开业天数</remote-alias>
+        <ordinal>19</ordinal>
+        <family>Chinese$</family>
+        <local-type>integer</local-type>
+        <aggregation>Sum</aggregation>
+        <approx-count>127</approx-count>
+        <contains-null>true</contains-null>
+        <statistics>
+          <statistic aggregation='Min' datatype='integer'>1</statistic>
+          <statistic aggregation='Max' datatype='integer'>694</statistic>
+        </statistics>
+        <attributes>
+          <attribute datatype='boolean' name='DebugRemoteMetadata (comparable)'>true</attribute>
+          <attribute datatype='string' name='DebugRemoteMetadata (compression)'>&quot;array&quot;</attribute>
+          <attribute datatype='boolean' name='DebugRemoteMetadata (distinct)'>true</attribute>
+          <attribute datatype='integer' name='DebugRemoteMetadata (size)'>2</attribute>
+          <attribute datatype='integer' name='DebugRemoteMetadata (storagewidth)'>1</attribute>
+          <attribute datatype='string' name='DebugRemoteType'>&quot;sint16&quot;</attribute>
+        </attributes>
+      </metadata-record>
+      <metadata-record class='column'>
+        <remote-name>手机使用率</remote-name>
+        <remote-type>5</remote-type>
+        <local-name>[手机使用率]</local-name>
+        <parent-name>[Extract]</parent-name>
+        <remote-alias>手机使用率</remote-alias>
+        <ordinal>20</ordinal>
+        <family>Chinese$</family>
+        <local-type>real</local-type>
+        <aggregation>Sum</aggregation>
+        <approx-count>1179</approx-count>
+        <contains-null>true</contains-null>
+        <statistics>
+          <statistic aggregation='Min' datatype='real'>0.0</statistic>
+          <statistic aggregation='Max' datatype='real'>2.8980000000000001</statistic>
+        </statistics>
+        <attributes>
+          <attribute datatype='boolean' name='DebugRemoteMetadata (comparable)'>true</attribute>
+          <attribute datatype='string' name='DebugRemoteMetadata (compression)'>&quot;array&quot;</attribute>
+          <attribute datatype='boolean' name='DebugRemoteMetadata (distinct)'>true</attribute>
+          <attribute datatype='integer' name='DebugRemoteMetadata (size)'>8</attribute>
+          <attribute datatype='integer' name='DebugRemoteMetadata (storagewidth)'>2</attribute>
+          <attribute datatype='string' name='DebugRemoteType'>&quot;double&quot;</attribute>
+        </attributes>
+      </metadata-record>
+      <metadata-record class='column'>
+        <remote-name>新生儿死亡率</remote-name>
+        <remote-type>5</remote-type>
+        <local-name>[新生儿死亡率]</local-name>
+        <parent-name>[Extract]</parent-name>
+        <remote-alias>新生儿死亡率</remote-alias>
+        <ordinal>21</ordinal>
+        <family>Chinese$</family>
+        <local-type>real</local-type>
+        <aggregation>Sum</aggregation>
+        <approx-count>130</approx-count>
+        <contains-null>true</contains-null>
+        <statistics>
+          <statistic aggregation='Min' datatype='real'>0.002</statistic>
+          <statistic aggregation='Max' datatype='real'>0.14099999999999999</statistic>
+        </statistics>
+        <attributes>
+          <attribute datatype='boolean' name='DebugRemoteMetadata (comparable)'>true</attribute>
+          <attribute datatype='string' name='DebugRemoteMetadata (compression)'>&quot;array&quot;</attribute>
+          <attribute datatype='boolean' name='DebugRemoteMetadata (distinct)'>true</attribute>
+          <attribute datatype='integer' name='DebugRemoteMetadata (size)'>8</attribute>
+          <attribute datatype='integer' name='DebugRemoteMetadata (storagewidth)'>1</attribute>
+          <attribute datatype='string' name='DebugRemoteType'>&quot;double&quot;</attribute>
+        </attributes>
+      </metadata-record>
+      <metadata-record class='column'>
+        <remote-name>男性预期寿命</remote-name>
+        <remote-type>16</remote-type>
+        <local-name>[男性预期寿命]</local-name>
+        <parent-name>[Extract]</parent-name>
+        <remote-alias>男性预期寿命</remote-alias>
+        <ordinal>22</ordinal>
+        <family>Chinese$</family>
+        <local-type>integer</local-type>
+        <aggregation>Sum</aggregation>
+        <approx-count>48</approx-count>
+        <contains-null>true</contains-null>
+        <statistics>
+          <statistic aggregation='Min' datatype='integer'>37</statistic>
+          <statistic aggregation='Max' datatype='integer'>88</statistic>
+        </statistics>
+        <attributes>
+          <attribute datatype='integer' name='DebugRemoteMetadata (size)'>1</attribute>
+          <attribute datatype='string' name='DebugRemoteType'>&quot;sint8&quot;</attribute>
+        </attributes>
+      </metadata-record>
+      <metadata-record class='column'>
+        <remote-name>经商便利度</remote-name>
+        <remote-type>2</remote-type>
+        <local-name>[经商便利度]</local-name>
+        <parent-name>[Extract]</parent-name>
+        <remote-alias>经商便利度</remote-alias>
+        <ordinal>23</ordinal>
+        <family>Chinese$</family>
+        <local-type>integer</local-type>
+        <aggregation>Sum</aggregation>
+        <approx-count>186</approx-count>
+        <contains-null>true</contains-null>
+        <statistics>
+          <statistic aggregation='Min' datatype='integer'>1</statistic>
+          <statistic aggregation='Max' datatype='integer'>189</statistic>
+        </statistics>
+        <attributes>
+          <attribute datatype='boolean' name='DebugRemoteMetadata (comparable)'>true</attribute>
+          <attribute datatype='string' name='DebugRemoteMetadata (compression)'>&quot;array&quot;</attribute>
+          <attribute datatype='boolean' name='DebugRemoteMetadata (distinct)'>true</attribute>
+          <attribute datatype='integer' name='DebugRemoteMetadata (size)'>2</attribute>
+          <attribute datatype='integer' name='DebugRemoteMetadata (storagewidth)'>1</attribute>
+          <attribute datatype='string' name='DebugRemoteType'>&quot;sint16&quot;</attribute>
+        </attributes>
+      </metadata-record>
+      <metadata-record class='column'>
+        <remote-name>能源使用</remote-name>
+        <remote-type>3</remote-type>
+        <local-name>[能源使用]</local-name>
+        <parent-name>[Extract]</parent-name>
+        <remote-alias>能源使用</remote-alias>
+        <ordinal>24</ordinal>
+        <family>Chinese$</family>
+        <local-type>integer</local-type>
+        <aggregation>Sum</aggregation>
+        <approx-count>1722</approx-count>
+        <contains-null>true</contains-null>
+        <statistics>
+          <statistic aggregation='Min' datatype='integer'>8</statistic>
+          <statistic aggregation='Max' datatype='integer'>2727728</statistic>
+        </statistics>
+        <attributes>
+          <attribute datatype='integer' name='DebugRemoteMetadata (size)'>4</attribute>
+          <attribute datatype='string' name='DebugRemoteType'>&quot;sint32&quot;</attribute>
+        </attributes>
+      </metadata-record>
+      <metadata-record class='column'>
+        <remote-name>营业税税率</remote-name>
+        <remote-type>5</remote-type>
+        <local-name>[营业税税率]</local-name>
+        <parent-name>[Extract]</parent-name>
+        <remote-alias>营业税税率</remote-alias>
+        <ordinal>25</ordinal>
+        <family>Chinese$</family>
+        <local-type>real</local-type>
+        <aggregation>Sum</aggregation>
+        <approx-count>448</approx-count>
+        <contains-null>true</contains-null>
+        <statistics>
+          <statistic aggregation='Min' datatype='real'>0.082000000000000003</statistic>
+          <statistic aggregation='Max' datatype='real'>3.391</statistic>
+        </statistics>
+        <attributes>
+          <attribute datatype='boolean' name='DebugRemoteMetadata (comparable)'>true</attribute>
+          <attribute datatype='string' name='DebugRemoteMetadata (compression)'>&quot;array&quot;</attribute>
+          <attribute datatype='boolean' name='DebugRemoteMetadata (distinct)'>true</attribute>
+          <attribute datatype='integer' name='DebugRemoteMetadata (size)'>8</attribute>
+          <attribute datatype='integer' name='DebugRemoteMetadata (storagewidth)'>2</attribute>
+          <attribute datatype='string' name='DebugRemoteType'>&quot;double&quot;</attribute>
+        </attributes>
+      </metadata-record>
+      <metadata-record class='column'>
+        <remote-name>贷款利率</remote-name>
+        <remote-type>5</remote-type>
+        <local-name>[贷款利率]</local-name>
+        <parent-name>[Extract]</parent-name>
+        <remote-alias>贷款利率</remote-alias>
+        <ordinal>26</ordinal>
+        <family>Chinese$</family>
+        <local-type>real</local-type>
+        <aggregation>Sum</aggregation>
+        <approx-count>352</approx-count>
+        <contains-null>true</contains-null>
+        <statistics>
+          <statistic aggregation='Min' datatype='real'>0.0050000000000000001</statistic>
+          <statistic aggregation='Max' datatype='real'>4.9649999999999999</statistic>
+        </statistics>
+        <attributes>
+          <attribute datatype='boolean' name='DebugRemoteMetadata (comparable)'>true</attribute>
+          <attribute datatype='string' name='DebugRemoteMetadata (compression)'>&quot;array&quot;</attribute>
+          <attribute datatype='boolean' name='DebugRemoteMetadata (distinct)'>true</attribute>
+          <attribute datatype='integer' name='DebugRemoteMetadata (size)'>8</attribute>
+          <attribute datatype='integer' name='DebugRemoteMetadata (storagewidth)'>2</attribute>
+          <attribute datatype='string' name='DebugRemoteType'>&quot;double&quot;</attribute>
+        </attributes>
+      </metadata-record>
+    </metadata-records>
+  </connection>
+  <aliases enabled='yes' />
+  <column aggregation='Avg' datatype='real' default-format='p0.0%' name='[0-14 岁人口]' role='measure' type='quantitative'>
+    <desc>
+      <formatted-text>
+        <run>人口百分比</run>
+      </formatted-text>
+    </desc>
+  </column>
+  <column aggregation='Avg' datatype='real' default-format='p0.0%' name='[15-64 岁人口]' role='measure' type='quantitative'>
+    <desc>
+      <formatted-text>
+        <run>人口百分比</run>
+      </formatted-text>
+    </desc>
+  </column>
+  <column aggregation='Avg' datatype='real' default-format='p0.0%' name='[65 岁以上人口]' role='measure' type='quantitative'>
+    <desc>
+      <formatted-text>
+        <run>人口百分比</run>
+      </formatted-text>
+    </desc>
+  </column>
+  <column aggregation='Avg' datatype='integer' name='[CO2 排放量]' role='measure' type='quantitative'>
+    <desc>
+      <formatted-text>
+        <run>千吨油当量</run>
+      </formatted-text>
+    </desc>
+  </column>
+  <column aggregation='Avg' datatype='integer' default-format='C1033%' name='[GDP]' role='measure' type='quantitative'>
+    <desc>
+      <formatted-text>
+        <run fontsize='8'>国内生产总值 </run>
+      </formatted-text>
+    </desc>
+  </column>
+  <column datatype='integer' name='[Number of Records]' role='measure' type='quantitative' user:auto-column='numrec'>
+    <calculation class='tableau' formula='1' />
+  </column>
+  <column aggregation='Avg' datatype='real' default-format='n#,##0.0;-#,##0.0' name='[互联网使用率]' role='measure' type='quantitative'>
+    <desc>
+      <formatted-text>
+        <run>人均</run>
+      </formatted-text>
+    </desc>
+  </column>
+  <column aggregation='Avg' datatype='integer' default-format='n#,##0;-#,##0' name='[人口总数]' role='measure' type='quantitative'>
+    <desc>
+      <formatted-text>
+        <run>一个国家/地区内的人数</run>
+      </formatted-text>
+    </desc>
+  </column>
+  <column aggregation='Avg' datatype='integer' default-format='c&quot;$&quot;#,##0.00;(&quot;$&quot;#,##0.00)' name='[人均医疗费用]' role='measure' type='quantitative'>
+    <desc>
+      <formatted-text>
+        <run>人均医疗费用</run>
+      </formatted-text>
+    </desc>
+  </column>
+  <column aggregation='Avg' datatype='integer' default-format='c&quot;$&quot;#,##0;(&quot;$&quot;#,##0)' name='[入境旅游]' role='measure' type='quantitative'>
+    <desc>
+      <formatted-text>
+        <run>来自入境旅游的收入</run>
+      </formatted-text>
+    </desc>
+  </column>
+  <column aggregation='Avg' datatype='integer' default-format='c&quot;$&quot;#,##0;(&quot;$&quot;#,##0)' name='[出境旅游]' role='measure' type='quantitative'>
+    <desc>
+      <formatted-text>
+        <run>用于出境旅游的支出</run>
+      </formatted-text>
+    </desc>
+  </column>
+  <column aggregation='Avg' datatype='real' default-format='p0.0%' name='[出生率]' role='measure' type='quantitative'>
+    <desc>
+      <formatted-text>
+        <run>人口百分比</run>
+      </formatted-text>
+    </desc>
+  </column>
+  <column aggregation='Avg' datatype='integer' name='[办税小时数]' role='measure' type='quantitative'>
+    <desc>
+      <formatted-text>
+        <run>企业准备和缴税的时间</run>
+      </formatted-text>
+    </desc>
+  </column>
+  <column aggregation='Avg' datatype='real' default-format='p0.0%' name='[医疗费用 % GDP]' role='measure' type='quantitative'>
+    <desc>
+      <formatted-text>
+        <run>医疗费用占 GDP 百分比</run>
+      </formatted-text>
+    </desc>
+  </column>
+  <column datatype='string' name='[国家]' role='dimension' semantic-role='[Country].[Name]' type='nominal' />
+  <column aggregation='Avg' datatype='real' default-format='p0.0%' name='[城市人口]' role='measure' type='quantitative'>
+    <desc>
+      <formatted-text>
+        <run>人口百分比</run>
+      </formatted-text>
+    </desc>
+  </column>
+  <column aggregation='Avg' datatype='integer' name='[女性预期寿命]' role='measure' type='quantitative'>
+    <desc>
+      <formatted-text>
+        <run>如果主要模式相同，新生儿存活的年数</run>
+      </formatted-text>
+    </desc>
+  </column>
+  <column aggregation='Avg' datatype='integer' name='[开业天数]' role='measure' type='quantitative'>
+    <desc>
+      <formatted-text>
+        <run>开业所需的时间</run>
+      </formatted-text>
+    </desc>
+  </column>
+  <column aggregation='Avg' datatype='real' default-format='n#,##0.0;-#,##0.0' name='[手机使用率]' role='measure' type='quantitative'>
+    <desc>
+      <formatted-text>
+        <run>人均</run>
+      </formatted-text>
+    </desc>
+  </column>
+  <column aggregation='Avg' datatype='real' default-format='p0.0%' name='[新生儿死亡率]' role='measure' type='quantitative'>
+    <desc>
+      <formatted-text>
+        <run>人口百分比</run>
+      </formatted-text>
+    </desc>
+  </column>
+  <column aggregation='Avg' datatype='integer' name='[男性预期寿命]' role='measure' type='quantitative'>
+    <desc>
+      <formatted-text>
+        <run>如果主要模式相同，新生儿存活的年数</run>
+      </formatted-text>
+    </desc>
+  </column>
+  <column aggregation='Avg' datatype='integer' name='[经商便利度]' role='measure' type='quantitative'>
+    <desc>
+      <formatted-text>
+        <run>1=容易</run>
+      </formatted-text>
+    </desc>
+  </column>
+  <column aggregation='Avg' datatype='integer' name='[能源使用]' role='measure' type='quantitative'>
+    <desc>
+      <formatted-text>
+        <run>千吨</run>
+      </formatted-text>
+    </desc>
+  </column>
+  <column aggregation='Avg' datatype='real' default-format='p0.0%' name='[营业税税率]' role='measure' type='quantitative'>
+    <desc>
+      <formatted-text>
+        <run>商业利润百分比</run>
+      </formatted-text>
+    </desc>
+  </column>
+  <column aggregation='Avg' datatype='real' default-format='p0.0%' name='[贷款利率]' role='measure' type='quantitative'>
+    <desc>
+      <formatted-text>
+        <run>符合私营部门需求的银行利率</run>
+      </formatted-text>
+    </desc>
+  </column>
+  <folder name='人口' role='measures'>
+    <folder-item name='[0-14 岁人口]' type='field' />
+    <folder-item name='[15-64 岁人口]' type='field' />
+    <folder-item name='[65 岁以上人口]' type='field' />
+    <folder-item name='[人口总数]' type='field' />
+    <folder-item name='[出生率]' type='field' />
+    <folder-item name='[城市人口]' type='field' />
+  </folder>
+  <folder name='医疗' role='measures'>
+    <folder-item name='[人均医疗费用]' type='field' />
+    <folder-item name='[医疗费用 % GDP]' type='field' />
+    <folder-item name='[女性预期寿命]' type='field' />
+    <folder-item name='[新生儿死亡率]' type='field' />
+    <folder-item name='[男性预期寿命]' type='field' />
+  </folder>
+  <folder name='发展' role='measures'>
+    <folder-item name='[CO2 排放量]' type='field' />
+    <folder-item name='[GDP]' type='field' />
+    <folder-item name='[互联网使用率]' type='field' />
+    <folder-item name='[入境旅游]' type='field' />
+    <folder-item name='[出境旅游]' type='field' />
+    <folder-item name='[手机使用率]' type='field' />
+    <folder-item name='[能源使用]' type='field' />
+  </folder>
+  <folder name='商业' role='measures'>
+    <folder-item name='[办税小时数]' type='field' />
+    <folder-item name='[开业天数]' type='field' />
+    <folder-item name='[经商便利度]' type='field' />
+    <folder-item name='[营业税税率]' type='field' />
+    <folder-item name='[贷款利率]' type='field' />
+  </folder>
+  <layout dim-ordering='alphabetic' dim-percentage='0.125975' measure-ordering='alphabetic' measure-percentage='0.850613' show-structure='false' />
+  <semantic-values>
+    <semantic-value key='[Country].[Name]' value='&quot;United States&quot;' />
+  </semantic-values>
+</datasource>
