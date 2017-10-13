@@ -54,3 +54,17 @@ for i in range(1,10):  #循环9次，打印出9行
         s = '{}*{}={}'.format(j, i, i*j)
         print(s.center(8), end='')
     print('')  #每循环1次就打印1个空格，默认回车折行
+
+import re
+lst = [3, 7, [0, [9, 5], 7], 1]
+#lst2 = [3, 7, 0, 9, 5, 7, 1] # 扁平化处理
+# 'abc-efg-'.replace('-','+')
+
+
+lst_str = str(lst)
+pstr = re.sub(r'[\]\[]', '', lst_str)
+print(pstr)
+plist = pstr.split(',')
+print(plist)
+plist = [int(n) for n in plist]
+print(plist)
