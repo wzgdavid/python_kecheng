@@ -76,6 +76,17 @@ def _test():
     #data = read_from_json('tieba')
     #print(data)
 
+
+'''
+有超出一种编码方式，无法用csv保存的时候，比如 data1
+data1 = ['首页', '所有分类 ', '设计创意', '办公创意', '正版商用', '云简历', ' •  •  •']
+，可以试试如下写法，用codecs
+import codecs
+f = codecs.open('word.csv', 'a', 'utf_8_sig')  
+writer = csv.writer(f)  
+writer.writerow(data1) 
+f.close()  
+'''
 if __name__ == '__main__':
 
     _test()

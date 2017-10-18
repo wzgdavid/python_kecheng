@@ -18,13 +18,13 @@ headers = {
     'Connection': 'keep-alive'
 }
 
-def get_html(url):
+def get_html(url, encoding='utf-8'):
     html = None
     req = request.Request(url, headers=headers)
     try:
         #response = request.urlopen(url)
         response = request.urlopen(req)
-        html = response.read().decode('gbk')
+        html = response.read().decode(encoding)
     except error.URLError as e:
         print(e)
         print(url)
@@ -55,7 +55,7 @@ def crawl_data(html):
         #print(i, salary)
         # 经验和学历
         
-        detail = get_html(link)
+        detail = get_html(link, 'gbk')
         if detail:
             detail = etree.ElementTree(etree.HTML(detail))
             #exp = detail.xpath('//div[@class="jtag inbox"]//em[@class="i1"]/following::text()[1]')
@@ -87,7 +87,7 @@ def save_to_csv(data, filename, mode):
 def crawl_one(url):
     #url = 'http://search.51job.com/list/020000,000000,0000,00,9,99,%2520,2,{}.html?lang=c&stype=&postchannel=0000&workyear=99&cotype=99&degreefrom=99&jobterm=99&companysize=99&providesalary=99&lonlat=0%2C0&radius=-1&ord_field=0&confirmdate=9&fromType=&dibiaoid=0&address=&line=&specialarea=00&from=&welfare='.format(1) # format里页数
 
-    html = get_html(url)
+    html = get_html(url, 'gbk')
     if html:
         data = crawl_data(html)
         save_to_csv(data, r'51jobs.csv', mode='a')
@@ -95,7 +95,7 @@ def crawl_one(url):
 def run():
     tasks = []
     url = 'http://search.51job.com/list/000000,000000,0000,00,9,99,python,2,{}.html?lang=c&stype=1&postchannel=0000&workyear=99&cotype=99&degreefrom=99&jobterm=99&companysize=99&lonlat=0%2C0&radius=-1&ord_field=0&confirmdate=9&fromType=1&dibiaoid=0&address=&line=&specialarea=00&from=&welfare='
-    for n in range(1, 10):
+    for n in range(1, 2):
         tasks.append(gevent.spawn(crawl_one, url.format(n)))
     gevent.joinall(tasks)
 
