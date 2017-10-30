@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/hello.css">
+    <script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script src="/static/js/hello.js"></script>
+</head>
+<body>
+
+
+    <div id='divone'>
+        <img src='/static/img/guido.jpg'/>
+        divone
+        <ul>
+        {%for name in usernames%}
+            <li>{{ name }}</li>
+        {%endfor%}
+        </ul>
+        <ul>
+        {%for k, v in names2.items()%}
+            <li>{{ k }}---{{ v }}</li>
+        {%endfor%}
+        </ul>
+        <ul>
+
+        {%for idx in range(df.shape[0])%}
+            <li>{{ df.ix[idx] }}</li>
+        {%endfor%}
+        </ul>
+    </div>
+</body>
+</html>
