@@ -240,3 +240,24 @@ page21 练习
 math = {'cat': 55, 'bob': 75, 'pig': 85, 'tom': 50, 'dog': 66}
 english = {'cat': 95, 'bob': 88, 'pig': 85, 'tom': 50}
 2, 以总分由高到低打印出学生名字，缺考为零分
+
+
+# 额外 
+# ix 和 iloc的区别
+>>> df[df.A>4]
+   A  B  C
+2  5  3  7
+3  5  1  7
+5  8  2  4
+>>> df4 = df[df.A>4]
+>>> df4.ix[2]  # ix选的与原df关联
+A    5
+B    3
+C    7
+Name: 2, dtype: int32
+>>> df4.iloc[2]  # iloc选的与删选后的df4关联
+A    8
+B    2
+C    4
+Name: 5, dtype: int32
+>>> 
