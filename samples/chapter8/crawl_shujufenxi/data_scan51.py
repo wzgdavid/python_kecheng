@@ -6,6 +6,7 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
+from data_scanboss import salary_pie, _salary_range
 
 def _salary(salary):
     '''薪资统一以月计算，取均值'''
@@ -55,13 +56,15 @@ def _area(area):
 
 sns.set_style("whitegrid")# darkgrid , whitegrid , dark , white ,和 ticks 
 plt.rcParams['font.sans-serif'] = ['SimHei'] # 正常显示中文
-df =  pd.read_csv(r'data_51jobs.csv', encoding='gbk')
+df =  pd.read_csv(r'soft_test_51.csv', encoding='gbk')
 #df = df.dropna()
 df['工作地点'] = df['工作地点'].apply(_area)
 df['薪资'] = df['薪资'].apply(_salary)
 df['经验'] = df['经验'].apply(_exp)
-
+df['月薪段'] = df['薪资'].apply(_salary_range)
 #df.to_csv('data_51jobs2.csv')
+#print(df.shape)
+salary_pie(df)
 
 # 职位数量城市分布饼图， 以dropna前的数据画
 #print(df['工作地点'].value_counts())
@@ -92,6 +95,7 @@ def pie2():
 #pie2()
 
 
+
 df = df.dropna()
 #print(df.head(20))
 #print(df.shape[0])
@@ -102,11 +106,11 @@ print(df.describe())
 
 # 全国月薪柱状分布图
 # 以城市分
-#df = df[df['工作地点'] ==  '深圳']
-#plt.title('数据分析职位月薪(深圳)')
-#bins=range(0,40000,5000) # 范围0到200，每个柱的宽度20
+#df = df[df['工作地点'] ==  '北京']
+#plt.title('软件测试职位月薪')
+#bins=range(0,30000,3000) # 
 ## hist画柱状图
-#plt.hist(df["薪资"],bins,color='#3333ee',width=4000) 
+#plt.hist(df["薪资"],bins,color='#3333ee',width=2600) 
 #plt.xlabel('月薪')
 #plt.ylabel('计数')
 #plt.text(1, 10000,'sdfsdf')
@@ -117,13 +121,13 @@ print(df.describe())
 
 
 # 主要城市盒形图
-#main_cities = df['工作地点'].value_counts()[:10]
-#main_cities = main_cities.drop('异地招聘')
+#main_cities = df['工作地点'].value_counts()[:5]
+##main_cities = main_cities.drop('异地招聘')
 #dfbox = df[df['工作地点'].isin(main_cities.index)]
 ##print(dfbox.head())
-#plt.title('主要城市盒形图')
+#plt.title('主要城市薪资范围')
 #sns.boxplot(x="工作地点", y = '薪资', data = dfbox)
-#plt.ylim(0,40000)
+#plt.ylim(0,25000)
 #plt.show()
 
 
@@ -137,9 +141,9 @@ print(df.describe())
 
 
 # 学历月薪盒形图
-plt.title('学历月薪盒形图')
-sns.boxplot(x="学历", y = '薪资', data = df)
-plt.ylim(0,50000)
-#plt.text('sfsf')
-plt.show()
-#print(df.describe())
+#plt.title('学历月薪盒形图')
+#sns.boxplot(x="学历", y = '薪资', data = df)
+#plt.ylim(0,30000)
+##plt.text('sfsf')
+#plt.show()
+##print(df.describe())

@@ -40,6 +40,7 @@ def crawl_data(html):
     html = etree.ElementTree(html)
 
     items = html.xpath('//div[@id="resultList"]/div[@class="el"]')
+
     rows = []
     for i, item in enumerate(items):
         item = etree.ElementTree(item)

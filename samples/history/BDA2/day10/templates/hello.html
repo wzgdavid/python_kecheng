@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/hello.css">
+    <script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script src="/static/js/hello.js"></script>
+</head>
+<body>
+
+
+    <div class='container'>
+        <div class='col-lg-8 col-md-8 col-sm-12'>
+        {%for row in rows%}
+            <h4><a class='item' id='{{row.idx}}' href='{{row.link}}'>{{ row.title }}</a>></h4>
+            <div>租金:{{ row.rent }}   区域:{{ row.area1 }}  面积:{{ row.mianji }}平米</div>
+        {%endfor%}
+        </div>
+        <div class='col-lg-4 col-md-4 col-sm-12'>
+            <h3>推荐</h3>
+            {%for row in recommends%}
+                <h4><a class='item' id='{{row.idx}}' href='{{row.link}}'>{{     row.title }}</a>></h4>
+                <div>租金:{{ row.rent }}   区域:{{ row.area1 }}  面积:{{     row.mianji }}平米</div>
+            {%endfor%}
+        </div>
+    </div>
+</body>
+</html>
