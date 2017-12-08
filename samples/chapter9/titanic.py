@@ -60,7 +60,7 @@ df =  pd.read_csv(r'..\csv\titanic.csv')
 
 # 男女分别获救情况  和前面一样，只是在筛选后的df上操作
 #male = df[df.sex=='male']
-#plt.subplot(121)
+#plt.subplot(121) # 几行  几列  第几行或列
 #sns.countplot(data=male, x='survived')  
 #plt.title('male')
 #female = df[df.sex=='female']
@@ -68,3 +68,10 @@ df =  pd.read_csv(r'..\csv\titanic.csv')
 #sns.countplot(data=female, x='survived') 
 #plt.title('female')
 #plt.show()
+
+
+#print(df[['pclass','survived']].groupby(['prclass']).count())
+
+#print(type(np.isnan(df.age)))
+#print(type(df.age.isnull()))
+#print(np.isnan(df.age)==df.age.isnull()) 

@@ -52,7 +52,8 @@ print(a)
 for i in range(1,10):  #循环9次，打印出9行
     for j in range(1,i+1):  #第几行就有几项
         s = '{}*{}={}'.format(j, i, i*j)
-        print(s.center(8), end='')
+        #print(s.center(8), end='')
+        print(s, end='\t') #center 和\t选其一
     print('')  #每循环1次就打印1个空格，默认回车折行
 
 
