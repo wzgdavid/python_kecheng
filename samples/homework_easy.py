@@ -38,20 +38,54 @@ dct = {'cat': 123, 'tom': 666, 'pig': 555, 'moon': 555}
 reverse_keyvalue(dct)
 
 
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+# pandas 作业
+# 用anjuke.csv
 
-# 统计一段文本中单词的出现次数
-text = '''
-File system paths                      have historically been represented 
-as str or bytes objects. This has led to people who 
-write code which operate on file system paths to assume 
-that such objects are only one of those two types 
-(an int representing a file descriptor does not count 
-as that is not a file path). Unfortunately that 
-assumption prevents alternative object representations 
-of file system paths like pathlib from working with pre-existing code,
- including Python’s standard library.
-'''
+plt.rcParams['font.sans-serif'] = ['SimHei'] # 正常显示中文
+df =  pd.read_csv(r'E:\python_files\csv\anjuke.csv', encoding='gbk')
 
+# 1 生成新的一列面积，值只包含数字
+def get_area(area):
+    return area.replace('平米', '')
+df['面积(平米)'] = df['面积'].apply(get_area).astype(int)
 
-import string
-print(string.punctuation)
+# 2 筛选出浦东新区，精装修，朝南，面积在30到50平米的房源,月租在4000元以内
+
+pudong = (df['区域1'] == '浦东新区')
+jingzhuangxiu = (df['装修'] == '精装修')
+chaoxiang = (df['朝向'] == '南')
+gt30lt50 = ( (df['面积(平米)'] > 30) & (df['面积(平米)'] < 50) )
+lt4000 = ( df['租金'] < 4000 )
+a = df[pudong & jingzhuangxiu & chaoxiang & gt30lt50 & lt4000]
+#print(a)
+
+# 每个区的平均单价  （租金/面积）
+df['租金单价'] = df['租金'] / df['面积(平米)']
+
+#print(df['租金单价'])
+#zjdj = df.groupby('区域1')['租金单价'].mean()
+#zjdj = zjdj.sort_values()
+##zjdj.plot(type='bar')
+#sns.barplot(x=zjdj.index, y=zjdj.values,hue=zjdj.index)
+#plt.title('各区租金单价')
+#plt.show()
+
+zjdj = df.groupby(['区域1', df['朝向']=='南' ])['租金单价'].mean()
+print(zjdj)
+
+#zjdj.plot(type='bar')
+
+#sns.barplot(
+#    x=zjdj.index, 
+#    y=zjdj.values,
+#    hue=zjdj.index.labels[1]
+#)
+#plt.xlabel(rotation=90,s=20)
+#plt.title('各区租金单价')
+#plt.show()
+#print(zjdj.index.labels[1])
+#print(zjdj['崇明区'][False]) # 复合索引 选一个值
